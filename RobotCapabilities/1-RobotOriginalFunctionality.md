@@ -15,7 +15,7 @@
    python MasterPi_PC_Software/Arm.py
    ~~~
 
-   <img src="https://github.com/stemoutreach/AutonomousEdgeRobotics2.0/blob/main/zzimages/ArmAction.png" width="600" >   
+   <img src="https://github.com/stemoutreach/PathfinderBot/blob/main/zzimages/ArmAction.png" width="600" >   
 
 
 1. **Functions**
@@ -28,7 +28,7 @@
       - Open an additional terminal window to run one function modules. Use ctrl+C to stop the function before starting anohther one
 
       
-        <img src="https://github.com/stemoutreach/AutonomousEdgeRobotics2.0/blob/main/zzimages/Features.png" width="600" >   
+        <img src="https://github.com/stemoutreach/PathfinderBot/blob/main/zzimages/Features.png" width="600" >   
 
          ~~~
          sudo python /home/pi/MasterPi/Functions/ColorDetect.py 
