@@ -16,7 +16,7 @@ updated 06/23/2025
 
 ## Steps
 
-  ### 1. [Assemble](Assemble/README.md) 
+  ### 1. [AssembleRobot](AssembleRobot/README.md) 
 Unboxing and assembling 
 
   ### 2. [Connect & Test](ConnectAndTest/README.md)
