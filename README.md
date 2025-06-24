@@ -4,7 +4,7 @@ updated 06/23/2025
 
 ## [Bill of Materials](BillofMaterials.md)
 
-<img src="https://github.com/stemoutreach/Pathfinder/blob/main/zzimages/2025Setup500Robot.jpg" width="600" > 
+<img src="https://github.com/stemoutreach/PathfinderBot/blob/main/zzimages/2025Setup500Robot.jpg" width="600" > 
 
 ## Learning Goals:
 
