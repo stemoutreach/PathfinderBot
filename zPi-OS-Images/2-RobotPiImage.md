@@ -10,6 +10,10 @@
    
    Follow the wizard to configure the image
 
+1. **Suggest changing defaul password for pi**
+   
+1. **Suggest changing Hostname for pi** 
+
 1. **Enable interface:** ssh, vnc and i2c
    
     You can use GUI - Pi/Preferences/Raspberry Pi Configuration - or CLI use the command beow
