@@ -34,50 +34,6 @@
 
    Hover the mouse cursor over the active WiFi icon and copy the assigned IP address. This IP will be used to connect the Pi500 to the robot.   
 
-1. **Run start up script**
-  
-   Open a terminal and enter the following command. (This script initualizes the robot and sets the arm to starting position) 
-   ~~~
-   sudo python /home/robot/code/StartUp.py
-   ~~~
-
-1. **Run servo test**
-
-
-   The following script will move each servo a little starting with the claw. Check to make sure all servos are plugged into the correct location. The wheels will also run in order:
-   - left front
-   - right front
-   - left back
-   - right back  
-
-    ~~~
-    sudo python /home/robot/code/Servo_test.py
-    ~~~
-1. **Run Camera test**
-
-    NOTE: monitor must be connected to the robot to view the camera window.
-    
-    If picture is black, then remove the lens cap
-   
-    If the picture is out of focus, turn the camea lense left or right to focus.
-   
-    ~~~
-    sudo python /home/robot/code/CameraTest.py
-    ~~~
-
-1. **Calibrate servos**
-  
-    Calibrate may be needed based on the start up position of the robot arm in step 2 above. Normal start up position for the arm should look like the picture below.
-   
-   <img src="https://github.com/stemoutreach/PathfinderBot/blob/main/zzimages/ArmStartUp.jpeg" width="200" > 
-
-    If the start up position is not the same, the servo positions will need to be corrected or a servo may need to be replaced. The Arm.py program is a way to interact with the arm and can help you fuigure out what is needed.
-
-    ~~~
-    python /home/pi/MasterPi_PC_Software/Arm.py
-    ~~~
-
-    
 
 
     
