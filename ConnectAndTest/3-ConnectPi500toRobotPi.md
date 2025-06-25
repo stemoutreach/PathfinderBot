@@ -3,15 +3,35 @@
 ## Prerequisites:
 
 1. Robot is on and you have the robot's current IP (shown below as XXX.XXX.XXX.XXX)
-1. Desktop Pi is connected to monitor, keyboard and powered on
+1. Pi500 is connected to monitor, mouse and powered on
 
-## Steps:
+## Steps: from the Raspberry Pi 500
 
 1. **SSH Connection**
+
+    Open a terminal and enter the following command replacing the XXX.XXX.XXX.XXX with the robot's IP
+    ~~~
+    ssh pi@XXX.XXX.XXX.XXX
+    ~~~
+
+1. **Run start up script**
   
+   This script initualizes the robot and sets the arm to starting position
    ~~~
-   ssh pi@XXX.XXX.XXX.XXX
+   sudo python /home/robot/code/StartUp.py
    ~~~
+
+1. **Run servo test**
+
+   The following script will move each servo a little starting with the claw. Check to make sure all servos are plugged into the correct location. The wheels will also run in order:
+   - left front
+   - right front
+   - left back
+   - right back  
+
+    ~~~
+    sudo python /home/robot/code/Servo_test.py
+    ~~~
 
 1. **VNC Connection**
 
@@ -21,19 +41,27 @@
 
     Input XXX.XXX.XXX.XXX to connect
    
-1. **Jupyter Lab Connection**
-  
-   ~~~
-   ssh pi@XXX.XXX.XXX.XXX
-   ~~~
-   ~~~
-   cd /home/pi/Desktop/JupyterNotebooks
-   sudo jupyter notebook --ip='*' --port=8888 --no-browser --allow-root
-   ~~~
+1. **Run Camera test within the VNC viewer**
+ 
+    If picture is black, then remove the lens cap
+   
+    If the picture is out of focus, turn the camea lense left or right to focus.
+   
+    ~~~
+    sudo python /home/robot/code/CameraTest.py
+    ~~~
 
-   First time login - create a password
-   - Copy the token from the terminal window 
-   - Open a browser and connect to http://XXX.XXX.XXX.XXX:8888
-   - Use the token copied from the terminal window and paste it in the section **Setup a Password** then add your own password 
+1. **Calibrate servos**
+  
+    Calibrate may be needed based on the start up position of the robot arm in step 2 above. Normal start up position for the arm should look like the picture below.
+   
+   <img src="https://github.com/stemoutreach/PathfinderBot/blob/main/zzimages/ArmStartUp.jpeg" width="200" > 
+
+    If the start up position is not the same, the servo positions will need to be corrected or a servo may need to be replaced. The Arm.py program is a way to interact with the arm and can help you fuigure out what is needed.
+
+    ~~~
+    python /home/pi/MasterPi_PC_Software/Arm.py
+    ~~~
+
 
   
