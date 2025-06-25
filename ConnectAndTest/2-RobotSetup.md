@@ -74,7 +74,7 @@ Hover the mouse cursor over the active WiFi icon and copy the assigned IP addres
     If the start up position is not the same, the servo positions will need to be corrected or a servo may need to be replaced. The Arm.py program is a way to interact with the arm and can help you fuigure out what is needed.
 
     ~~~
-    python /home/robot/code/Arm.py
+    python /home/pi/MasterPi_PC_Software/Arm.py
     ~~~
 
     
