@@ -1,12 +1,10 @@
 # **2 Robot Setup**
 
-<img src="https://github.com/stemoutreach/PathfinderBot/blob/main/zzimages/IMG_2048.jpg" width="400" > 
-
 ## Prerequisites:
 
 1. Robot is assembled
 1. Batteries are charged and installed
-1. Robot Pi is connected to monitor and keyboard
+1. Robot Pi is connected to monitor and the Pi500 mouse is connected to the robot.
 
 ## Steps:
 
@@ -26,13 +24,15 @@
 
 1. **Connect to WiFi**
 
-   Check the network icon top right of the Taskbar. If the network icon looks like the image below, click icon and select the correct network to connect to. 
+   Check the network icon top right of the Taskbar. If the network icon looks like the image below, click icon and select the correct network to connect to.
 
    <img src="https://github.com/stemoutreach/PathfinderBot/blob/main/zzimages/wifisetup-01.jpg" width="200" > 
 
+   Type in the wifi password using the on screen keypad.
+
 1. **Get the assigned IP for the robot**
 
-Hover the mouse cursor over the active WiFi icon and copy the assigned IP address. This IP will be used to connect the Pi500 to the robot.   
+   Hover the mouse cursor over the active WiFi icon and copy the assigned IP address. This IP will be used to connect the Pi500 to the robot.   
 
 1. **Run start up script**
   
