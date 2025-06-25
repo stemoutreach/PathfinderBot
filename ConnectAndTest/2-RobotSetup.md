@@ -32,13 +32,13 @@
 
 1. **Get the assigned IP for the robot**
 
-Hover the mouse cursor ver the active WiFi icon and copy the assigned IP address. This IP will be used to connect the Pi500 to the robot.   
+Hover the mouse cursor over the active WiFi icon and copy the assigned IP address. This IP will be used to connect the Pi500 to the robot.   
 
 1. **Run start up script**
   
    Open a terminal and enter the following command. (This script initualizes the robot and sets the arm to starting position) 
    ~~~
-   sudo python StartUp.py
+   sudo python /home/robot/code/StartUp.py
    ~~~
 
 1. **Run servo test**
@@ -51,7 +51,7 @@ Hover the mouse cursor ver the active WiFi icon and copy the assigned IP address
    - right back  
 
     ~~~
-    sudo python /home/pi/MasterPi/HiwonderSDK/Servo_test.py
+    sudo python /home/robot/code/Servo_test.py
     ~~~
 1. **Run Camera test**
 
@@ -62,7 +62,7 @@ Hover the mouse cursor ver the active WiFi icon and copy the assigned IP address
     If the picture is out of focus, turn the camea lense left or right to focus.
    
     ~~~
-    sudo python CameraTest.py
+    sudo python /home/robot/code/CameraTest.py
     ~~~
 
 1. **Calibrate servos**
@@ -74,7 +74,7 @@ Hover the mouse cursor ver the active WiFi icon and copy the assigned IP address
     If the start up position is not the same, the servo positions will need to be corrected or a servo may need to be replaced. The Arm.py program is a way to interact with the arm and can help you fuigure out what is needed.
 
     ~~~
-    python MasterPi_PC_Software/Arm.py
+    python /home/robot/code/Arm.py
     ~~~
 
     
