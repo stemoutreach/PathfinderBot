@@ -1,6 +1,6 @@
 # **2 Robot Setup**
 
-<img src="https://github.com/stemoutreach/PathfinderBot/blob/main/GettingStarted/zzimages/IMG_2048.jpg" width="400" > 
+<img src="https://github.com/stemoutreach/PathfinderBot/blob/main/zzimages/IMG_2048.jpg" width="400" > 
 
 ## Prerequisites:
 
