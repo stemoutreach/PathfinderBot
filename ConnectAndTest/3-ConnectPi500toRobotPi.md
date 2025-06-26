@@ -1,4 +1,4 @@
-# **3 Connect Desktop Pi to Robot Pi**
+# **3 Connect Pi500 to Robot Pi**
 
 ## Prerequisites:
 
