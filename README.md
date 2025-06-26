@@ -1,4 +1,4 @@
-# Pathfinder: “Assemble, program, and prevail.
+# Pathfinder: “Assemble, program, and prevail"
 
 updated 06/25/2025
 
