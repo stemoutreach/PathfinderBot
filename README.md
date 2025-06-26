@@ -1,6 +1,6 @@
 # Pathfinder: “Assemble, program, and prevail.
 
-updated 06/24/2025
+updated 06/25/2025
 
 ## [Bill of Materials](BillofMaterials.md)
 
