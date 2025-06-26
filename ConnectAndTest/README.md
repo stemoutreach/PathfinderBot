@@ -8,7 +8,7 @@
 
 ### [1. Pi 500 Setup](1-Pi500Setup.md)
 
-### [2. Robot Setup](2-RobotSetup.md)
+### [2. Robot Setup](2-RobotWiFiSetup.md)
 
 ### [3. Connect Pi 500 to Robot Pi](3-ConnectPi500toRobotPi.md)
 
