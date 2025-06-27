@@ -55,6 +55,4 @@ The workshop is divided into three main phases:
 * Explore robotics principles including mobility, sensing, and control
 * Experience real-world engineering workflows in a fun and engaging format
 
-> GitHub Repository: [PathfinderBot](https://github.com/stemoutreach/PathfinderBot)
-
 Let's build, explore, and navigate!
