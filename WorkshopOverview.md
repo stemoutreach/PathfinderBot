@@ -57,4 +57,4 @@ The workshop is divided into three main phases:
 
 Let's build, explore, and navigate!
 
-[PathfinderBot](https://github.com/stemoutreach/PathfinderBot/README.md)
+[PathfinderBot](README.md)
