@@ -56,3 +56,5 @@ The workshop is divided into three main phases:
 * Experience real-world engineering workflows in a fun and engaging format
 
 Let's build, explore, and navigate!
+
+> [PathfinderBot](https://github.com/stemoutreach/PathfinderBot)
