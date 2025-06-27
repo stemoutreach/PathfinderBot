@@ -1,6 +1,8 @@
 # Pathfinder: “Assemble, program, and prevail"
 
-updated 06/25/2025
+updated 06/26/2025
+
+## [Workshop Overview](WorkshopOverview.md)
 
 ## [Bill of Materials](BillofMaterials.md)
 
