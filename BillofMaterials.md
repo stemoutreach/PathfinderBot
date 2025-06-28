@@ -12,4 +12,4 @@
 - [32GB Micro SD Card](https://www.amazon.com/dp/B0C1Y87VT3).
 - [MasterPi Robot without Raspberry Pi4 8Gig     Robotshop](https://www.robotshop.com/products/hiwonder-hiwonder-masterpi-ai-vision-robot-arm-with-mecanum-wheels-car-powered-by-raspberry-pi-open-source-robot-car-no-raspberry-pi-4b-included?qd=cf5a7312824470180d2509cd0fd2cee4).
 
-  <img src="https://github.com/stemoutreach/PathfinderBot/blob/main/zzimages/BOM.jpg" width="600" > 
+  <img src="/zzimages/BOM.jpg" width="600" > 
