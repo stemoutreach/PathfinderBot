@@ -1,6 +1,6 @@
 # Pathfinder: “Assemble, program, and prevail"
 
-updated 06/27/2025
+updated 06/28/2025
 
 ## [Workshop Overview](WorkshopOverview.md)
 
@@ -10,13 +10,13 @@ updated 06/27/2025
 
 ## Learning Goals
 1. **Team‑building & collaboration**
-1. Raspberry Pi fundamentals  
 1. Python scripting 
 1. Robotics hardware & control (mecanum drive + 5‑DOF arm)
    - [Mecanum Guide](/Guides/Mecanum_Wheels_Guide_for_PathfinderBot.md)
    - [Inverse Kinematics Guide](/Guides/Inverse_Kinematics_Guide_for_PathfinderBot_Arm.md)
 1. Computer vision with OpenCV [OpenCV Guide](/Guides/OpenCV_Guide_for_PathfinderBot.md)
 1. Fiducial navigation with AprilTags [AprilTags Guide](/Guides/AprilTags_Guide_for_PathfinderBot.md)
+1. Raspberry Pi fundamentals  
 
 ## Steps
 
