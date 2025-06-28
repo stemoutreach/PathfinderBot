@@ -8,13 +8,15 @@ updated 06/27/2025
 
 <img src="/zzimages/2025Setup500Robot.jpg" width="600" > 
 
-## Learning Goals:
-
-1. Raspberry Pi
-1. Python
-1. Robotics 
-1. OpenCV
-2. AprilTags
+## Learning Goals
+1. **Team‑building & collaboration**
+1. Raspberry Pi fundamentals  
+1. Python scripting 
+1. Robotics hardware & control (mecanum drive + 5‑DOF arm)
+   - [Mecanum Guide](/Guides/Mecanum_Wheels_Guide_for_PathfinderBot.md)
+   - [Inverse Kinematics Guide](/Guides/Inverse_Kinematics_Guide_for_PathfinderBot_Arm.md)
+1. Computer vision with OpenCV [OpenCV Guide](/Guides/OpenCV_Guide_for_PathfinderBot.md)
+1. Fiducial navigation with AprilTags [AprilTags Guide](/Guides/AprilTags_Guide_for_PathfinderBot.md)
 
 ## Steps
 
