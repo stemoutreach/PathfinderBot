@@ -12,21 +12,21 @@
 
    There are two switches. One on the motor controller and one on the battery container.
    
-   <img src="https://github.com/stemoutreach/PathfinderBot/blob/main/zzimages/RoobotOnOff.jpg" width="400" > 
+   <img src="/zzimages/RoobotOnOff.jpg" width="400" > 
 
    
 1. **change defaul password and hostname**
 
     Open the Configuation tool at **Pi -> Preferences -> Raspberry Pi Configuation** and follow instructions. Make the hostname unique. Maybe use your team name or initials and add robot if you use the same hostname as the desktop pi. 
    
-   <img src="https://github.com/stemoutreach/PathfinderBot/blob/main/zzimages/PiConfigPWandHost.jpg" width="500" > 
+   <img src="/zzimages/PiConfigPWandHost.jpg" width="500" > 
 
 
 1. **Connect to WiFi**
 
    Check the network icon top right of the Taskbar. If the network icon looks like the image below, click icon and select the correct network to connect to.
 
-   <img src="https://github.com/stemoutreach/PathfinderBot/blob/main/zzimages/wifisetup-01.jpg" width="200" > 
+   <img src="/zzimages/wifisetup-01.jpg" width="200" > 
 
    Type in the wifi password using the on screen keypad.
 
