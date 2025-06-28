@@ -1,12 +1,12 @@
 # Pathfinder: “Assemble, program, and prevail"
 
-updated 06/26/2025
+updated 06/27/2025
 
 ## [Workshop Overview](WorkshopOverview.md)
 
 ## [Bill of Materials](BillofMaterials.md)
 
-<img src="https://github.com/stemoutreach/PathfinderBot/blob/main/zzimages/2025Setup500Robot.jpg" width="600" > 
+<img src="/zzimages/2025Setup500Robot.jpg" width="600" > 
 
 ## Learning Goals:
 
