@@ -12,7 +12,7 @@ Participants will work in teams to assemble and operate the **MasterPi robot**, 
 
 Teams will use the **Raspberry Pi 500** (Pi500) as a command and monitoring station. The Pi500 connects wirelessly to the MasterPi robot via Wi-Fi, enabling control, programming, and real-time feedback.
 
-<img src="https://github.com/stemoutreach/PathfinderBot/blob/main/zzimages/PathfinerBotWorkshop.jpg" width="600" > 
+<img src="/zzimages/PathfinerBotWorkshop.jpg" width="600" > 
 
 ## How It Works
 
