@@ -41,7 +41,7 @@ For most real arms, multiple (or zero) solutions exist, and joint limits add con
 2. **Implement FK** (verify with measured positions).
 3. **Derive Analytical IK** (recommended for real‑time on Raspberry Pi):
 
-   * **Base Angle ($\theta_1$)** from target **X,Y**: $\theta_1 = \operatorname{atan2}(y,x)$
+   * **Base Angle ($\theta_1$)** from target **X,Y**: $\theta_1 = \"operatorname"{atan2}(y,x)$
    * **Planar 2‑link Solution** for Shoulder ($\theta_2$) and Elbow ($\theta_3$) using law of cosines in the vertical plane.
    * **Wrist Pitch ($\theta_4$)** ensures end‑effector points to target angle.
    * **Wrist Roll ($\theta_5$)** aligns gripper rotation.
