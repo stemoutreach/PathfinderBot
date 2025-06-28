@@ -4,7 +4,6 @@ updated 06/28/2025
 
 ## [Workshop Overview](WorkshopOverview.md)
 
-## [Bill of Materials](BillofMaterials.md)
 
 <img src="/zzimages/2025Setup500Robot.jpg" width="600" > 
 
@@ -34,3 +33,4 @@ Explore Capabilities
 
    Setup steps to create the OS image for both Raspberry Pi 500 and the robot Raspberry Pi. 
 
+## [Bill of Materials](BillofMaterials.md)
