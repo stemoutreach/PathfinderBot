@@ -37,7 +37,7 @@
 
     Launch RealVNC Viewer
    
-     <img src="https://github.com/stemoutreach/AutonomousEdgeRobotics/blob/main/zzimages/RealVNCViewer.jpg" width="200" > 
+     <img src="/zzimages/RealVNCViewer.jpg" width="200" > 
 
     Input XXX.XXX.XXX.XXX to connect
    
@@ -55,7 +55,7 @@
   
     Calibrate may be needed based on the start up position of the robot arm in step 2 above. Normal start up position for the arm should look like the picture below.
    
-   <img src="https://github.com/stemoutreach/PathfinderBot/blob/main/zzimages/ArmStartUp.jpeg" width="200" > 
+   <img src="/zzimages/ArmStartUp.jpeg" width="200" > 
 
     If the start up position is not the same, the servo positions will need to be corrected or a servo may need to be replaced. The Arm.py program is a way to interact with the arm and can help you fuigure out what is needed.
 
