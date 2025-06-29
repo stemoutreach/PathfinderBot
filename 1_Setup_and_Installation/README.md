@@ -32,3 +32,6 @@ Common issues and their solutions:
 * Hardware and software troubleshooting
 * Network connectivity problems
 * FAQ section
+
+[Return to PathfinderBot Main Page](README.md)
+
