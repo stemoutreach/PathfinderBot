@@ -27,19 +27,13 @@ Welcome to the **PathfinderBot** repository! This project is specifically design
 
 ## Getting Started
 
-1. **Clone the repository:**
-
-```bash
-git clone https://github.com/stemoutreach/PathfinderBot.git
-```
-
-2. **Navigate to setup:**
-   Follow the detailed steps in the [Setup and Installation](Setup_and_Installation/RaspberryPi_Setup.md) guide.
-
-3. **Robot Assembly:**
+1. **Robot Assembly:**
    Complete robot assembly using our comprehensive [Assembly Guide](Robot_Build_Instructions/Assembly_Guide.md).
 
-4. **Begin Workshop:**
+1. **Navigate to setup:**
+   Follow the detailed steps in the [Setup and Installation](Setup_and_Installation/RaspberryPi_Setup.md) guide.
+
+1. **Begin Workshop:**
    Explore robot functionality, coding samples, and engage in leadership-oriented challenges.
 
 ---
