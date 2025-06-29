@@ -1,60 +1,68 @@
 # PathfinderBot Workshop Overview
 
-Welcome to the **PathfinderBot** workshop! This hands-on experience is designed for engineering-minded teams to build, program, and operate an autonomous robot capable of navigating an obstacle course using visual markers called **AprilTags**.
-
-## Workshop Objective
-
-Participants will work in teams to assemble and operate the **MasterPi robot**, which features:
-
-* **Mecanum wheels** for omni-directional movement
-* A **robotic arm** with a gripper for interacting with objects
-* A **camera** used for AprilTag detection and navigation
-
-Teams will use the **Raspberry Pi 500** (Pi500) as a command and monitoring station. The Pi500 connects wirelessly to the MasterPi robot via Wi-Fi, enabling control, programming, and real-time feedback.
+Welcome to the **PathfinderBot Workshop**, a hands-on robotics and leadership experience. This immersive workshop provides participants with the opportunity to build, program, and operate an autonomous robot, designed to navigate and solve real-world challenges using visual markers known as **AprilTags**.
 
 <img src="/zzimages/PathfinerBotWorkshop.jpg" width="600" > 
 
-## How It Works
+## Workshop Objectives
 
-The workshop is divided into three main phases:
+Participants will work collaboratively in teams to:
 
-### 1. Assemble the Robot
+* Enhance leadership skills including strategic decision-making, effective communication, and collaborative problem-solving.
+* Assemble and program the **MasterPi robot**, a sophisticated mobile platform with advanced robotics capabilities:
 
-* Teams begin by physically assembling the MasterPi robot using the provided kits.
-* Key systems such as the mecanum drive, robotic arm, and camera are mounted and connected.
+  * **Mecanum wheels** for omni-directional and precision mobility.
+  * A versatile **robotic arm** with gripper capability for object manipulation.
+  * An integrated **camera system** to identify, interpret, and respond to AprilTags for accurate navigation.
+* Utilize the **Raspberry Pi 500 (Pi500)** as a centralized control station to code, debug, monitor, and optimize robot performance in real-time.
 
-### 2. Learn the Robot Capabilities
+---
 
-* Teams explore the preloaded Python-based control scripts.
-* You will:
+## Workshop Phases
 
-  * Drive using mecanum wheels
-  * Operate the arm and gripper
-  * Use the camera to detect AprilTags and estimate position
-* Each feature will be tested in a controlled environment to build confidence.
+The workshop is carefully structured into three interactive phases:
 
-### 3. Navigate the Course
+### Phase 1: Robot Assembly
 
-* The final challenge involves navigating a course using AprilTags as waypoints.
-* Teams will:
+* Teams will collaboratively assemble the MasterPi robot using detailed instructions and comprehensive kits.
+* Key components such as mecanum wheels, robotic arm, camera module, and internal electronics will be carefully installed and configured.
 
-  * Detect AprilTags using the onboard camera
-  * Center the robot on the tag
-  * Move to a defined position relative to each tag
-  * Interact with objects if needed (e.g., pick up a block)
+### Phase 2: Robot Capabilities Exploration
 
-## The System: Pi500 + MasterPi
+* Participants will explore and familiarize themselves with robot operations through provided Python-based scripts.
+* Activities will include:
 
-* The **MasterPi robot** is the mobile unit with computing and sensing capabilities.
-* The **Pi500** is the team interface — used for coding, debugging, and monitoring.
-* Both devices are networked via a local Wi-Fi connection for remote control and file sharing.
+  * Precise control of mecanum wheels for omni-directional driving.
+  * Operating the robotic arm for object pickup and manipulation.
+  * Using the onboard camera to detect, analyze, and respond to AprilTags for navigation.
+* Teams will systematically test these capabilities to build operational proficiency and confidence.
 
-## Workshop Goals
+### Phase 3: Obstacle Course Navigation Challenge
 
-* Build team collaboration through shared problem-solving
-* Explore robotics principles including mobility, sensing, and control
-* Experience real-world engineering workflows in a fun and engaging format
+* Teams will apply their knowledge and skills to navigate an obstacle course strategically placed with AprilTags.
+* This culminating challenge requires teams to:
 
-Let's build, explore, and navigate!
+  * Accurately detect and interpret AprilTags for strategic navigation.
+  * Position the robot precisely relative to each tag, demonstrating both accuracy and agility.
+  * Successfully perform interaction tasks, such as manipulating objects with the robotic arm.
 
-[PathfinderBot](README.md)
+---
+
+## System Overview: Pi500 + MasterPi
+
+* **MasterPi robot** acts as the mobile computational unit equipped with advanced sensors and mechanical features.
+* **Pi500** serves as the interactive command hub, enabling real-time programming, monitoring, and optimization of robot operations.
+* Seamless communication is achieved through a local Wi-Fi network, promoting effective remote control and collaboration.
+
+---
+
+## Expected Outcomes
+
+* Develop and refine key leadership competencies within a team-oriented, problem-solving environment.
+* Gain hands-on experience in advanced robotics, integrating mechanical, electronic, and software components.
+* Understand and appreciate the engineering workflow, fostering skills directly applicable to professional scenarios.
+
+Let's innovate, collaborate, and lead through robotics!
+
+[Return to PathfinderBot Main Page](README.md)
+
