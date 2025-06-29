@@ -16,7 +16,7 @@ Welcome to the **PathfinderBot** repository! This project is specifically design
 
 ## Quick Links
 
-* [Workshop Overview](Workshop_Overview.md)
+* [Workshop Overview](WorkshopOverview.md)
 * [Setup and Installation](Setup_and_Installation/RaspberryPi_Setup.md)
 * [Robot Assembly Instructions](Robot_Build_Instructions/Assembly_Guide.md)
 * [Robot Functional Capabilities](Robot_Functionality/OpenCV_Basics.md)
