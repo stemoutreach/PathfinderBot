@@ -2,7 +2,7 @@
 
 Welcome to the **PathfinderBot Workshop**, a hands-on robotics and leadership experience. This immersive workshop provides participants with the opportunity to build, program, and operate an autonomous robot, designed to navigate and solve real-world challenges using visual markers known as **AprilTags**.
 
-<img src="/zzimages/PathfinerBotWorkshop.jpg" width="600" > 
+<img src="/zzimages/PathfinerBotWorkshop.jpg" width="400" > 
 
 ## Workshop Objectives
 
