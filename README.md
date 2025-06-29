@@ -5,7 +5,6 @@
 Welcome to the **PathfinderBot** repository! This project is specifically designed for engineers. Participants will engage in practical robot assembly, coding, and problem-solving exercises aimed at fostering leadership, teamwork, and technical innovation.
 
 <img src="/zzimages/2025Setup500Robot.jpg" width="600" > 
----
 
 ## Workshop Goals
 
