@@ -4,18 +4,26 @@ This section contains clear, concise instructions to assist participants in prep
 
 ---
 
-## [RaspberryPi\_Setup.md](RaspberryPi_Setup.md)
+## [Raspberry Pi500 Setup](Raspberry_Pi500_Setup.md)
 
 Detailed instructions on:
 
-* Raspberry Pi hardware preparation
-* OS installation
+* Raspberry Pi 500 unboxing and setup
 * Network configuration
-* Initial device setup
-
+* OS installation
+  
 ---
 
-## [Software\_Dependencies.md](Software_Dependencies.md)
+## [Robot's Raspberry Pi Setup](Robot_Raspberry_Pi_Setup.md)
+
+Detailed instructions on:
+
+* Network configuration
+* OS installation
+  
+---
+
+## [Software Dependencies](Software_Dependencies.md)
 
 Step-by-step guidance for:
 
@@ -25,7 +33,7 @@ Step-by-step guidance for:
 
 ---
 
-## [Troubleshooting.md](Troubleshooting.md)
+## [Troubleshooting](Troubleshooting.md)
 
 Common issues and their solutions:
 
