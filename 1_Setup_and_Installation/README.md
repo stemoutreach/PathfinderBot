@@ -33,5 +33,5 @@ Common issues and their solutions:
 * Network connectivity problems
 * FAQ section
 
-[Return to PathfinderBot Main Page](README.md)
+[Return to PathfinderBot Main Page](/README.md)
 
