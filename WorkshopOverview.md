@@ -25,7 +25,7 @@ The workshop is carefully structured into three interactive phases:
 ### Phase 1: Robot Assembly
 
 * Teams will collaboratively assemble the MasterPi robot using detailed instructions and comprehensive kits.
-* Key components such as mecanum wheels, robotic arm, camera module, and internal electronics will be carefully installed and configured.
+* Key components such as mecanum wheels, robotic arm, camera module, and internal electronics will be installed and configured.
 
 ### Phase 2: Robot Capabilities Exploration
 
