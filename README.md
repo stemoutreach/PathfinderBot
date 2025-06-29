@@ -17,8 +17,8 @@ Welcome to the **PathfinderBot** repository! This project is specifically design
 ## Quick Links
 
 * [Workshop Overview](WorkshopOverview.md)
-* [Setup and Installation](1_Setup_and_Installation/README.md)
-* [Robot Assembly Instructions](Robot_Build_Instructions/Robot_Assembly_Guide.md)
+* [Setup and Installation](Setup_and_Installation/README.md)
+* [Robot Assembly Instructions](Robot_Assembly_Guide.md)
 * [Robot Functional Capabilities](Robot_Functionality/OpenCV_Basics.md)
 * [Course Navigation and Challenges](Course_Navigation_and_Challenges/Navigation_with_AprilTags.md)
 * [Leadership Exercises](Team_Building_and_Leadership/Team_Building_Exercises.md)
