@@ -40,4 +40,4 @@ The purpose of the Raspberry Pi 500 is to connect to the robot
    <img src="/zzimages/OpenTerminal2.jpg" width="500" > 
    
 
-[Return to 1 Setup and Installation Page](README.md)
+[Return to Setup and Installation Page](README.md)
