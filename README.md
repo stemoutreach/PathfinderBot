@@ -28,7 +28,7 @@ Welcome to the **PathfinderBot** repository! This project is specifically design
 ## Getting Started
 
 1. **Robot Assembly:**
-   Complete robot assembly using our comprehensive [Robot Assembly Instructions](Robot_Assembly_Guide.md).
+   Complete robot assembly using our [Robot Assembly Instructions](Robot_Assembly_Guide.md).
 
 1. **Navigate to setup:**
    Follow the detailed steps in the [Setup and Installation](Setup_and_Installation/README.md) guide.
