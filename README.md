@@ -50,6 +50,6 @@ We welcome professional contributions! Please review our [contribution guideline
 
 ---
 
-© PathfinderBot | STEM Outreach Initiative
+PathfinderBot | STEM Outreach Initiative
 
 updated 06/29/2025
