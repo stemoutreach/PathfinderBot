@@ -33,8 +33,9 @@ The workshop is carefully structured into three interactive phases:
 * Activities will include:
 
   * Precise control of mecanum wheels for omni-directional driving.
-  * Operating the robotic arm for object pickup and manipulation.
   * Using the onboard camera to detect, analyze, and respond to AprilTags for navigation.
+  * Operating the robotic arm for object pickup and manipulation.
+
 * Teams will systematically test these capabilities to build operational proficiency and confidence.
 
 ### Phase 3: Obstacle Course Navigation Challenge
