@@ -13,7 +13,7 @@ This guide will help you learn how to:
 Make sure you have the following:
 - PathfinderBot powered on and connected to your Raspberry Pi
 - Python files `Sonar.py` and `Board.py` in the same folder
-- Run your code using `python3` on the Raspberry Pi
+- Run your code using `python` on the Raspberry Pi
 
 ---
 
