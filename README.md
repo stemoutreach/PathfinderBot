@@ -17,8 +17,8 @@ Welcome to the **PathfinderBot** repository! This project is specifically design
 ## Quick Links
 
 * [Workshop Overview](WorkshopOverview.md)
-* [Setup and Installation](Setup_and_Installation/README.md)
 * [Robot Assembly Instructions](Robot_Assembly_Guide.md)
+* [Setup and Installation](Setup_and_Installation/README.md)
 * [Robot Functional Capabilities](Robot_Functionality/OpenCV_Basics.md)
 * [Course Navigation and Challenges](Course_Navigation_and_Challenges/Navigation_with_AprilTags.md)
 * [Leadership Exercises](Team_Building_and_Leadership/Team_Building_Exercises.md)
@@ -40,12 +40,6 @@ Connect Pi500 to Robot and explore the robot's functionality
 
 ---
 
-## Contributing
-
-We welcome professional contributions! Please review our [contribution guidelines](CONTRIBUTING.md) for more information.
-
----
-
 PathfinderBot | STEM Outreach Initiative
 
-updated 06/29/2025
+updated 07/04/2025
