@@ -18,7 +18,8 @@
   
    This script initualizes the robot and sets the arm to starting position
    ~~~
-   sudo python /home/robot/code/StartUp.py
+   cd /home/robot/code
+   sudo python StartUp.py
    ~~~
 
 1. **Run servo test**
@@ -30,7 +31,8 @@
    - right back  
 
     ~~~
-    sudo python /home/robot/code/Servo_test.py
+    cd /home/robot/code
+    sudo python Servo_test.py
     ~~~
 
 1. **VNC Connection**
@@ -48,7 +50,8 @@
     If the picture is out of focus, turn the camea lense left or right to focus.
    
     ~~~
-    sudo python /home/robot/code/CameraTest.py
+    cd /home/robot/code
+    sudo python CameraTest.py
     ~~~
 
 1. **Calibrate servos**
