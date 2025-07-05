@@ -1,4 +1,4 @@
-# **Robot Basic Functionality**
+# **Arm**
 
 ## Prerequisites:
 
@@ -17,14 +17,5 @@
 
    <img src="/zzimages/ArmAction.png" width="600" >   
 
-1. **Drive**
-
-1. **LEDs**
-
-1. **Ultrasonic Distance Sensor**
-
-1. **Camera**
-
-1. **AprilTags**
 
 
