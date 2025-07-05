@@ -1,10 +1,12 @@
 # Setup and Installation Documentation
 
-This section contains clear, concise instructions to assist participants in preparing their PathfinderBot workshop environment. Each document below is structured to facilitate easy setup, installation, and troubleshooting:
+This section contains clear, concise instructions to assist participants in preparing their PathfinderBot workshop environment. Each document below is structured to facilitate easy setup, installation, and troubleshooting. 
+
+Please complete steps 1 through 3:
 
 ---
 
-## [Raspberry Pi500 Setup](Raspberry_Pi500_Setup.md)
+## 1. [Raspberry Pi500 Setup](Raspberry_Pi500_Setup.md)
 
 Detailed instructions on:
 
@@ -14,7 +16,7 @@ Detailed instructions on:
   
 ---
 
-## [Robot's Raspberry Pi Setup](Robot_Raspberry_Pi_Setup.md)
+## 2. [Robot's Raspberry Pi Setup](Robot_Raspberry_Pi_Setup.md)
 
 Detailed instructions on:
 
@@ -23,7 +25,7 @@ Detailed instructions on:
   
 ---
 
-## [Connect Pi500 to Robot Pi and test](Connect_Pi500_to_Robot_Pi.md)
+## 3. [Connect Pi500 to Robot Pi and test](Connect_Pi500_to_Robot_Pi.md)
 
 Detailed instructions on:
 
