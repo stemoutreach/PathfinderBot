@@ -23,6 +23,16 @@ Detailed instructions on:
   
 ---
 
+## [Connect Pi500 to Robot Pi and test](Connect_Pi500_to_Robot_Pi.md)
+
+Detailed instructions on:
+
+* Ways to connect the Pi500 to the robot
+* Test the robots wiring and calibration
+
+---
+
+
 ## [Software Dependencies](Software_Dependencies.md)
 
 Step-by-step guidance for:
