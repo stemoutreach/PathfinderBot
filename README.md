@@ -33,8 +33,8 @@ Welcome to the **PathfinderBot** repository! This project is specifically design
 1. **Navigate to setup:**
    Follow the detailed steps in the [Setup and Installation](Setup_and_Installation/README.md) guide.
 
-1. **Robot Capabilities**
-   Explore [Robot Basic Functionality](RobotCapabilities/Robot_Basic_Functionality.md)
+1. **Robot Capabilities:**
+   Explore the robot's [Basic Functionality](RobotCapabilities/Robot_Basic_Functionality.md)
 
 1. **Develop Program:**
    Connect Pi500 to Robot and explore the robot's functionality
