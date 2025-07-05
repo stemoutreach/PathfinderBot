@@ -1,4 +1,4 @@
-# **3 Connect Pi500 to Robot Pi**
+# **Connect Pi500 to Robot Pi and test**
 
 ## Prerequisites:
 
