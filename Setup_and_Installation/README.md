@@ -35,7 +35,7 @@ Detailed instructions on:
 ---
 
 
-## Information Only [Software Dependencies](Software_Dependencies.md)
+## informational [Software Dependencies](Software_Dependencies.md)
 
 Step-by-step guidance for:
 
