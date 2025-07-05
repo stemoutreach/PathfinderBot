@@ -15,7 +15,7 @@ Assuming the standard HiWonder MasterPi / ArmPi Pro configuration:
 | 2       | Shoulder Pitch           | Rotates in vertical plane        |
 | 3       | Elbow Pitch              | Rotates in vertical plane        |
 | 4       | Wrist Pitch              | Rotates in vertical plane        |
-| 5       | Wrist Roll / Gripper Yaw | Rotates gripper around tool axis |
+
 
 > **Note:** 5 DOF allows full XYZ positioning and a single rotational axis. Full 6‑DOF orientation (roll, pitch, yaw) is **not** possible—so specify only the gripper roll or allow limited orientation.
 
@@ -44,7 +44,6 @@ For most real arms, multiple (or zero) solutions exist, and joint limits add con
    * **Base Angle ($\theta_1$)** from target **X,Y**: $\theta_1 = \"operatorname"{atan2}(y,x)$
    * **Planar 2‑link Solution** for Shoulder ($\theta_2$) and Elbow ($\theta_3$) using law of cosines in the vertical plane.
    * **Wrist Pitch ($\theta_4$)** ensures end‑effector points to target angle.
-   * **Wrist Roll ($\theta_5$)** aligns gripper rotation.
 4. **Check Joint Limits** (clip or reject invalid solutions).
 5. **Command Servos** with smooth interpolation (ease‑in/out ramps).
 
