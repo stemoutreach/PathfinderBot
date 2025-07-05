@@ -33,7 +33,7 @@ Detailed instructions on:
 ---
 
 
-## [Software Dependencies](Software_Dependencies.md)
+## Information Only [Software Dependencies](Software_Dependencies.md)
 
 Step-by-step guidance for:
 
