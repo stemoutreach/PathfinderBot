@@ -1,4 +1,4 @@
-# **2 Robot Pi Image**
+# **Robot Pi Image**
 
 1. **Create a fresh Raspberry Pi OS**
   Use Raspberry Pi Imager to create a fresh Raspberry Pi OS (64-bit) SD card
