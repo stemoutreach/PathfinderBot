@@ -1,4 +1,4 @@
-# **1 Robot Original Functionality**
+# **Robot Basic Functionality**
 
 ## Prerequisites:
 
