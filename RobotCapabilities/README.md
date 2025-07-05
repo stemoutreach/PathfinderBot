@@ -1,12 +1,18 @@
 # Robot Capabilities
 
 ## Goals
-Start working with Jupyter Notebooks
+
 
 ## Steps
 
-### [1. Robot Original Functionality](1-RobotOriginalFunctionality.md)
+1. **Move Robot**
 
-### [2. Robot Basics Jupyter Notebooks](2-RobotBasicsJupyterNotebooks.md)
+1. **Robot LEDs**
 
+1. **Ultrasonic Distance Sensor**
 
+1. **Camera**
+
+1. **AprilTags**
+
+### [Arm](Arm.md)
