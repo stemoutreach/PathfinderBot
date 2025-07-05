@@ -1,4 +1,4 @@
-# **Pi500 OS Image Steps** 
+# **Pi500 Builde Steps** 
 
 1. **Create a fresh Raspberry Pi OS**
   Use Raspberry Pi Imager to create a fresh Raspberry Pi OS (64-bit) SD card
