@@ -18,4 +18,4 @@
 
 1. **[Simple Arm Movements Guidee](Simple_Arm_Movements_Guide.md)**
 
-1. **[Arm Movements Guidee]()**
+1. **[Arm Movements Guide]()**
