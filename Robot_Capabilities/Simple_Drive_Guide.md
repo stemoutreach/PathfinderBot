@@ -123,8 +123,7 @@ This example moves the robot forward for 1 second and then stops.
 ## ⚠️ Safety Tips
 
 - Always call `MotorStop()` at the end of your script
-- Avoid high speeds indoors
-- Keep cables clear of wheels
+
 
 ---
 
