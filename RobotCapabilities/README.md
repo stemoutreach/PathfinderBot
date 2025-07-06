@@ -9,7 +9,7 @@
 
 1. **Robot LEDs**
 
-1. **Ultrasonic Distance Sensor**
+1. **[Sonar Guide](RobotCapabilities/Sonar_Guide.md)**
 
 1. **Camera**
 
