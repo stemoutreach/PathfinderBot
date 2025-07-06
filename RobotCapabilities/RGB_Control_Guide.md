@@ -1,5 +1,5 @@
 
-# 🌈 PathfinderBot RGB Control Guide
+# 🌈 RGB Control Guide
 
 This guide shows you how to control the onboard RGB LEDs connected through the `Board` module. You'll learn how to set colors, cycle through patterns, and cleanly shut off the lights.
 
