@@ -1,11 +1,10 @@
 # Robot Capabilities
 
-## Goals
+## Guides
 
+1. **Simple Drive**
 
-## Steps
-
-1. **Move Robot**
+1. **Mecanum Drive**
 
 1. **[Buzzer Control Guide](Buzzer_Control_Guide.md)**
 
