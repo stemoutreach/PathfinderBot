@@ -1,5 +1,5 @@
 
-# 🦾 PathfinderBot Arm Inverse Kinematics Guide (`ArmMoveIK.py`)
+# 🦾 Arm Inverse Kinematics Guide (`ArmMoveIK.py`)
 
 `ArmMoveIK.py` lets you move the robot arm **by giving target X / Y / Z coordinates and a desired pitch angle** instead of manually tweaking every servo.  
 It wraps two main parts:
@@ -15,7 +15,7 @@ It wraps two main parts:
 |-------------|---------|
 | Files       | `ArmMoveIK.py`, `InverseKinematics.py`, `Transform.py`, `Board.py` |
 | Hardware    | 4‑DOF arm (servos 3–6) on PathfinderBot |
-| Software    | Python 3, NumPy, Matplotlib (only needed for optional plotting) |
+| Software    | Python, NumPy, Matplotlib (only needed for optional plotting) |
 
 ---
 
