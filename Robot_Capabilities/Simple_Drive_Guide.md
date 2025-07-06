@@ -1,26 +1,29 @@
 
 # 🕹️ PathfinderBot Simple Drive Guide
 
-This guide shows you how to control your PathfinderBot's motors using basic directional functions. These functions are defined in `SimpleDrive.py`.
+This guide shows you how to control your PathfinderBot's motors using basic directional functions. 
 
 ---
 
 ## 🛠️ Prerequisites
 
-- `SimpleDrive.py` and `Board.py` in the same directory
+- `Board.py` in the same directory
 - PathfinderBot hardware powered and connected
-- Python 3 environment on Raspberry Pi
 
 ---
 
 ## 🚗 Available Movement Functions
 
-All functions use a `speed` value between `-100` and `100`.
+All functions use a `speed` value between `0` and `100`.
 
 ### ✅ Forward
 
 ```python
-Forward(speed)
+def Forward(speed):
+    Board.setMotor(1, speed) 
+    Board.setMotor(2, speed)
+    Board.setMotor(3, speed)
+    Board.setMotor(4, speed)
 ```
 Drives the robot forward.
 
@@ -29,7 +32,11 @@ Drives the robot forward.
 ### 🔁 Reverse
 
 ```python
-Reverse(speed)
+def Reverse(speed):
+    Board.setMotor(1, -speed) 
+    Board.setMotor(2, -speed)
+    Board.setMotor(3, -speed)
+    Board.setMotor(4, -speed)
 ```
 Drives the robot backward.
 
@@ -38,7 +45,11 @@ Drives the robot backward.
 ### 🔄 Turn Right
 
 ```python
-TurnRight(speed)
+def TurnRight(speed):
+    Board.setMotor(1, speed) 
+    Board.setMotor(2, -speed)
+    Board.setMotor(3, speed)
+    Board.setMotor(4, -speed)
 ```
 Turns the robot to the right (spin in place).
 
@@ -47,7 +58,11 @@ Turns the robot to the right (spin in place).
 ### 🔃 Turn Left
 
 ```python
-TurnLeft(speed)
+def TurnLeft(speed):
+    Board.setMotor(1, -speed) 
+    Board.setMotor(2, speed)
+    Board.setMotor(3, -speed)
+    Board.setMotor(4, speed)
 ```
 Turns the robot to the left (spin in place).
 
@@ -56,7 +71,11 @@ Turns the robot to the left (spin in place).
 ### 👉 Strafe Right
 
 ```python
-StrafeRight(speed)
+def StrafeRight(speed):
+    Board.setMotor(1, speed) 
+    Board.setMotor(2, -speed)
+    Board.setMotor(3, -speed)
+    Board.setMotor(4, speed)
 ```
 Slides the robot to the right (requires mecanum wheels).
 
@@ -65,7 +84,11 @@ Slides the robot to the right (requires mecanum wheels).
 ### 👈 Strafe Left
 
 ```python
-StrafeLeft(speed)
+def StrafeLeft(speed):
+    Board.setMotor(1, -speed) 
+    Board.setMotor(2, speed)
+    Board.setMotor(3, speed)
+    Board.setMotor(4, -speed)
 ```
 Slides the robot to the left (requires mecanum wheels).
 
@@ -74,7 +97,11 @@ Slides the robot to the left (requires mecanum wheels).
 ### 🛑 Stop All Motors
 
 ```python
-MotorStop()
+def MotorStop(): # stop all motors 
+    Board.setMotor(1, 0) 
+    Board.setMotor(2, 0)
+    Board.setMotor(3, 0)
+    Board.setMotor(4, 0)
 ```
 Stops all movement.
 
