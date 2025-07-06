@@ -19,7 +19,7 @@ Welcome to the **PathfinderBot** repository! This project is specifically design
 * [Workshop Overview](WorkshopOverview.md)
 * [Robot Assembly Instructions](Robot_Assembly_Guide.md)
 * [Setup and Installation](Setup_and_Installation/README.md)
-* [Robot Basic Functionality](RobotCapabilities/Robot_Basic_Functionality.md)
+* [Robot Basic Functionality](Robot_Capabilities/Robot_Basic_Functionality.md)
 * [Course Navigation and Challenges](Course_Navigation_and_Challenges/Navigation_with_AprilTags.md)
 
 
@@ -34,7 +34,7 @@ Welcome to the **PathfinderBot** repository! This project is specifically design
    Complete the 3 detailed steps in the [Setup and Installation](Setup_and_Installation/README.md) guide.
 
 1. **Robot Capabilities:**
-   Explore the robot's [Basic Functionality](RobotCapabilities/Robot_Basic_Functionality.md)
+   Explore [Robot Capabilities](Robot_Capabilities/README.md)
 
 1. **Develop Program:**
    Connect Pi500 to Robot and explore the robot's functionality
