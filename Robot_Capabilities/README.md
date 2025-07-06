@@ -16,6 +16,6 @@
 
 1. **AprilTags**
 
-1. **[Simple Arm Movements Guidee](Simple_Arm_Movements_Guide.md)**
+1. **[Simple Arm Movements Guide](Simple_Arm_Movements_Guide.md)**
 
 1. **[Arm Inverse Kinematics Guide](Arm_Inverse_Kinematics_Guide.md)**
