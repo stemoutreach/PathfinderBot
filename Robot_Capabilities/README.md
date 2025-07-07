@@ -14,7 +14,7 @@
 
 1. **[Camera Guide](Camera_Guide.md)**
 
-1. **AprilTags**
+1. **[April Tags with Camera](AprilTag_Camera_Guide.md)**
 
 1. **[Simple Arm Movements Guide](Simple_Arm_Movements_Guide.md)**
 
