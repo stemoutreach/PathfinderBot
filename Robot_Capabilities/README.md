@@ -12,7 +12,7 @@
 
 1. **[Sonar Guide](Sonar_Guide.md)**
 
-1. **Camera**
+1. **[Camera Guide](Camera_Guide.md)**
 
 1. **AprilTags**
 
