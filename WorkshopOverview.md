@@ -1,6 +1,6 @@
 # PathfinderBot Workshop Overview
 
-Welcome to the **PathfinderBot Workshop**, a hands-on robotics and leadership experience. This immersive workshop provides participants with the opportunity to build, program, and operate an autonomous robot, designed to navigate and solve challenges using visual markers known as **AprilTags**.
+Welcome to the **PathfinderBot Workshop**, a hands-on robotics and leadership experience. This workshop provides participants with the opportunity to build, program, and operate an autonomous robot, designed to navigate and solve challenges using visual markers known as **AprilTags**.
 
 <img src="/zzimages/PathfinerBotWorkshop.jpg" width="400" >
 
@@ -9,7 +9,7 @@ Welcome to the **PathfinderBot Workshop**, a hands-on robotics and leadership ex
 Participants will work collaboratively in teams to:
 
 * Enhance leadership skills including strategic decision-making, effective communication, and collaborative problem-solving.
-* Assemble and program the **MasterPi robot**, a sophisticated mobile platform with advanced robotics capabilities:
+* Assemble and program the **MasterPi robot**, a mobile platform with robotics capabilities:
 
   * **Mecanum wheels** for omni-directional and precision mobility.
   * A versatile **robotic arm** with gripper capability for object manipulation.
@@ -20,7 +20,7 @@ Participants will work collaboratively in teams to:
 
 ## Workshop Phases
 
-The workshop is carefully structured into three interactive phases:
+The workshop is structured into three interactive phases:
 
 ### Phase 1: Robot Assembly
 
@@ -54,13 +54,13 @@ The workshop is carefully structured into three interactive phases:
 
 * **MasterPi robot** acts as the mobile computational unit equipped with advanced sensors and mechanical features.
 * **Pi500** serves as the interactive command hub, enabling real-time programming, monitoring, and optimization of robot operations.
-* Seamless communication is achieved through a local Wi-Fi network, promoting effective remote control and collaboration.
+* Communication is achieved through a local Wi-Fi network, promoting effective remote control and collaboration.
 
 ---
 
 ## Timeline
 
-Below is the high‑level timebox for the two‑session workshop. Use it to keep teams and coaches on pace; detailed challenge timing appears in the facilitator guide.
+Below is the high‑level timebox for the two‑session workshop. Use it to keep pace.
 
 | Day & Session                        | Duration   | Activity                                                                               |
 | ------------------------------------ | ---------- | -------------------------------------------------------------------------------------- |
@@ -76,7 +76,6 @@ Below is the high‑level timebox for the two‑session workshop. Use it to keep
 
 * Develop and refine key leadership competencies within a team-oriented, problem-solving environment.
 * Gain hands-on experience in advanced robotics, integrating mechanical, electronic, and software components.
-* Understand and appreciate the engineering workflow, fostering skills directly applicable to professional scenarios.
 
 Let's innovate, collaborate, and lead through robotics!
 
