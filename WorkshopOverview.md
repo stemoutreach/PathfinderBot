@@ -52,7 +52,7 @@ The workshop is structured into three interactive phases:
 
 ## System Overview: Pi500 + MasterPi
 
-* **MasterPi robot** acts as the mobile computational unit equipped with advanced sensors and mechanical features.
+* **MasterPi robot** acts as the mobile computational unit equipped with a camera and mechanical features.
 * **Pi500** serves as the interactive command hub, enabling real-time programming, monitoring, and optimization of robot operations.
 * Communication is achieved through a local Wi-Fi network, promoting effective remote control and collaboration.
 
