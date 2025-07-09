@@ -1,7 +1,5 @@
 # Robot Capabilities
 
-## Guides
-
 1. **[Simple Drive Guide](Simple_Drive_Guide.md)**
 
 1. **[Mecanum Drive Guide](Mecanum_Drive_Guide.md)**
