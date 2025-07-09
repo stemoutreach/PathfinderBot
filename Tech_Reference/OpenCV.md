@@ -1,4 +1,4 @@
-# OpenCV Guide for PathfinderBot
+# OpenCV
 
 OpenCV (Open Source Computer Vision Library) is a powerful open-source library used for real-time computer vision tasks. It enables PathfinderBot to process images from the camera, detect AprilTags, track colors, identify objects, and guide autonomous behavior.
 
