@@ -1,4 +1,4 @@
-# AprilTags Guide for PathfinderBot
+# AprilTags
 
 AprilTags are high-contrast, square fiducial markers used in robotics and computer vision for reliable detection and pose estimation. They are especially useful in robotics workshops like PathfinderBot for navigating and interacting with the environment.
 
