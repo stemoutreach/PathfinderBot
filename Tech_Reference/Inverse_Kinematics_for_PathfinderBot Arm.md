@@ -1,4 +1,4 @@
-# Inverse Kinematics Guide for the 5‑DOF PathfinderBot Arm
+# Inverse Kinematics for the 5‑DOF PathfinderBot Arm
 
 Inverse Kinematics (IK) answers the question: **“What joint angles do we need so the end‑effector (gripper) reaches a desired position and orientation?”**
 For PathfinderBot’s 5‑Degree‑of‑Freedom (DOF) servo arm, IK lets your code move the gripper precisely to pick up blocks and interact with AprilTag targets.
