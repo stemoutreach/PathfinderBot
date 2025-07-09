@@ -1,4 +1,4 @@
-# Mecanum Wheels Guide for PathfinderBot
+# Mecanum Wheels
 
 Mecanum wheels enable omnidirectional movement, allowing the PathfinderBot to move forward, backward, sideways (strafing), and rotate—all without changing its orientation. This unique movement capability is ideal for navigating tight spaces and executing precise maneuvers.
 
