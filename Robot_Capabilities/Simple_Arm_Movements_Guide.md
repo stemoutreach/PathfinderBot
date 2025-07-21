@@ -97,5 +97,5 @@ time.sleep(1.5)
 | 3        | Shoulder         |
 | 4        | Elbow            |
 | 5        | Wrist            |
-| 6        | Camera tilt or gripper |
+| 6        | Gripper |
 
