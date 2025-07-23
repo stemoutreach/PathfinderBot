@@ -7,8 +7,27 @@ This guide shows you how to control your PathfinderBot's motors using basic dire
 
 ## 🛠️ Prerequisites
 
-- `Board.py` in the same directory
+- Always run code from cd /home/robot/code
 - PathfinderBot hardware powered and connected
+- Robot is on the floor and able to move
+
+---
+## Run sample code pf_RobotFunctions.py from the Raspberry Pi 500
+
+1. **SSH Connection**
+
+    Open a terminal and enter the following command replacing the XXX.XXX.XXX.XXX with the robot's IP
+    ~~~
+    ssh pi@XXX.XXX.XXX.XXX
+    ~~~
+
+1. **Run start up script**
+  
+   This script runs through all the functions detailed below
+   ~~~
+   cd /home/robot/code
+   sudo python pf_RobotFunctions.py
+   ~~~
 
 ---
 
