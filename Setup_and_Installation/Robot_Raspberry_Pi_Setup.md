@@ -24,6 +24,8 @@
 
 1. **Connect to WiFi**
 
+   Use the Pi500 mouse to make the changes on the robot. An on-screen keyboard will be avalible to use to input the Wifi specifics. 
+
    Check the network icon top right of the Taskbar. If the network icon looks like the image below, click icon and select the correct network to connect to.
 
    Use the same wifi instructions as the Pi500. WifiSetup documnet is on the desktop. 
