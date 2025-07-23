@@ -12,7 +12,10 @@ This guide shows you how to control your PathfinderBot's motors using basic dire
 - Robot is on the floor and able to move
 
 ---
-## Run sample code pf_RobotFunctions.py from the Raspberry Pi 500
+## Run sample code [pf_RobotFunctions.py](/code/pf_RobotFunctions.py) from the Raspberry Pi 500
+
+
+
 
 1. **SSH Connection**
 
