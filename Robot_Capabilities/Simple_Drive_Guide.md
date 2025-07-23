@@ -133,9 +133,26 @@ Stops all movement.
 
 ```python
 if __name__ == '__main__':
+    Initialize()
     Forward(40)
     time.sleep(1)
     MotorStop()
+    Reverse(40)
+    time.sleep(1)
+    MotorStop()
+    StrafeRight(40)
+    time.sleep(1)
+    MotorStop()
+    StrafeLeft(40)
+    time.sleep(1)
+    MotorStop()
+    TurnRight(40)
+    time.sleep(1)
+    MotorStop()
+    TurnLeft(40)
+    time.sleep(1)
+    MotorStop()
+
 ```
 
 This example moves the robot forward for 1 second and then stops.
