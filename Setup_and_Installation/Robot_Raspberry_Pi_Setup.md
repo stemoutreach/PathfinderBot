@@ -26,6 +26,8 @@
 
    Check the network icon top right of the Taskbar. If the network icon looks like the image below, click icon and select the correct network to connect to.
 
+   Use the same wifi instructions as the Pi500. WifiSetup documnet is on the desktop. 
+
    <img src="/zzimages/wifisetup-01.jpg" width="200" > 
 
    Type in the wifi password using the on screen keypad.
