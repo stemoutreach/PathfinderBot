@@ -14,12 +14,12 @@
     ssh pi@XXX.XXX.XXX.XXX
     ~~~
 
-1. **Run start up script**
+1. **Run [pf_StartRobot.py](/code/pf_StartRobot.py)**
   
    This script initualizes the robot and sets the arm to starting position
    ~~~
    cd /home/robot/code
-   sudo python StartUp.py
+   sudo python pf_StartRobot.py
    ~~~
 
 1. **Run servo test**
@@ -51,10 +51,10 @@
    
     ~~~
     cd /home/robot/code
-    sudo python CameraTest.py
+    sudo python Camera.py
     ~~~
 
-1. **Calibrate servos**
+1. **Calibrate servos within the VNC viewer**
   
     Calibrate may be needed based on the start up position of the robot arm in step 2 above. Normal start up position for the arm should look like the picture below.
    
