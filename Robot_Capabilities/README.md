@@ -1,4 +1,4 @@
-# Robot Capabilities
+## Robot Capabilities
 
 1. **[Simple Drive Guide](Simple_Drive_Guide.md)**
 
@@ -14,7 +14,7 @@
 
 1. **[April Tags with Camera](AprilTag_Camera_Guide.md)**
 
-## More complicated 
+## More complex robot capabilities 
 
 1. **[Mecanum Drive Guide](Mecanum_Drive_Guide.md)**
 
