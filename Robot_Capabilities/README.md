@@ -1,4 +1,6 @@
-## Robot Capabilities
+# Robot Capabilities
+
+## Basic Features
 
 1. **[Simple Drive Guide](Simple_Drive_Guide.md)**
 
