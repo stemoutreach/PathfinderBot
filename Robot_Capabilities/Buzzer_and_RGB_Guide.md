@@ -1,5 +1,5 @@
 
-# 🤖 PathfinderBot Buzzer + RGB Control Guide
+# 🤖 Buzzer + RGB Control Guide
 
 This guide combines control of the **buzzer** and **RGB LEDs** using the `Board` module. You’ll learn how to create sounds, light effects, and synchronized patterns.
 
@@ -7,11 +7,27 @@ This guide combines control of the **buzzer** and **RGB LEDs** using the `Board`
 
 ## 🛠️ Prerequisites
 
-- Python 3 installed on your Raspberry Pi
-- `Board.py`, `BuzzerControlDemo.py`, and `RGBControlDemo.py` available
-- Buzzer connected to GPIO pin 31 (configured in code)
-- 2 onboard RGB LEDs connected
+- Always run code from cd /home/robot/code
+- PathfinderBot hardware powered and connected
+- Robot is on the floor and able to move
 
+---
+## Run sample code [pf_buzzer_RGB.pyy](/code/pf_buzzer_RGB.py) from the Raspberry Pi 500
+
+1. **SSH Connection**
+
+    Open a terminal and enter the following command replacing the XXX.XXX.XXX.XXX with the robot's IP
+    ~~~
+    ssh pi@XXX.XXX.XXX.XXX
+    ~~~
+
+1. **Run pf_buzzer_RGB.py script**
+  
+   This script runs through buzzer and RGB lights demo
+   ~~~
+   cd /home/robot/code
+   sudo python pf_buzzer_RGB.py
+   ~~~
 ---
 
 ## 🔊 Buzzer Control
