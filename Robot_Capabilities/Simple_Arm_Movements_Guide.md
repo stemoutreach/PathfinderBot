@@ -3,6 +3,30 @@
 
 This guide explains how to use the `Board.setPWMServoPulse()` function to control the robot arm. Each servo is identified by an ID from 1 to 6, and you can control the position and speed using pulse-width modulation (PWM).
 
+## 🛠️ Prerequisites
+
+- Always run code from cd /home/robot/code
+- PathfinderBot hardware powered and connected
+- Robot is on the floor and able to move
+
+---
+## Run sample code [pf_simple_arm_movements.py](/code/pf_simple_arm_movements.py) from the Raspberry Pi 500
+
+1. **SSH Connection**
+
+    Open a terminal and enter the following command replacing the XXX.XXX.XXX.XXX with the robot's IP
+    ~~~
+    ssh pi@XXX.XXX.XXX.XXX
+    ~~~
+
+1. **Run start up script**
+  
+   This script runs through arm movements to pickup a block and place it on the back of the robot
+   ~~~
+   cd /home/robot/code
+   sudo python pf_simple_arm_movements.py
+   ~~~
+
 ---
 
 ## 🛠️ Function Format
