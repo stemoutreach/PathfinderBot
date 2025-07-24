@@ -10,12 +10,38 @@ This guide will help you learn how to:
 
 ## 🛠️ Prerequisites
 
-Make sure you have the following:
-- PathfinderBot powered on and connected to your Raspberry Pi
-- Python files `Sonar.py` and `Board.py` in the same folder
-- Run your code using `python` on the Raspberry Pi
+- Always run code from cd /home/robot/code
+- PathfinderBot hardware powered and connected
+- Robot is on the floor and able to move
 
 ---
+## Run sample code [pf_sonar_nav.py](/code/pf_sonar_nav.py) from the Raspberry Pi 500
+
+1. **SSH Connection**
+
+    Open a terminal and enter the following command replacing the XXX.XXX.XXX.XXX with the robot's IP
+    ~~~
+    ssh pi@XXX.XXX.XXX.XXX
+    ~~~
+
+1. **Run pf_sonar_nav.py script**
+  
+   This script runs through driving forward undil blocked, then turns etc...
+   ~~~
+   cd /home/robot/code
+   sudo python pf_sonar_nav.py
+   ~~~
+
+
+1. **Try pf_sonar_led_nav.py script**
+  
+   This script is same as above but adds color to the sonar...
+   ~~~
+   cd /home/robot/code
+   sudo python pf_sonar_led_nav.py
+   ~~~
+---
+
 
 ## 1. 📏 Getting Distance from Sonar
 
