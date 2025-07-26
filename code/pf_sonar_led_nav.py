@@ -9,6 +9,7 @@ CAUTION_THRESHOLD_MM = 610   # 2 feet in mm
 TURN_SPEED = 40              # Adjust speed if needed
 FORWARD_SPEED = 50
 CHECK_DELAY = 0.1            # Delay between distance checks
+DEMO_DURATION = 15           # Demo run time in seconds
 
 # Initialize robot
 chassis = MecanumChassis()
@@ -50,20 +51,31 @@ def is_path_clear():
 
 def main():
     print("Starting navigation...")
+    start_time = time.time()
     sonar.setRGBMode(0)  # Static color mode
+
     try:
         while True:
+            if time.time() - start_time >= DEMO_DURATION:
+                print("Demo time ended. Stopping robot.")
+                break
+
             drive_forward()
             while is_path_clear():
+                if time.time() - start_time >= DEMO_DURATION:
+                    print("Demo time ended during drive. Stopping robot.")
+                    break
                 time.sleep(CHECK_DELAY)
 
-            print("Obstacle detected. Stopping.")
             stop()
+            if time.time() - start_time >= DEMO_DURATION:
+                break
+
+            print("Obstacle detected. Stopping.")
             time.sleep(0.2)
 
-            # Try resolving obstacle
             print("Turning left .5s...")
-            turn_left(.5)
+            turn_left(0.5)
             if is_path_clear():
                 continue
 
@@ -73,7 +85,7 @@ def main():
                 continue
 
             print("Turning right .5s...")
-            turn_right(.5)
+            turn_right(0.5)
             if is_path_clear():
                 continue
 
@@ -83,8 +95,4 @@ def main():
     finally:
         stop()
         sonar.setPixelColor(0, Board.PixelColor(0, 0, 0))
-        sonar.setPixelColor(1, Board.PixelColor(0, 0, 0))
-        sonar.show()
-
-if __name__ == "__main__":
-    main()
+        sonar.setPixelColor(1, Board.PixelColor(0, 0,
