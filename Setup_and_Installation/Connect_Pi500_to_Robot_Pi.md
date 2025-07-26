@@ -10,7 +10,7 @@
 1. **SSH Connection**
 
     Open a terminal and enter the following command replacing the XXX.XXX.XXX.XXX with the robot's IP
-       NOTE: user = robot
+    - NOTE: user = robot
     ~~~
     ssh robot@XXX.XXX.XXX.XXX
     ~~~
