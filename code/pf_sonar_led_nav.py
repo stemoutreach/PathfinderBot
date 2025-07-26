@@ -95,4 +95,8 @@ def main():
     finally:
         stop()
         sonar.setPixelColor(0, Board.PixelColor(0, 0, 0))
-        sonar.setPixelColor(1, Board.PixelColor(0, 0,
+        sonar.setPixelColor(1, Board.PixelColor(0, 0, 0))
+        sonar.show()
+
+if __name__ == "__main__":
+    main()
