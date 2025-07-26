@@ -38,7 +38,7 @@ Run either script:
    or
    ~~~
    cd /home/robot/code
-   sudo pf_mecanum_web_drive.py
+   sudo python pf_mecanum_web_drive.py
    
    ~~~
 
