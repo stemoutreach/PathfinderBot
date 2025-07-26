@@ -1,4 +1,4 @@
 # Remote Control
 
 
-[Remote Control](Remote_Control/Web_Drive_Guide.md)
+[Web Drive](Web_Drive_Guide.md)
