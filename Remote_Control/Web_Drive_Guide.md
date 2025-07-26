@@ -1,4 +1,4 @@
-# PathfinderBot Remote Control Guide
+# Web Drive Guide
 
 This guide explains how to control the PathfinderBot remotely using a web interface. Two versions are provided:
 
@@ -20,11 +20,25 @@ This guide explains how to control the PathfinderBot remotely using a web interf
 
 Run either script:
 
-```bash
-python3 pf_simple_web_drive.py
-# or
-python3 pf_mecanum_web_drive.py
-```
+1. **SSH Connection**
+
+    Open a terminal and enter the following command replacing the XXX.XXX.XXX.XXX with the robot's IP
+    - NOTE: user = robot
+    ~~~
+    ssh robot@XXX.XXX.XXX.XXX
+    ~~~
+
+1. **Run either script**
+  
+   ~~~
+   cd /home/robot/code
+   sudo python pf_simple_web_drive.py
+
+   # or
+   
+   sudo pf_mecanum_web_drive.py
+   
+   ~~~
 
 Then open your browser to:
 
