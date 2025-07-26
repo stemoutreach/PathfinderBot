@@ -7,6 +7,7 @@ DISTANCE_THRESHOLD_MM = 305  # 1 foot in mm
 TURN_SPEED = 40              # Adjust speed if needed
 FORWARD_SPEED = 50
 CHECK_DELAY = 0.1            # Delay between distance checks
+DEMO_DURATION = 60           # Demo run time in seconds
 
 # Initialize robot
 chassis = MecanumChassis()
@@ -35,29 +36,41 @@ def is_path_clear():
 
 def main():
     print("Starting navigation...")
+    start_time = time.time()
+
     try:
         while True:
+            # Check if demo time has expired
+            if time.time() - start_time >= DEMO_DURATION:
+                print("Demo time ended. Stopping robot.")
+                break
+
             drive_forward()
             while is_path_clear():
+                if time.time() - start_time >= DEMO_DURATION:
+                    print("Demo time ended during drive. Stopping robot.")
+                    break
                 time.sleep(CHECK_DELAY)
 
-            print("Obstacle detected. Stopping.")
             stop()
+            if time.time() - start_time >= DEMO_DURATION:
+                break
+
+            print("Obstacle detected. Stopping.")
             time.sleep(0.2)
 
-            # Try resolving obstacle
             print("Turning left...")
-            turn_left(.5)
-            if is_path_clear():
-                continue
-
-            print("Turning right 2s...")
-            turn_right(1)
+            turn_left(0.5)
             if is_path_clear():
                 continue
 
             print("Turning right 1s...")
-            turn_right(.5)
+            turn_right(1)
+            if is_path_clear():
+                continue
+
+            print("Turning right 0.5s...")
+            turn_right(0.5)
             if is_path_clear():
                 continue
 
