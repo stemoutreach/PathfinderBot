@@ -29,8 +29,8 @@ Welcome to the **PathfinderBot** repository! This project is specifically design
 1. **Robot Capabilities:**
    Explore [Robot Capabilities](Robot_Capabilities/README.md)
 
-1. **Develop Program:**
-   Connect Pi500 to Robot and explore the robot's functionality
+1. **Get Started with Sample Code:**
+   Connect Pi500 to Robot and learn to remotly drive the robot [Remote Control](Remote_Control/README.md)
 
 ---
 
