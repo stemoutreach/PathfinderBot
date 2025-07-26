@@ -42,10 +42,14 @@
    
      <img src="/zzimages/RealVNCViewer.jpg" width="200" > 
 
-    Input XXX.XXX.XXX.XXX to connect
+     <img src="/zzimages/VNC.jpg" width="200" > 
 
-    user
-   
+     <img src="/zzimages/VNC1.jpg" width="200" > 
+
+     <img src="/zzimages/VNC2.jpg" width="200" > 
+
+    Input the robots IP XXX.XXX.XXX.XXX to connect
+
 1. **Run Camera test within the VNC viewer**
  
     If picture is black, then remove the lens cap
