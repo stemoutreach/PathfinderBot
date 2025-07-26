@@ -7,7 +7,7 @@ DISTANCE_THRESHOLD_MM = 305  # 1 foot in mm
 TURN_SPEED = 40              # Adjust speed if needed
 FORWARD_SPEED = 50
 CHECK_DELAY = 0.1            # Delay between distance checks
-DEMO_DURATION = 60           # Demo run time in seconds
+DEMO_DURATION = 30           # Demo run time in seconds
 
 # Initialize robot
 chassis = MecanumChassis()
