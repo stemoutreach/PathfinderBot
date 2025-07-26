@@ -12,8 +12,7 @@ Detailed instructions on:
 
 * Raspberry Pi 500 unboxing and setup
 * Network configuration
-* OS installation
-  
+* Pi500 user name - tlc  
 ---
 
 ## 2. [Robot's Raspberry Pi Setup](Robot_Raspberry_Pi_Setup.md)
@@ -21,7 +20,7 @@ Detailed instructions on:
 Detailed instructions on:
 
 * Network configuration
-* OS installation
+* User name - robot
   
 ---
 
