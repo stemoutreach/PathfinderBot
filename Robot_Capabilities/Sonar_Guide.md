@@ -20,8 +20,9 @@ This guide will help you learn how to:
 1. **SSH Connection**
 
     Open a terminal and enter the following command replacing the XXX.XXX.XXX.XXX with the robot's IP
+    - NOTE: user = robot
     ~~~
-    ssh pi@XXX.XXX.XXX.XXX
+    ssh robot@XXX.XXX.XXX.XXX
     ~~~
 
 1. **Run pf_sonar_nav.py script**
