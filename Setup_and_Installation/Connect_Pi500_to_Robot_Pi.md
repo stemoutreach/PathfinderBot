@@ -43,6 +43,8 @@
      <img src="/zzimages/RealVNCViewer.jpg" width="200" > 
 
     Input XXX.XXX.XXX.XXX to connect
+
+    user
    
 1. **Run Camera test within the VNC viewer**
  
