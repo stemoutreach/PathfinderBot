@@ -34,8 +34,10 @@ Run either script:
    cd /home/robot/code
    sudo python pf_simple_web_drive.py
 
-   # or
-   
+   ~~~
+   or
+   ~~~
+   cd /home/robot/code
    sudo pf_mecanum_web_drive.py
    
    ~~~
