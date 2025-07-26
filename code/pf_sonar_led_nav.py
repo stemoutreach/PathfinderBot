@@ -6,12 +6,12 @@ import Board
 # Constants
 DISTANCE_THRESHOLD_MM = 305  # 1 foot in mm
 CAUTION_THRESHOLD_MM = 610   # 2 feet in mm
-TURN_SPEED = 40              # Adjust speed if needed
+TURN_SPEED = 40
 FORWARD_SPEED = 50
-CHECK_DELAY = 0.1            # Delay between distance checks
-DEMO_DURATION = 15           # Demo run time in seconds
+CHECK_DELAY = 0.1
+DEMO_DURATION = 15           # seconds
 
-# Initialize robot
+# Initialize
 chassis = MecanumChassis()
 sonar = Sonar()
 
@@ -43,6 +43,18 @@ def update_led(distance):
     sonar.setPixelColor(1, color)
     sonar.show()
 
+def blink_red():
+    red = Board.PixelColor(255, 0, 0)
+    off = Board.PixelColor(0, 0, 0)
+    sonar.setPixelColor(0, red)
+    sonar.setPixelColor(1, red)
+    sonar.show()
+    time.sleep(0.3)
+    sonar.setPixelColor(0, off)
+    sonar.setPixelColor(1, off)
+    sonar.show()
+    time.sleep(0.7)
+
 def is_path_clear():
     distance = sonar.getDistance()
     print(f"Distance: {distance} mm")
@@ -51,24 +63,46 @@ def is_path_clear():
 
 def main():
     print("Starting navigation...")
+    sonar.setRGBMode(0)  # Static LED mode
     start_time = time.time()
-    sonar.setRGBMode(0)  # Static color mode
+    last_printed = DEMO_DURATION
 
     try:
         while True:
-            if time.time() - start_time >= DEMO_DURATION:
+            elapsed = time.time() - start_time
+            remaining = int(DEMO_DURATION - elapsed)
+
+            if remaining <= 0:
                 print("Demo time ended. Stopping robot.")
                 break
 
+            # Countdown feedback
+            if remaining <= 10:
+                print(f"⏳ Ending in {remaining} seconds...")
+                blink_red()
+            elif remaining % 5 == 0 and remaining != last_printed:
+                print(f"Time remaining: {remaining} seconds")
+                last_printed = remaining
+
             drive_forward()
             while is_path_clear():
-                if time.time() - start_time >= DEMO_DURATION:
+                elapsed = time.time() - start_time
+                remaining = int(DEMO_DURATION - elapsed)
+
+                if remaining <= 0:
                     print("Demo time ended during drive. Stopping robot.")
                     break
+                elif remaining <= 10:
+                    print(f"⏳ Ending in {remaining} seconds...")
+                    blink_red()
+                elif remaining % 5 == 0 and remaining != last_printed:
+                    print(f"Time remaining: {remaining} seconds")
+                    last_printed = remaining
+
                 time.sleep(CHECK_DELAY)
 
             stop()
-            if time.time() - start_time >= DEMO_DURATION:
+            if remaining <= 0:
                 break
 
             print("Obstacle detected. Stopping.")
