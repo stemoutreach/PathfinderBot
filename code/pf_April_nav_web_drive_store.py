@@ -113,7 +113,7 @@ def PickupBlock():
     Board.setPWMServoPulse(5, 1636, 2000)
     time.sleep(2)
     Board.setPWMServoPulse(1, 1932, 2000)
-    time.sleep(1)
+    time.sleep(2.1)
     Board.setPWMServoPulse(1, 1500, 2000)
     Board.setPWMServoPulse(3, 590, 2000)
     Board.setPWMServoPulse(4, 2500, 2000)
