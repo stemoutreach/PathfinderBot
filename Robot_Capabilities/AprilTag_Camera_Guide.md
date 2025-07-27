@@ -147,3 +147,8 @@ cv2.destroyAllWindows()
 
 AprilTags let you build advanced navigation and interaction systems. Combine with robot movement for full autonomy!
 
+---
+[Return to Robot Capabilities page](README.md)
+
+[Return to PathfinderBot Workshop page](/README.md)
+
