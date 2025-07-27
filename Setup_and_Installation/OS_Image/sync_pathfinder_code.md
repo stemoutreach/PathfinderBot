@@ -126,3 +126,7 @@ Note: Use \`sudo\` if \`robot\` owns the target path and your current user is di
 | Preserve extra local files       | ✅ with `rsync` (no `--delete`)   |
 | Remove files deleted in GitHub   | ⚠️ Only if using `--delete`       |
 | Easy first-time and resync setup | ✅ handled by the script           |
+
+
+sudo ~/sync_pathfinder_code.sh
+
