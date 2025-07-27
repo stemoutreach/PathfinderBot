@@ -151,3 +151,8 @@ def Stop(signum, frame):
 
 Bring your PathfinderBot to life with sound + light!
 
+---
+[Return to Robot Capabilities page](README.md)
+
+[Return to PathfinderBot Workshop page](/README.md)
+
