@@ -159,3 +159,11 @@ sonar.setBreathCycle(0, 2, 2000)  # LED 0, Blue, 2-second pulse
 | Show color             | `show()`                      |
 | Breathing effect       | `setBreathCycle()`            |
 | Start symphony         | `startSymphony()`             |
+
+
+---
+[Return to Robot Capabilities page](README.md)
+
+[Return to PathfinderBot Workshop page](/README.md)
+
+
