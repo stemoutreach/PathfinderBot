@@ -8,17 +8,17 @@ from CalibrationConfig import *
 from pupil_apriltags import Detector
 
 TAG_TABLE = {
-    1:"TURN_LEFT",
-    2:"TURN_RIGHT",
-    3:"STRAFE_LEFT",
-    4:"STRAFE_RIGHT",
-    5:"TURN_LEFT_STRAFE_LEFT",
-    6:"BACKWARD_TURN_LEFT",
-    7:"BACKWARD_TURN_RIGHT",
-    8:"TURN_RIGHT_STRAFE_RIGHT",
-    9:"TURN_AROUND_STRAFE_RIGHT",
-    10:"TURN_AROUND_STRAFE_LEFT",
-    11:"FINISH",
+    0:"TURN_LEFT",
+    1:"TURN_RIGHT",
+    2:"STRAFE_LEFT",
+    3:"STRAFE_RIGHT",
+    4:"TURN_LEFT_STRAFE_LEFT",
+    5:"BACKWARD_TURN_LEFT",
+    6:"BACKWARD_TURN_RIGHT",
+    7:"TURN_RIGHT_STRAFE_RIGHT",
+    8:"TURN_AROUND_STRAFE_RIGHT",
+    9:"TURN_AROUND_STRAFE_LEFT",
+    10:"FINISH",
 }
 
 class Camera:
