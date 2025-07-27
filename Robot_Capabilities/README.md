@@ -45,9 +45,3 @@
 1. **[Camera Guide](Camera_Guide.md)**
 
 1. **[April Tags with Camera](AprilTag_Camera_Guide.md)**
-
-## More complex robot capabilities 
-
-1. **[Mecanum Drive Guide](Mecanum_Drive_Guide.md)**
-
-1. **[Arm Inverse Kinematics Guide](Arm_Inverse_Kinematics_Guide.md)**
