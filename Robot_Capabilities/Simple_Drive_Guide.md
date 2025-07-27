@@ -178,3 +178,9 @@ This example moves the robot forward for 1 second and then stops.
 | `StrafeLeft(x)` | Slide left (mecanum)      |
 | `StrafeRight(x)`| Slide right (mecanum)     |
 | `MotorStop()`   | Stop all motors           |
+
+---
+[Return to Robot Capabilities page](README.md)
+
+[Return to PathfinderBot Workshop page](/README.md)
+
