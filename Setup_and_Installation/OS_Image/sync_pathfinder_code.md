@@ -127,6 +127,7 @@ Note: Use \`sudo\` if \`robot\` owns the target path and your current user is di
 | Remove files deleted in GitHub   | ⚠️ Only if using `--delete`       |
 | Easy first-time and resync setup | ✅ handled by the script           |
 
+chmod +x ~/sync_pathfinder_code.sh
 
 sudo ~/sync_pathfinder_code.sh
 
