@@ -3,7 +3,8 @@
 
 This guide walks through how to use the PathfinderBot's camera module using the `Camera.py` class. It handles capturing frames, undistorting images using calibration data, and making live video streaming simple and threaded.
 
-NOTE: This requires VNC connections to see the camera feed. see [Robot Capabilities page](README.md)
+NOTE: Camera.py: This requires VNC connections to see the camera feed. see [Robot Capabilities page](README.md)
+
 ---
 
 ## 🛠️ Features Overview
