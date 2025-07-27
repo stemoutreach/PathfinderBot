@@ -24,7 +24,7 @@
 
      <img src="/zzimages/VNC2.jpg" width="200" > 
 
-    Input the robots IP XXX.XXX.XXX.XXX to connect
+    Input the robots IP XXX.XXX.XXX.XXX to connect. Username = robot. default Password was R4spb3rry
 
     1. **Run camera scripts**
   
