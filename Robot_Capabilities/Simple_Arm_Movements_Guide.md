@@ -124,3 +124,10 @@ time.sleep(1.5)
 | 5        | Wrist            |
 | 6        | Gripper |
 
+---
+[Return to Robot Capabilities page](README.md)
+
+[Return to PathfinderBot Workshop page](/README.md)
+
+
+
