@@ -1,4 +1,4 @@
-# **2 Robot WiFi Setup**
+# **Robot WiFi Setup**
 
 ## Prerequisites:
 
