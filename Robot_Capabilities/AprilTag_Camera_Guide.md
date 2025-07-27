@@ -3,6 +3,8 @@
 
 This guide walks through how to use the PathfinderBot’s `AprilCamera.py` module to detect AprilTags in real time using your robot’s calibrated camera.
 
+NOTE: Camera.py: This requires VNC connections to see the camera feed. see [Robot Capabilities page](README.md)
+
 ---
 
 ## 🧠 What Are AprilTags?
@@ -148,7 +150,7 @@ cv2.destroyAllWindows()
 AprilTags let you build advanced navigation and interaction systems. Combine with robot movement for full autonomy!
 
 ---
+
 [Return to Robot Capabilities page](README.md)
 
 [Return to PathfinderBot Workshop page](/README.md)
-
