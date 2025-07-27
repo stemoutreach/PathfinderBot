@@ -38,6 +38,7 @@
 
    Hover the mouse cursor over the active WiFi icon and copy the assigned IP address. This IP will be used to connect the Pi500 to the robot.   
 
-[Return to Setup and Installation Page](README.md)
+
+[Return to main workshop page](/README.md)
 
     
