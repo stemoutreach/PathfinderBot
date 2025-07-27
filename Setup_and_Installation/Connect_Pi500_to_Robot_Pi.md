@@ -10,7 +10,7 @@
 1. **SSH Connection**
 
     Open a terminal and enter the following command replacing the XXX.XXX.XXX.XXX with the robot's IP
-    - NOTE: user = robot
+    - NOTE: Username = robot. default Password was R4spb3rry
     ~~~
     ssh robot@XXX.XXX.XXX.XXX
     ~~~
@@ -48,7 +48,7 @@
 
      <img src="/zzimages/VNC2.jpg" width="200" > 
 
-    Input the robots IP XXX.XXX.XXX.XXX to connect
+    Input the robots IP XXX.XXX.XXX.XXX to connect. Username = robot. default Password was R4spb3rry
 
 1. **Run Camera test within the VNC viewer**
  
