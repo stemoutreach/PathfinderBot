@@ -14,7 +14,7 @@ Welcome to the **PathfinderBot** repository! This project is specifically design
 
 ## Workshop Workflow and Getting Started
 
-Each team will be provided with a Raspberry Pi 500, serving dual purposes:
+Each team will be provided with a Raspberry Pi 500, a portable monitor, and a robot kit. The Raspberry Pi 500 and the portable monitor serve dual purposes:
 
 * **Initial Setup Desktop:** Access assembly instructions and resources from GitHub.
 * **Robot Control Interface:** Connect to the robot via SSH and VNC for testing and operation.
