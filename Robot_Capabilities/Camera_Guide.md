@@ -111,3 +111,9 @@ You may still want to wrap your code in try/except for robustness.
 
 The `Camera.py` module makes it easy to grab frames with distortion correction, enabling better object detection and robot vision!
 
+---
+[Return to Robot Capabilities page](README.md)
+
+[Return to PathfinderBot Workshop page](/README.md)
+
+
