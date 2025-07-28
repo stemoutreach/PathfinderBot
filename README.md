@@ -80,8 +80,8 @@ Each team will be provided with a Raspberry Pi 500, a portable monitor, and a ro
 |           |          | 4. Connecting Pi500 to Robot Pi                |
 |           |          | 5. Explore Robot Capabilities                  |
 |           |          | 6. Drive Your Robot                            |
-| Wednesday | 10:00 AM | Prepare for Competition                        |
-| Wednesday | 11:00 AM | Competition                                    |
+| Wednesday | 9:15 AM  | Prepare for Competition                        |
+| Wednesday | 10:00 AM | Competition                                    |
 |           |          | - Navigate the obstacle course using AprilTags |
 |           |          | - Pick up and transport blocks                 |
 |           |          | - Demonstrate teamwork and strategy            |
