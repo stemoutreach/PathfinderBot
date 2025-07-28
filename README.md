@@ -18,11 +18,7 @@ Each team will be provided with a Raspberry Pi 500, a portable monitor, and a ro
 
 * **Initial Setup Desktop:** Access assembly instructions and resources from GitHub.
 * **Robot Control Interface:** Connect to the robot via SSH and VNC for testing and operation.
-
-Follow these steps for an optimal workshop experience:
-
-Workshop timeline here
-
+---
 
 ### 1. Raspberry Pi 500 Setup
 
@@ -65,12 +61,32 @@ Workshop timeline here
 * Use sample code or create your own programs to compete on the obstacle course.
 * Develop strategic approaches and customize robot behaviors to achieve optimal performance.
 
-### 8. Navigate through the course
+### 8. Compete
 
-* use the april tags to navidgate the course
-* Pickup and transport the blocks to the end
+* Navigate the obstacle course by using AprilTags for direction.
+* Efficiently identify, pick up, and transport blocks to their designated endpoints.
+* Apply strategic decision-making and teamwork skills to optimize performance and compete successfully.
 
 ---
+## Workshop Flow Timeline
+
+| Day       | Time     | Activity                                       |
+| --------- | -------- | ---------------------------------------------- |
+| Tuesday   | 1:15 PM  | Workshop Overview                              |
+| Tuesday   | 2:00 PM  | Team Activities Begin                          |
+|           |          | 1. Raspberry Pi 500 Setup                      |
+|           |          | 2. Robot Assembly                              |
+|           |          | 3. Robot Raspberry Pi Configuration            |
+|           |          | 4. Connecting Pi500 to Robot Pi                |
+|           |          | 5. Explore Robot Capabilities                  |
+|           |          | 6. Drive Your Robot                            |
+| Wednesday | 10:00 AM | Prepare for Competition                        |
+| Wednesday | 11:00 AM | Competition                                    |
+|           |          | - Navigate the obstacle course using AprilTags |
+|           |          | - Pick up and transport blocks                 |
+|           |          | - Demonstrate teamwork and strategy            |
+
+
 
 **PathfinderBot | STEM Outreach Initiative**
 *updated 07/27/2025*
