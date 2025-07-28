@@ -21,6 +21,9 @@ Each team will be provided with a Raspberry Pi 500, a portable monitor, and a ro
 
 Follow these steps for an optimal workshop experience:
 
+Workshop timeline here
+
+
 ### 1. Raspberry Pi 500 Setup
 
 * Prepare your Pi 500 and connect to the GitHub repository.
@@ -61,6 +64,11 @@ Follow these steps for an optimal workshop experience:
 
 * Use sample code or create your own programs to compete on the obstacle course.
 * Develop strategic approaches and customize robot behaviors to achieve optimal performance.
+
+### 8. Navigate through the course
+
+* use the april tags to navidgate the course
+* Pickup and transport the blocks to the end
 
 ---
 
