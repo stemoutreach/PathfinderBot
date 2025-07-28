@@ -31,7 +31,7 @@ The purpose of the Raspberry Pi 500 is to connect to the robot
 
    Check the network icon in the top right side of the Taskbar. If the network icon looks like the image below, click the network icon and select the correct network to connect to.
 
-   See WifiSetup document on the desktop.
+   See GuestWiFI.pdf on the pi's desktop.
 
    <img src="/zzimages/wifisetup-01.jpg" width="200" > 
    
