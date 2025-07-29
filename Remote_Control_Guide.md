@@ -27,22 +27,25 @@ This guide explains how to control the PathfinderBot remotely using a web interf
    ssh robot@XXX.XXX.XXX.XXX
    ```
 
-2. **Run one of the control scripts**
+2. **Test drive each of the control scripts one at a time.  use Ctrl+C to stop a running script**
    ```bash
    cd /home/robot/code
    sudo python3 pf_simple_web_drive.py
    ```
-   or
+   
+   
    ```bash
    cd /home/robot/code
    sudo python3 pf_mecanum_web_drive.py
    ```
-   or
+   
+   
    ```bash
    cd /home/robot/code
    sudo python3 pf_April_nav_web_drive.py
    ```
-   or
+   
+   
    ```bash
    cd /home/robot/code
    sudo python3 pf_April_nav_web_drive_store.py
@@ -59,6 +62,9 @@ You’ll see live video from the camera and control buttons.
 ---
 
 ## 🕹️ Control Interface
+
+  <img src="/zzimages/pf_simple_web_drive.jpg" width="200" >   <img src="/zzimages/pf_mecanum_web_drive.jpg" width="200" >   <img src="/zzimages/pf_April_nav_web_drive.jpg" width="200" >   <img src="/zzimages/pf_April_nav_web_drive_store.jpg" width="200" > 
+
 
 ### Shared Controls (All Scripts)
 
@@ -86,7 +92,7 @@ You’ll see live video from the camera and control buttons.
 | Stop Nav       | End tag-based navigation         |
 | Look Forward   | Adjust arm to look forward       |
 | Look Down      | Adjust arm to look down          |
-| Pick Up        | Pick up a detected object        |
+| Pick Up        | Pick up a object        |
 | Pick Up Store  | Extended pickup and place action |
 
 ---
@@ -98,7 +104,11 @@ All versions support speed control via sliders.
 - **Move Speed** – Forward/backward/strafe (10–100 mm/s)
 - **Turn Speed** – Rotational speed (mapped to radians/sec using a scaling factor)
 
-Changes are applied instantly via JavaScript fetch calls.
+Changes are applied via JavaScript fetch calls next time the button is pressed.
+
+⚠️ Note: Setting movement or turn speed to high values (near 100) may cause the robot to respond sluggishly or make the web interface temporarily unresponsive to commands like Stop. Reduce speeds for better responsiveness and control during testing. 
+
+
 
 ---
 
