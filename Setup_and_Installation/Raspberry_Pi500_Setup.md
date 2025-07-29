@@ -20,7 +20,7 @@ The purpose of the Raspberry Pi 500 is to connect to the robot
 
    <img src="/zzimages/500Setup.jpg" width="500" > 
 
-1. **Change default password - Please dor NOT change the hostname**
+1. **Change default password - Please do **NOT** change the hostname**
 
    Open the Configuation tool at **Pi -> Preferences -> Raspberry Pi Configuation** and follow instructions.   
    
