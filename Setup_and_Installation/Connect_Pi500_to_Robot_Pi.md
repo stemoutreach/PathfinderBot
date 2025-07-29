@@ -20,7 +20,7 @@
    This script initualizes the robot and sets the arm to starting position
    ~~~
    cd /home/robot/code
-   sudo python pf_StartRobot.py
+   sudo python StartUp.py
    ~~~
 
 1. **Run servo test**
