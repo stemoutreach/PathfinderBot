@@ -15,9 +15,10 @@
    <img src="/zzimages/RoobotOnOff.jpg" width="400" > 
 
    
-1. **change default password and hostname**
+1. **Change default password - Please dor NOT change the hostname**
 
-    Open the Configuation tool at **Pi -> Preferences -> Raspberry Pi Configuation** and follow instructions. Make the hostname unique. Maybe use your team name or initials and add robot if you use the same hostname as the desktop pi. 
+   Open the Configuation tool at **Pi -> Preferences -> Raspberry Pi Configuation** and follow instructions.   
+   
    
    <img src="/zzimages/PiConfigPWandHost.jpg" width="500" > 
 
