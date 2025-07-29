@@ -22,7 +22,7 @@ The purpose of the Raspberry Pi 500 is to connect to the robot
 
 1. **Change default password - Please dor NOT change the hostname**
 
-   Open the Configuation tool at **Pi -> Preferences -> Raspberry Pi Configuation** and follow instructions. Make the hostname unique. Maybe use your team name or initials.   
+   Open the Configuation tool at **Pi -> Preferences -> Raspberry Pi Configuation** and follow instructions.   
    
    <img src="/zzimages/PiConfigPWandHost.jpg" width="500" > 
 
