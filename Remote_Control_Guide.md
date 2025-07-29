@@ -30,25 +30,25 @@ This guide explains how to control the PathfinderBot remotely using a web interf
 2. **Test drive each of the control scripts one at a time.  use Ctrl+C to stop a running script**
    ```bash
    cd /home/robot/code
-   sudo python3 pf_simple_web_drive.py
+   sudo python pf_simple_web_drive.py
    ```
    
    
    ```bash
    cd /home/robot/code
-   sudo python3 pf_mecanum_web_drive.py
+   sudo python pf_mecanum_web_drive.py
    ```
    
    
    ```bash
    cd /home/robot/code
-   sudo python3 pf_April_nav_web_drive.py
+   sudo python pf_April_nav_web_drive.py
    ```
    
    
    ```bash
    cd /home/robot/code
-   sudo python3 pf_April_nav_web_drive_store.py
+   sudo python pf_April_nav_web_drive_store.py
    ```
 
 Then open your browser to:
