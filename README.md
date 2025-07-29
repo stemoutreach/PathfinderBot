@@ -84,11 +84,11 @@ Each team will be provided with a Raspberry Pi 500, a portable monitor, and a ro
 | Wednesday | 9:15 AM  | 7. Prepare for Competition                     |   
 | Wednesday | 11:00 AM | 8. Competition Starts                          |
 |           |          | - Navigate the obstacle course using AprilTags |
-|           |          | - Pick up and transport blocks (stretch goal)                 |
+|           |          | - Pick up and transport blocks (stretch goal)  |
 |           |          | - Demonstrate teamwork and strategy            |
 | Wednesday | 12:00    | End                                            |
 
 
 
 **PathfinderBot | STEM Outreach Initiative**
-*updated 07/27/2025*
+*updated 07/29/2025*
