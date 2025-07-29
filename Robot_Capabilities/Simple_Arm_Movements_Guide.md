@@ -124,6 +124,10 @@ time.sleep(1.5)
 | 5        | Wrist            |
 | 6        | Gripper |
 
+
+[UI for ARM movements](Arm_Guide.md)   
+<img src="/zzimages/ArmAction.png" width="300" >   
+
 ---
 [Return to Robot Capabilities page](README.md)
 
