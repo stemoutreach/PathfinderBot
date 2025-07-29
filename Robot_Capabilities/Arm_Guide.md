@@ -7,9 +7,7 @@
 1. Batteries are charged and installed
 1. Pi500 is connected to the robot using VNC 
 
-## Steps
-
-1. **Arm Interface**
+**Arm Interface**
 
    ~~~
    python MasterPi_PC_Software/Arm.py
