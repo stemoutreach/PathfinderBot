@@ -1,4 +1,4 @@
-# **Arm**
+# **Arm UI**
 
 ## Prerequisites:
 
