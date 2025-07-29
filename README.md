@@ -54,7 +54,7 @@ Each team will be provided with a Raspberry Pi 500, a portable monitor, and a ro
 ### 6. Drive Your Robot
 
 * Run provided sample code to navigate your robot through an obstacle course.
-* [Remote Control Guide](Remote_Control/README.md)
+* [Remote Control Guide](Remote_Control_Guide.md)
 
 ### 7. Prepare for Competition
 
