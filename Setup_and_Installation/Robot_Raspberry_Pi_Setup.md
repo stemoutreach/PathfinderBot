@@ -15,7 +15,7 @@
    <img src="/zzimages/RoobotOnOff.jpg" width="400" > 
 
    
-1. **Change default password - Please do NOT change the hostname**
+1. **Change default password - Please do **NOT** change the hostname**
 
    Open the Configuation tool at **Pi -> Preferences -> Raspberry Pi Configuation** and follow instructions.   
    
