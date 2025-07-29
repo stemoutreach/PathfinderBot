@@ -153,10 +153,10 @@ Press `CTRL+C` to stop the Flask server. The camera and navigation services will
 
 ## 📁 Files
 
-- `pf_simple_web_drive.py` – Basic drive with turn and speed sliders
-- `pf_mecanum_web_drive.py` – Full Mecanum control with diagonals and sliders
-- `pf_April_nav_web_drive.py` – Autonomous AprilTag navigation with basic arm control
-- `pf_April_nav_web_drive_store.py` – Extended navigation and object pickup sequence
+- [pf_simple_web_drive.py](/code/pf_simple_web_drive.py) – Basic drive with turn and speed sliders
+- [pf_mecanum_web_drive.py](/code/pf_mecanum_web_drive.py) – Full Mecanum control with diagonals and sliders
+- [pf_April_nav_web_drive.py](/code/pf_April_nav_web_drive.py) – Autonomous AprilTag navigation with basic arm control
+- [pf_April_nav_web_drive_store.py](/code/pf_April_nav_web_drive_store.py) – Extended navigation and object pickup sequence
 
 ---
 
