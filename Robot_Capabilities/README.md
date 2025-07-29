@@ -45,3 +45,7 @@
 1. **[Camera Guide](Camera_Guide.md)**
 
 1. **[April Tags with Camera](AprilTag_Camera_Guide.md)**
+
+   ---
+
+[Return to PathfinderBot Workshop page](/README.md)
