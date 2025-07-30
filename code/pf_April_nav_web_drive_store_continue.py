@@ -1,10 +1,23 @@
 #!/usr/bin/env python3
 import time
 import cv2
+import numpy as np
 from flask import Flask, render_template_string, request, jsonify
-
-from pf_AprilCamera import Camera, detector, camera_params, TAG_SIZE_M, TAG_TABLE
+from pupil_apriltags import Detector
+from pf_AprilCamera import Camera, TAG_TABLE
+from pf_AprilTagNavigator import AprilTagNavigator
 from pf_April_nav_web_drive_store import bot, nav, PickupBlock
+
+# Initialize camera and detector
+cam = Camera(resolution=(640, 480))
+detector = Detector(families='tag36h11')
+camera_params = (
+    cam.mtx[0, 0],
+    cam.mtx[1, 1],
+    cam.mtx[0, 2],
+    cam.mtx[1, 2]
+)
+TAG_SIZE_M = 0.045
 
 app = Flask(__name__)
 
@@ -43,7 +56,6 @@ HTML = """
 def index():
     return render_template_string(HTML)
 
-# Wrapper functions from original code
 @app.route('/cmd', methods=['POST'])
 def handle_cmd():
     data = request.get_json()
@@ -110,4 +122,5 @@ def continue_nav():
 
 if __name__ == '__main__':
     print("Launching web controller with Continue Nav support...")
+    cam.camera_open()
     app.run(host='0.0.0.0', port=5000)
