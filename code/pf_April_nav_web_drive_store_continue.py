@@ -3,7 +3,7 @@ import time
 import cv2
 from flask import Flask, render_template_string, request, jsonify
 
-from pf_AprilCamera import cam, detector, camera_params, TAG_SIZE_M, TAG_TABLE
+from pf_AprilCamera import Camera, detector, camera_params, TAG_SIZE_M, TAG_TABLE
 from pf_April_nav_web_drive_store import bot, nav, PickupBlock
 
 app = Flask(__name__)
