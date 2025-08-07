@@ -23,6 +23,14 @@ Each team will consist of 3 members, each with a designated role to encourage co
 | Connects motors, servos, sensors, and camera | Uses sample Python scripts and modifies them to suit the challenge | Helps guide the team’s focus during the timed challenge |
 | Collaborates with Programmer to test physical components | Troubleshoots and adjusts robot behaviors | Suggests design or code tweaks to optimize robot performance |
 | Adds any needed attachments for carrying blocks | Works with Builder to verify motor and servo functions | Keeps the team on track and aligned to competition goals |
+|  |  | |
+|  [Robot Assembly Guide](Robot_Assembly_Guide.md) | [Pi500 Setup Instructions](Setup_and_Installation/Raspberry_Pi500_Setup.md)| Prepare for Competition |
+|  |  [Robot Pi Setup Instructions](Setup_and_Installation/Robot_Raspberry_Pi_Setup.md) | |
+|  |  | |
+|[Connecting and Testing Instructions](Setup_and_Installation/Connect_Pi500_to_Robot_Pi.md) | | |
+|  |  | |
+|  |  | |
+
 
 ## Workshop Workflow and Getting Started
 
