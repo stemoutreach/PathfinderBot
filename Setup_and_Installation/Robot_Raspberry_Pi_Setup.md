@@ -1,11 +1,33 @@
 # **Robot WiFi Setup**
 
-## Prerequisites:
+## 1 Robot is not assembled (if robot is assembled, skip to the section below - 2 Start here if robot is assembled)
+
+### Add the heatsink and make sure the SD card is installed.
+
+  <img src="/zzimages/Pi-HeatSink-SD-Card.jpg" width="400" > 
+
+### Power and connect the the Raspberry Pi 4 to the monitor
+
+1. Cnnect the Pi500 power adapter to the Pi4
+1. Connect the monitor and the Pi500 mouse to the Raspberry Pi4.
+
+  <img src="/zzimages/Pi4_Wifi_Setup.jpg" width="400" > 
+
+
+
+
+
+
+
+
+
+-----------------------------------------------------
+### 2 Start here if robot is assembled:
 
 1. Robot is assembled
 1. Batteries are charged and installed
 1. Robot Pi is connected to monitor and the Pi500 mouse is connected to the robot.
-
+   
 ## Steps:
 
 1. **Turn on Robot**
@@ -43,3 +65,4 @@
 [Return to main workshop page](/README.md)
 
     
+
