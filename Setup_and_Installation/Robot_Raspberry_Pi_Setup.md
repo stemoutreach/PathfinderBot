@@ -39,7 +39,6 @@
 ------------------------------------------------
 ## 2. Start here if robot is assembled:
 
-  1. Robot is assembled
   1. Batteries are charged and installed
   1. Robot Pi is connected to monitor and the Pi500 mouse is connected to the robot.
    
@@ -55,6 +54,7 @@
 
 
     
+
 
 
 
