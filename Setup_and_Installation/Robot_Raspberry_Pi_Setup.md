@@ -15,7 +15,7 @@
 
    Open the Configuation tool at **Pi -> Preferences -> Raspberry Pi Configuation** and follow instructions.   
    
-   <img src="/zzimages/PiConfigPWandHost.jpg" width="500" > 
+   <img src="/zzimages/PiConfigPW.jpg" width="500" > 
 
 ### Connect to WiFi
 
@@ -55,5 +55,6 @@
 
 
     
+
 
 
