@@ -31,7 +31,7 @@
 ## 8.
   <img src="/zzimages/Pi-HeatSink-SD-Card.jpg" width="400" > 
 
-## 9. (Image needs updating - wheels are wrong - Step 7 correct)
+## 9. 
   <img src="/zzimages/PiChassisParts.jpg" width="400" > 
 
 ## 10. Connect the motor wires to the mortor controler.
@@ -60,3 +60,4 @@
 
 
 [Return to main workshop page](/README.md)
+
