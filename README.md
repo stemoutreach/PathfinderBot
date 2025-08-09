@@ -26,8 +26,8 @@ Each team will consist of 3 members, each with a designated role to encourage co
 |  |   |    |
 | | | |
 |  [Robot Assembly Guide](Robot_Assembly_Guide.md) | [Pi500 Setup Instructions](Setup_and_Installation/Raspberry_Pi500_Setup.md)|   |
-|  |  [Robot Pi Setup Instructions](Setup_and_Installation/Robot_Raspberry_Pi_Setup.md) | |
-|  |[Connecting and Testing Instructions](Setup_and_Installation/Connect_Pi500_to_Robot_Pi.md)  | |
+|  |  [Robot Pi Setup Instructions](Setup_and_Installation/Robot_Raspberry_Pi_Setup.md) |  |
+|  |[Connecting and Testing Instructions](Setup_and_Installation/Connect_Pi500_to_Robot_Pi.md)  |  |
 | | | |
 |  |  | |
 |  |  | |
