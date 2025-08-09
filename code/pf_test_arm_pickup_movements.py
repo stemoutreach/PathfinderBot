@@ -29,10 +29,11 @@ Board.setPWMServoPulse(4, 500, 2000)
 Board.setPWMServoPulse(5, 1636, 2000)
 time.sleep(2)
 Board.setPWMServoPulse(1, 2000, 2000)
-time.sleep(1)
+time.sleep(1.5)
 Board.setPWMServoPulse(1, 1500, 2000)
 Board.setPWMServoPulse(3, 590, 2000)
 Board.setPWMServoPulse(4, 2500, 2000)
 Board.setPWMServoPulse(5, 700, 2000)
 Board.setPWMServoPulse(6, 1500, 2000)
+
 
