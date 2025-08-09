@@ -3,7 +3,7 @@
 import sys
 import time
 import Board as Board
-from pf_StartRobot import initialize_robot
+from pf_start_robot import initialize_robot
 
 def beep(numberofbeeps):
     for _ in range(numberofbeeps):
@@ -12,10 +12,7 @@ def beep(numberofbeeps):
         Board.setBuzzer(0)   # Turn buzzer off
         time.sleep(0.2)      # Pause between beeps
 
-
-
 initialize_robot()
-
 
 beep(1)  # Servo 1
 Board.setPWMServoPulse(1, 1750, 300) 
