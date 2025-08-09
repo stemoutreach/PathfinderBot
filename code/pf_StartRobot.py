@@ -35,3 +35,6 @@ def initialize_robot():
     Board.setBuzzer(1)
     time.sleep(0.1)
     Board.setBuzzer(0)
+
+if __name__ == "__main__":
+    initialize_robot()
