@@ -58,20 +58,6 @@ The workshop is structured into three interactive phases:
 
 ---
 
-## Timeline
-
-Below is the high‑level timebox for the two‑session workshop. Use it to keep pace.
-
-| Day & Session                        | Duration   | Activity                                                                               |
-| ------------------------------------ | ---------- | -------------------------------------------------------------------------------------- |
-| **Session 1 (2 h 45 m)**   | 30 min     | Workshop overview & goals                                                              |
-|                                      | 15 min     | Raspberry Pi 500 setup (power‑on, Wi‑Fi, access)                                       |
-|                                      | 1 h 30 min | Use Pi 500 to open PathfinderBot instructions; assemble & wire the MasterPi robot      |
-|                                      | 30 min     | Run hardware test scripts (`hw_test.py`); begin reviewing sample code & template files |
-| **Session 2 (2 h 45 m)** | —          | *Programming, challenges and competition timeline placeholder*                         |
-
----
-
 ## Expected Outcomes
 
 * Develop and refine key leadership competencies within a team-oriented, problem-solving environment.
