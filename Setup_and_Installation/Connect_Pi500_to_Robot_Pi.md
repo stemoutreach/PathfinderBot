@@ -75,17 +75,17 @@
 
    Please place the robot on the floor and set a block in front of the robot. The following script will demonstrate the arm picking up a block and loading it onto its back. 
 
-     <img src="/zzimages/Pickup1.jpg" width="200" > 
+     <img src="/zzimages/Pickup1.jpg" width="300" > 
 
-     <img src="/zzimages/Pickup2.jpg" width="200" > 
+     <img src="/zzimages/Pickup2.jpg" width="300" > 
 
-     <img src="/zzimages/Pickup3.jpg" width="200" > 
+     <img src="/zzimages/Pickup3.jpg" width="300" > 
 
-     <img src="/zzimages/Pickup4.jpg" width="200" > 
+     <img src="/zzimages/Pickup4.jpg" width="300" > 
 
-     <img src="/zzimages/Pickup5.jpg" width="200" > 
+     <img src="/zzimages/Pickup5.jpg" width="300" > 
 
-     <img src="/zzimages/Pickup6.jpg" width="200" > 
+     <img src="/zzimages/Pickup6.jpg" width="300" > 
          
     ~~~
     cd /home/robot/code
@@ -133,6 +133,7 @@
     ~~~
   
 [Return to main workshop page](/README.md)
+
 
 
 
