@@ -79,7 +79,7 @@
     sudo python pf_test_arm_pickup_movements.py
     ~~~
 
-# **Remote connect to the Robot Pi if needed**
+# **Optional - Remote connect to the Robot Pi if needed**
 
 
 1. **VNC Connection**
@@ -120,6 +120,7 @@
     ~~~
   
 [Return to main workshop page](/README.md)
+
 
 
 
