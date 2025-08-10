@@ -15,7 +15,7 @@
     ssh robot@XXX.XXX.XXX.XXX
     ~~~
 
-1. **Run [pf_StartRobot.py](/code/pf_start_robot.py)**
+1. **Run [pf_start_robot.py](/code/pf_start_robot.py)**
   
    This script initualizes the robot and sets the arm to starting position
    ~~~
@@ -107,4 +107,5 @@
     ~~~
   
 [Return to main workshop page](/README.md)
+
 
