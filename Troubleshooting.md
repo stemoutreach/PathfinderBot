@@ -40,7 +40,9 @@ Power cable is plugged into the 3.5mm audio interface (near the USB ports) inste
 3. Reconnect the servo in the correct orientation.
 4. Power the robot back on and test servo movement.
 
-   <img src="/zzimages/ServoWires.jpg" width="400" > .jpg
+   <img src="/zzimages/ServoWires.jpg" width="400" >
+   
+   <img src="/zzimages/WiringDiagram.jpg" width="600" > 
 ---
 
 ## 3. (Add More Issues Here)
@@ -61,4 +63,5 @@ Power cable is plugged into the 3.5mm audio interface (near the USB ports) inste
 ---
 
 **Last Updated:** YYYY-MM-DD
+
 
