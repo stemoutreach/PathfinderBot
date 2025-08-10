@@ -123,7 +123,7 @@
 
 
 
-# **Optional - Remote connect to the Robot Pi if needed**
+# **Optional - How to remote connect to the Robot Pi if needed**
 
 
 1. **VNC Connection**
@@ -164,6 +164,7 @@
     ~~~
   
 [Return to main workshop page](/README.md)
+
 
 
 
