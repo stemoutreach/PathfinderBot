@@ -21,6 +21,7 @@
   
    This script initualizes the robot and sets the arm to starting position
 
+   [Test Servos](/zzimages/movie/TestServos.mov)
             
    ~~~
    cd /home/robot/code
@@ -120,6 +121,7 @@
     ~~~
   
 [Return to main workshop page](/README.md)
+
 
 
 
