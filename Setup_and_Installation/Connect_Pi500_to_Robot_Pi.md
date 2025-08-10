@@ -50,7 +50,7 @@
 
 1. **Demo robot drive movements [pf_test_drive_movements.py](/code/pf_test_drive_movements.py)**
 
-   Please place the robot on the floor before continuing.  The robot will move in the following order:
+   Place the robot on the floor before continuing.  The robot will move in the following order:
          
    - Forward
    - Reverse
@@ -67,7 +67,7 @@
 
 1. **Demo arm picking up a block and loading it onto its back [pf_test_arm_pickup_movements.py](/code/pf_test_arm_pickup_movements.py)**
 
-   Please place the robot on the floor and set a block in front of the robot. 
+   Place the robot on the floor and set a block in front of the robot. 
 
      <img src="/zzimages/Pickup1.jpg" width="100" > 
 
@@ -89,10 +89,16 @@
 
 1. **Demo camera and control the robot through a simple web interface [pf_simple_web_drive.py](/code/pf_simple_web_drive.py)** 
 
+   Place the robot on the floor and set a block in front of the robot. 
+
     ~~~
     cd /home/robot/code
     sudo python pf_test_arm_servos.py
     ~~~
+
+    <img src="/zzimages/pf_simple_web_drive.jpg" width="400" > 
+
+
 
     | Button         | Action               |
     |----------------|----------------------|
@@ -113,7 +119,6 @@
     
     ⚠️ Note: Setting movement or turn speed to high values (near 100) may cause the robot to respond sluggishly or make the web interface temporarily unresponsive to commands like Stop. Reduce speeds for better responsiveness and control during testing. 
 
-    <img src="/zzimages/pf_simple_web_drive.jpg" width="200" > 
 
 
 
@@ -159,6 +164,7 @@
     ~~~
   
 [Return to main workshop page](/README.md)
+
 
 
 
