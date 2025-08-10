@@ -21,7 +21,8 @@
   
    This script initualizes the robot and sets the arm to starting position
 
-   [Test Servos](/zzimages/movie/TestServos.mov)
+
+
             
    ~~~
    cd /home/robot/code
@@ -74,6 +75,7 @@
 
    Please place the robot on the floor and set a block in front of the robot. The following script will demonstrate the arm picking up a block and loading it onto its back. 
 
+   [![Test Servos Video](/zzimages/Pickup1.jpg)](/zzimages/movie/PickupBlock.mp4)
          
     ~~~
     cd /home/robot/code
@@ -121,6 +123,7 @@
     ~~~
   
 [Return to main workshop page](/README.md)
+
 
 
 
