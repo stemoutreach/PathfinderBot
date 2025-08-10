@@ -48,7 +48,7 @@
     sudo python pf_test_motors.py
     ~~~
 
-1. **Demo robot drive movements [pf_test_drive_movements.py](/code/pf_test_drive_movements.py)**
+1. **Demo robot drive movements [pf_demo_drive_movements.py](/code/pf_demo_drive_movements.py)**
 
    Place the robot on the floor before continuing.  The robot will move in the following order:
          
@@ -62,10 +62,10 @@
            
     ~~~
     cd /home/robot/code
-    sudo python pf_test_drive_movements.py
+    sudo python pf_demo_drive_movements.py
     ~~~
 
-1. **Demo arm picking up a block and loading it onto its back [pf_test_arm_pickup_movements.py](/code/pf_test_arm_pickup_movements.py)**
+1. **Demo arm picking up a block and loading it onto its back [pf_demo_arm_pickup_movements.py](/code/pf_demo_arm_pickup_movements.py)**
 
    Place the robot on the floor and set a block in front of the robot. 
 
@@ -83,17 +83,17 @@
          
     ~~~
     cd /home/robot/code
-    sudo python pf_test_arm_pickup_movements.py
+    sudo python pf_demo_arm_pickup_movements.py
     ~~~
 
 
-1. **Demo the camera and control the robot through a simple web interface [pf_simple_web_drive.py](/code/pf_simple_web_drive.py)** 
+1. **Demo the camera and control the robot through a simple web interface [pf_demo_web_drive.py](/code/pf_demo_web_drive.py)** 
 
    Place the robot on the floor and set a block in front of the robot. 
 
     ~~~
     cd /home/robot/code
-    sudo python pf_test_arm_servos.py
+    sudo python pf_demo_web_drive.py
     ~~~
 
     <img src="/zzimages/pf_simple_web_drive.jpg" width="400" > 
@@ -164,6 +164,7 @@
     ~~~
   
 [Return to main workshop page](/README.md)
+
 
 
 
