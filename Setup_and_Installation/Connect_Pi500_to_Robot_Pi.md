@@ -11,6 +11,7 @@
 
     Open a terminal and enter the following command replacing the XXX.XXX.XXX.XXX with the robot's IP
     - NOTE: Username = robot. default Password was R4spb3rry
+      
     ~~~
     ssh robot@XXX.XXX.XXX.XXX
     ~~~
@@ -18,6 +19,7 @@
 1. **Run [pf_start_robot.py](/code/pf_start_robot.py)**
   
    This script initualizes the robot and sets the arm to starting position
+   
    ~~~
    cd /home/robot/code
    sudo python pf_start_robot.py
@@ -35,6 +37,7 @@
 1. **Run [pf_test_motors.py](/code/pf_test_motors.py)**
 
    The following script will move each motor to test that the motors are plugged into the correct location. The wheels will run in the following order:
+   
    - left front
    - right front
    - left back
@@ -48,6 +51,7 @@
 1. **Run [pf_test_drive_movements.py](/code/pf_test_drive_movements.py)**
 
    Please place the robot on the floor before continuing. The following script will test robot movements and demonstrate the mecanum wheels. The robot will move in the following order:
+   
    - Forward
    - Reverse
    - StrafeRight
@@ -107,5 +111,6 @@
     ~~~
   
 [Return to main workshop page](/README.md)
+
 
 
