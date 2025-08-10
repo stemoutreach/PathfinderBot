@@ -15,17 +15,26 @@
     ssh robot@XXX.XXX.XXX.XXX
     ~~~
 
-1. **Run [pf_StartRobot.py](/code/pf_StartRobot.py)**
+1. **Run [pf_StartRobot.py](/code/pf_start_robot.py)**
   
    This script initualizes the robot and sets the arm to starting position
    ~~~
    cd /home/robot/code
-   sudo python StartUp.py
+   sudo python pf_start_robot.py
    ~~~
 
-1. **Run servo test**
+1. **Run [pf_test_arm_servos.py](/code/pf_test_arm_servos.py)**
 
-   The following script will move each servo a little starting with the claw. Check to make sure all servos are plugged into the correct location. The wheels will also run in order:
+   The following script will move each servo a little starting with the claw. Check to make sure all servos are plugged into the correct location.
+
+    ~~~
+    cd /home/robot/code
+    sudo python pf_test_arm_servos.py
+    ~~~
+
+1. **Run [pf_test_motors.py](/code/pf_test_motors.py)**
+
+   The following script will move each motor to test that the motors are plugged into the correct location. The wheels will run in the following order:
    - left front
    - right front
    - left back
@@ -33,7 +42,31 @@
 
     ~~~
     cd /home/robot/code
-    sudo python Servo_test.py
+    sudo python pf_test_motors.py
+    ~~~
+
+1. **Run [pf_test_drive_movements.py](/code/pf_test_drive_movements.py)**
+
+   Please place the robot on the floor before continuing. The following script will test robot movements and demonstrate the mecanum wheels. The robot will move in the following order:
+   - Forward
+   - Reverse
+   - StrafeRight
+   - StrafeLeft
+   - TurnRight
+   - TurnLeft
+
+    ~~~
+    cd /home/robot/code
+    sudo python pf_test_drive_movements.py
+    ~~~
+
+1. **Run [pf_test_arm_pickup_movements.py](/code/pf_test_arm_pickup_movements.py)**
+
+   Please place the robot on the floor and set a block in front of the robot. The following script will demonstrate the arm picking up a block and loading it onto its back. 
+
+    ~~~
+    cd /home/robot/code
+    sudo python pf_test_arm_pickup_movements.py
     ~~~
 
 1. **VNC Connection**
@@ -74,3 +107,4 @@
     ~~~
   
 [Return to main workshop page](/README.md)
+
