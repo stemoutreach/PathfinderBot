@@ -11,7 +11,8 @@
 
     Open a terminal and enter the following command replacing the XXX.XXX.XXX.XXX with the robot's IP
     - NOTE: Username = robot. default Password was R4spb3rry
-      
+            
+
     ~~~
     ssh robot@XXX.XXX.XXX.XXX
     ~~~
@@ -19,7 +20,8 @@
 1. **Run [pf_start_robot.py](/code/pf_start_robot.py)**
   
    This script initualizes the robot and sets the arm to starting position
-   
+
+            
    ~~~
    cd /home/robot/code
    sudo python pf_start_robot.py
@@ -28,6 +30,7 @@
 1. **Run [pf_test_arm_servos.py](/code/pf_test_arm_servos.py)**
 
    The following script will move each servo a little starting with the claw. Check to make sure all servos are plugged into the correct location.
+       
 
     ~~~
     cd /home/robot/code
@@ -42,6 +45,7 @@
    - right front
    - left back
    - right back  
+          
 
     ~~~
     cd /home/robot/code
@@ -51,7 +55,7 @@
 1. **Run [pf_test_drive_movements.py](/code/pf_test_drive_movements.py)**
 
    Please place the robot on the floor before continuing. The following script will test robot movements and demonstrate the mecanum wheels. The robot will move in the following order:
-   
+         
    - Forward
    - Reverse
    - StrafeRight
@@ -59,6 +63,7 @@
    - TurnRight
    - TurnLeft
 
+           
     ~~~
     cd /home/robot/code
     sudo python pf_test_drive_movements.py
@@ -68,6 +73,7 @@
 
    Please place the robot on the floor and set a block in front of the robot. The following script will demonstrate the arm picking up a block and loading it onto its back. 
 
+         
     ~~~
     cd /home/robot/code
     sudo python pf_test_arm_pickup_movements.py
@@ -114,6 +120,7 @@
     ~~~
   
 [Return to main workshop page](/README.md)
+
 
 
 
