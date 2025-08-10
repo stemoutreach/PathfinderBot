@@ -45,6 +45,24 @@ Power cable is plugged into the 3.5mm audio interface (near the USB ports) inste
    <img src="/zzimages/WiringDiagram.jpg" width="600" > 
 ---
 
+## 2. Motor Test is not in the correct order - wires may be incorrect
+
+**Symptoms:**
+- Motors test show wrong order.
+- Robot may not respond to commands correctly.
+
+**Cause:**
+- Motors plugged in wrong order.
+
+**Solution:**
+1. Power off the robot before adjusting any wires.
+2. Check the motor connectors — see image below.
+4. Power the robot back on and test motor movement.
+
+   <img src="/zzimages/MotorConnections.jpg" width="400" >
+
+---
+
 ## 3. (Add More Issues Here)
 
 **Format for New Issues:**
@@ -63,5 +81,6 @@ Power cable is plugged into the 3.5mm audio interface (near the USB ports) inste
 ---
 
 **Last Updated:** YYYY-MM-DD
+
 
 
