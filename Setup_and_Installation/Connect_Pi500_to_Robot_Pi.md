@@ -1,4 +1,4 @@
-# **Connect Pi500 to Robot Pi and test**
+# **Connect Pi500 to Robot Pi using Wifi and test**
 
 ## Prerequisites:
 
@@ -87,7 +87,7 @@
     ~~~
 
 
-1. **Demo camera and control the robot through a simple web interface [pf_simple_web_drive.py](/code/pf_simple_web_drive.py)** 
+1. **Demo the camera and control the robot through a simple web interface [pf_simple_web_drive.py](/code/pf_simple_web_drive.py)** 
 
    Place the robot on the floor and set a block in front of the robot. 
 
@@ -164,6 +164,7 @@
     ~~~
   
 [Return to main workshop page](/README.md)
+
 
 
 
