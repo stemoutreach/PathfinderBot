@@ -75,7 +75,8 @@ def LookForward():
     Board.setPWMServoPulse(5, 790, 1000)
     Board.setPWMServoPulse(6, 1500, 1000)
     time.sleep(1)
-
+    initialize_robot()
+    
 def LookDown():
     Board.setPWMServoPulse(1, 1500, 500)
     Board.setPWMServoPulse(3, 500, 1000)
@@ -121,6 +122,8 @@ def PickupBlock():
     Board.setPWMServoPulse(5, 700, 2000)
     Board.setPWMServoPulse(6, 1500, 2000)
     time.sleep(2)
+
+    initialize_robot()
 
 app = Flask(__name__)
 
