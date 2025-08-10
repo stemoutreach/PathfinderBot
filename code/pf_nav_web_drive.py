@@ -7,7 +7,7 @@ import Board
 from Camera import Camera
 from mecanum import MecanumChassis as Mecanum
 from pf_AprilTagNavigator import AprilTagNavigator
-from pf_StartRobot import initialize_robot
+from pf_start_robot import initialize_robot
 
 initialize_robot()
 voltage = 0.0
