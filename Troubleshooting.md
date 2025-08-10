@@ -5,29 +5,25 @@ Keep this open during the event for quick reference.
 
 ---
 
-## 1. Power Cable Plugged into Pi Audio Jack
+## 1. Power Cable Plugged into Pi Audio interface
 
 **Symptoms:**
 - Raspberry Pi will not power on.
 - No activity lights on the Pi.
-- Power cable is plugged into the 3.5mm audio jack (near the HDMI ports) instead of the USB-C power port.
-
+  
 **Cause:**
-- Mistakenly plugging the USB-C cable into the wrong port due to similar placement.
+Power cable is plugged into the 3.5mm audio interface (near the USB ports) instead of the robots expantion board power port.
 
 **Solution:**
-1. Unplug the power cable from the audio jack.
-2. Locate the **USB-C power port** (on the opposite side from the GPIO pins, next to the HDMI ports).
-3. Plug the USB-C power cable into the correct port.
+1. Unplug the power cable from the audio interface.
+2. Locate the robots expantion board power port.
+3. Make sure both power switches are on.
 4. Check that the red power LED lights up on the Pi.
-
-**Prevention Tip:**
-- Apply a small label or colored tape near the correct power port before the event.
-
-**Image:**  
-![Correct Pi Power Port](images/correct_power_port.jpg)
-
+  
+   <img src="/zzimages/NotAudio.jpg" width="400" > 
+     
 ---
+
 
 ## 2. Servo Wires Reversed
 
@@ -40,17 +36,11 @@ Keep this open during the event for quick reference.
 
 **Solution:**
 1. Power off the robot before adjusting any wires.
-2. Check the servo connectors — **the brown or black wire must face the GND pin** on the board.
+2. Check the servo connectors — **the white or yellow wire must face forward** on the robot.
 3. Reconnect the servo in the correct orientation.
 4. Power the robot back on and test servo movement.
 
-**Prevention Tip:**
-- Train the build team to identify wire colors before plugging in.
-- Mark the GND side of each servo port with a small dot of colored tape.
-
-**Image:**  
-![Correct Servo Wiring](images/correct_servo_wiring.jpg)
-
+   <img src="/zzimages/ServoWires.jpg" width="400" > .jpg
 ---
 
 ## 3. (Add More Issues Here)
@@ -71,3 +61,4 @@ Keep this open during the event for quick reference.
 ---
 
 **Last Updated:** YYYY-MM-DD
+
