@@ -17,29 +17,23 @@
     ssh robot@XXX.XXX.XXX.XXX
     ~~~
 
-1. **Run [pf_start_robot.py](/code/pf_start_robot.py)**
-  
-   This script initualizes the robot and sets the arm to starting position
-
-
-
-            
+1. **Start Robot - initualizes the robot and sets the arm to starting position [pf_start_robot.py](/code/pf_start_robot.py)**
+             
    ~~~
    cd /home/robot/code
    sudo python pf_start_robot.py
    ~~~
 
-1. **Run [pf_test_arm_servos.py](/code/pf_test_arm_servos.py)**
+1. **Test arm servo connections [pf_test_arm_servos.py](/code/pf_test_arm_servos.py)**
 
-   The following script will move each servo a little starting with the claw. Check to make sure all servos are plugged into the correct location.
-       
+   The following script will move each servo a little starting with the claw. Check to make sure all servos are plugged into the correct location.  
 
     ~~~
     cd /home/robot/code
     sudo python pf_test_arm_servos.py
     ~~~
 
-1. **Run [pf_test_motors.py](/code/pf_test_motors.py)**
+1. **Test motor connections [pf_test_motors.py](/code/pf_test_motors.py)**
 
    The following script will move each motor to test that the motors are plugged into the correct location. The wheels will run in the following order:
    
@@ -54,9 +48,9 @@
     sudo python pf_test_motors.py
     ~~~
 
-1. **Run [pf_test_drive_movements.py](/code/pf_test_drive_movements.py)**
+1. **Demo robot drive movements [pf_test_drive_movements.py](/code/pf_test_drive_movements.py)**
 
-   Please place the robot on the floor before continuing. The following script will test robot movements and demonstrate the mecanum wheels. The robot will move in the following order:
+   Please place the robot on the floor before continuing.  The robot will move in the following order:
          
    - Forward
    - Reverse
@@ -71,26 +65,58 @@
     sudo python pf_test_drive_movements.py
     ~~~
 
-1. **Run [pf_test_arm_pickup_movements.py](/code/pf_test_arm_pickup_movements.py)**
+1. **Demo arm picking up a block and loading it onto its back [pf_test_arm_pickup_movements.py](/code/pf_test_arm_pickup_movements.py)**
 
-   Please place the robot on the floor and set a block in front of the robot. The following script will demonstrate the arm picking up a block and loading it onto its back. 
+   Please place the robot on the floor and set a block in front of the robot. 
 
-     <img src="/zzimages/Pickup1.jpg" width="300" > 
+     <img src="/zzimages/Pickup1.jpg" width="100" > 
 
-     <img src="/zzimages/Pickup2.jpg" width="300" > 
+     <img src="/zzimages/Pickup2.jpg" width="100" > 
 
-     <img src="/zzimages/Pickup3.jpg" width="300" > 
+     <img src="/zzimages/Pickup3.jpg" width="100" > 
 
-     <img src="/zzimages/Pickup4.jpg" width="300" > 
+     <img src="/zzimages/Pickup4.jpg" width="100" > 
 
-     <img src="/zzimages/Pickup5.jpg" width="300" > 
+     <img src="/zzimages/Pickup5.jpg" width="100" > 
 
-     <img src="/zzimages/Pickup6.jpg" width="300" > 
+     <img src="/zzimages/Pickup6.jpg" width="100" > 
          
     ~~~
     cd /home/robot/code
     sudo python pf_test_arm_pickup_movements.py
     ~~~
+
+
+1. **Demo camera and control the robot through a simple web interface [pf_simple_web_drive.py](/code/pf_simple_web_drive.py)** 
+
+    ~~~
+    cd /home/robot/code
+    sudo python pf_test_arm_servos.py
+    ~~~
+
+    | Button         | Action               |
+    |----------------|----------------------|
+    | ▲              | Move forward         |
+    | ▼              | Move backward        |
+    | ◀              | Strafe left          |
+    | ▶              | Strafe right         |
+    | ⟲              | Turn left            |
+    | ⟳              | Turn right           |
+    | ■              | Stop all movement    |
+
+    🌀 Speed Sliders
+
+    - **Move Speed** – Forward/backward/strafe (10–100 mm/s)
+    - **Turn Speed** – Rotational speed (mapped to radians/sec using a scaling factor)
+    
+    Changes are applied via JavaScript fetch calls next time the button is pressed.
+    
+    ⚠️ Note: Setting movement or turn speed to high values (near 100) may cause the robot to respond sluggishly or make the web interface temporarily unresponsive to commands like Stop. Reduce speeds for better responsiveness and control during testing. 
+
+    <img src="/zzimages/pf_simple_web_drive.jpg" width="200" > 
+
+
+
 
 # **Optional - Remote connect to the Robot Pi if needed**
 
@@ -133,6 +159,7 @@
     ~~~
   
 [Return to main workshop page](/README.md)
+
 
 
 
