@@ -36,7 +36,7 @@
 [Return to main workshop page](/README.md)
 
 ------------------------------------------------
-## 2. Start here if robot is assembled:
+## Start here if robot is assembled:
 
   1. Batteries are charged and installed
   1. Robot Pi is connected to monitor and the Pi500 mouse is connected to the robot.
@@ -53,6 +53,7 @@
 [Return to main workshop page](/README.md)
 
     
+
 
 
 
