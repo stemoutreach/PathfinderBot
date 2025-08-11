@@ -27,29 +27,11 @@ Each team will consist of 3 members, each with a designated role to encourage co
 | Connects motors, servos, sensors, and camera | Uses sample Python scripts and modifies them to suit the challenge | Helps guide the team’s focus during the timed challenge |
 | Collaborates with Programmer to test physical components | Troubleshoots and adjusts robot behaviors | Suggests design or code tweaks to optimize robot performance |
 | Adds any needed attachments for carrying blocks | Works with Builder to verify motor and servo functions | Keeps the team on track and aligned to competition goals |
-
 | [Robot Assembly Guide](Robot_Assembly_Guide.md) | [Pi500 Setup Instructions](Setup_and_Installation/Raspberry_Pi500_Setup.md) |   |
 |  |  [Robot Pi Setup Instructions](Setup_and_Installation/Robot_Raspberry_Pi_Setup.md) |  |
 |  |[Connecting and Testing Instructions](Setup_and_Installation/Connect_Pi500_to_Robot_Pi.md)  |  |
 
 ---
-## Workshop Phases
-
-### Phase 1: Robot Assembly
-* Teams collaboratively assemble the MasterPi robot using detailed instructions and comprehensive kits.
-* Install and configure key components: mecanum wheels, robotic arm, camera module, and electronics.
-
-### Phase 2: Robot Capabilities Exploration
-* Use provided Python-based scripts to explore:
-  * Precise mecanum wheel control.
-  * AprilTag detection and navigation.
-  * Robotic arm operation for object pickup and manipulation.
-* Test and refine capabilities for operational proficiency.
-
-### Phase 3: Obstacle Course Navigation Challenge
-* Apply skills to navigate an AprilTag-equipped obstacle course.
-* Tasks include accurate tag detection, precise positioning, and object interaction with the robotic arm.
-
 ---
 ## System Overview: Pi500 + MasterPi
 * **MasterPi robot** acts as the mobile computational unit with camera and mechanical features.
