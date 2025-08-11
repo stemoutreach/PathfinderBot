@@ -45,7 +45,7 @@ Power cable is plugged into the 3.5mm audio interface (near the USB ports) inste
    <img src="/zzimages/WiringDiagram.jpg" width="600" > 
 ---
 
-## 2. Motor Test is not in the correct order - wires may be incorrect
+## 3. Motor Test is not in the correct order - wires may be incorrect
 
 **Symptoms:**
 - Motors test show wrong order.
@@ -60,6 +60,23 @@ Power cable is plugged into the 3.5mm audio interface (near the USB ports) inste
 4. Power the robot back on and test motor movement.
 
    <img src="/zzimages/MotorConnections.jpg" width="400" >
+
+---
+## 4. Strafe not working
+
+**Symptoms:**
+
+- Strafe does not work.
+  
+**Cause:**
+Wheels installed incorrectly
+
+**Solution:**
+1. Power off the robot before adjusting any wires.
+2. Check wheels - the rollers should form an X looking down on the robot. 
+   
+
+   <img src="/zzimages/mecanumX.jpg" width="400" >
 
 ---
 
@@ -81,6 +98,7 @@ Power cable is plugged into the 3.5mm audio interface (near the USB ports) inste
 ---
 
 **Last Updated:** YYYY-MM-DD
+
 
 
 
