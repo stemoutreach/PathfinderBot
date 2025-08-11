@@ -86,7 +86,7 @@
     ~~~
 
 
-1. **Demo the camera and control the robot through a simple web interface [pf_demo_web_drive.py](/code/pf_demo_web_drive.py)** 
+1. **Demo camera and web interface control for the robot [pf_demo_web_drive.py](/code/pf_demo_web_drive.py)** 
 
    Place the robot on the floor and set a block in front of the robot. 
 
@@ -163,6 +163,7 @@
     ~~~
   
 [Return to main workshop page](/README.md)
+
 
 
 
