@@ -80,24 +80,8 @@ Wheels installed incorrectly
 
 ---
 
-## 3. (Add More Issues Here)
 
-**Format for New Issues:**
-- **Symptoms:**  
-- **Cause:**  
-- **Solution:**  
-- **Prevention Tip:**  
-- **Image:**  
 
----
-
-## Quick Reference Diagram
-
-![PathfinderBot Wiring Diagram](images/wiring_diagram.jpg)
-
----
-
-**Last Updated:** YYYY-MM-DD
 
 
 
