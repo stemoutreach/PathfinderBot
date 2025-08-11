@@ -45,7 +45,7 @@ Power cable is plugged into the 3.5mm audio interface (near the USB ports) inste
    <img src="/zzimages/WiringDiagram.jpg" width="600" > 
 ---
 
-## 3. Motor Test is not in the correct order - wires may be incorrect
+## 3. Motor Test was not in the correct order - wires may be incorrect
 
 **Symptoms:**
 - Motors test show wrong order.
@@ -79,6 +79,7 @@ Wheels installed incorrectly
    <img src="/zzimages/mecanumX.jpg" width="400" >
 
 ---
+
 
 
 
