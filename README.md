@@ -91,11 +91,11 @@ Each team will be provided with a Raspberry Pi 500, a portable monitor, and a ro
 ---
 ## Workshop Flow Timeline
 
-Tuesday
+**Tuesday**
 | Time     | Activity                                       |
 | -------- | ---------------------------------------------- |
-| 8:00 am  | Workshop Overview                              |
-| 8:30 PM  | Team Activity Begins                           |
+| 8:00 AM  | Workshop Overview                              |
+| 8:30 AM  | Team Activity Begins                           |
 | 10:30 AM | Break                                          |
 | 12:30 PM | Team Activity Continues                        |   
 | 3:00 PM  | Competition Starts                             |
