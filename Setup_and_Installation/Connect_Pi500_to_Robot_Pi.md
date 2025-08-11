@@ -1,4 +1,4 @@
-# **Connect Pi500 to Robot Pi using Wifi and test**
+# **Connecting and Testing Instructions**
 
 ## Prerequisites:
 
@@ -12,7 +12,6 @@
     Open a terminal and enter the following command replacing the XXX.XXX.XXX.XXX with the robot's IP
     - NOTE: Username = robot. default Password was R4spb3rry
             
-
     ~~~
     ssh robot@XXX.XXX.XXX.XXX
     ~~~
@@ -164,6 +163,7 @@
     ~~~
   
 [Return to main workshop page](/README.md)
+
 
 
 
