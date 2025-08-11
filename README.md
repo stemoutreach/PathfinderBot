@@ -35,7 +35,7 @@ Each team will consist of 3 members, each with a designated role to encourage co
 
 
 ---
-## Workshop Flow Timeline
+## Workshop Timeline
 
 **Tuesday**
 | Time     | Activity                                       |
