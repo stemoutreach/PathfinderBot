@@ -91,25 +91,16 @@ Each team will be provided with a Raspberry Pi 500, a portable monitor, and a ro
 ---
 ## Workshop Flow Timeline
 
-| Day       | Time     | Activity                                       |
-| --------- | -------- | ---------------------------------------------- |
-| Tuesday   | 1:15 PM  | Workshop Overview                              |
-| Tuesday   | 2:00 PM  | Team Activities Begin                          |
-|           |          | 1. Raspberry Pi 500 Setup                      |
-|           |          | 2. Robot Assembly                              |
-|           |          | 3. Robot Raspberry Pi Configuration            |
-|           |          | 4. Connecting Pi500 to Robot Pi                |
-|           |          | 5. Explore Robot Capabilities                  |
-|           |          | 6. Drive Your Robot                            |
-| Tuesday   | 4:00 PM  | Break                                          |
-| Wednesday | 9:15 AM  | 7. Prepare for Competition                     |   
-| Wednesday | 11:00 AM | 8. Competition Starts                          |
-|           |          | - Navigate the obstacle course using AprilTags |
-|           |          | - Pick up and transport blocks (stretch goal)  |
-|           |          | - Demonstrate teamwork and strategy            |
-| Wednesday | 12:00    | End                                            |
-
-
+Tuesday
+| Time     | Activity                                       |
+| -------- | ---------------------------------------------- |
+| 8:00 am  | Workshop Overview                              |
+| 8:30 PM  | Team Activity Begins                           |
+| 10:30 AM | Break                                          |
+| 12:30 PM | Team Activity Continues                        |   
+| 3:00 PM  | Competition Starts                             |
+| 4:45 PM  | Team Activity Ends                             |
 
 **PathfinderBot | STEM Outreach Initiative**
-*updated 07/29/2025*
+
+*updated 08/10/2025*
