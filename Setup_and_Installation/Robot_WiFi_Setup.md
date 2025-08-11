@@ -1,7 +1,6 @@
 # **Robot WiFi Setup**
 
-## 1. Robot is not assembled 
-  if robot is assembled, skip to the section below - **2. Start here if robot is assembled**
+## if robot is assembled, skip to the section below - 2. Start here if robot is assembled
 
 ### Add the heatsink and make sure the SD card is installed.
 
@@ -54,6 +53,7 @@
 
 
     
+
 
 
 
