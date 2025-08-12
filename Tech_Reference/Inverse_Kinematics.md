@@ -1,6 +1,6 @@
 # Inverse Kinematics
 
-Inverse Kinematics (IK) answers the question: **“What joint angles do we need so the end‑effector (gripper) reaches a desired position and orientation?”**
+Inverse Kinematics (IK) answers the question: **“What joint angles do we need so the end‑effector (gripper) reaches a desired position and orientation?”**  
 For PathfinderBot’s 5‑Degree‑of‑Freedom (DOF) servo arm, IK lets your code move the gripper precisely to pick up blocks and interact with AprilTag targets.
 
 ---
@@ -9,90 +9,94 @@ For PathfinderBot’s 5‑Degree‑of‑Freedom (DOF) servo arm, IK lets your co
 
 Assuming the standard HiWonder MasterPi / ArmPi Pro configuration:
 
-| Joint # | Name                     | Axis & Type                      |
-| ------- | ------------------------ | -------------------------------- |
-| 1       | Base Yaw                 | Rotates arm around Z             |
-| 2       | Shoulder Pitch           | Rotates in vertical plane        |
-| 3       | Elbow Pitch              | Rotates in vertical plane        |
-| 4       | Wrist Pitch              | Rotates in vertical plane        |
+| Joint # | Name           | Axis & Type                   |
+|---------|----------------|-------------------------------|
+| 1       | Base Yaw       | Rotates arm around Z          |
+| 2       | Shoulder Pitch | Rotates in vertical plane     |
+| 3       | Elbow Pitch    | Rotates in vertical plane     |
+| 4       | Wrist Pitch    | Rotates in vertical plane     |
 
-
-> **Note:** 5 DOF allows full XYZ positioning and a single rotational axis. Full 6‑DOF orientation (roll, pitch, yaw) is **not** possible—so specify only the gripper roll or allow limited orientation.
+> **Note:** A 5‑DOF arm allows full XYZ positioning and a single rotational axis. Full 6‑DOF orientation (roll, pitch, yaw) isn’t possible—so specify only the gripper roll or allow limited orientation adjustments.
 
 ---
 
 ## 2. Forward vs. Inverse Kinematics
 
-* **Forward Kinematics (FK)**: Given joint angles $\theta_1\dots\theta_5$ → compute end‑effector pose **T**. Generally solved using Denavit–Hartenberg (DH) parameters.
-* **Inverse Kinematics (IK)**: Given desired pose **T** → compute $\theta$. Can be solved **analytically** (closed‑form) or **numerically** (iterative).
+- **Forward Kinematics (FK)**: Given joint angles (`θ₁…θ₅`), compute the end‑effector pose (T). Typically implemented using Denavit–Hartenberg (DH) parameters.
+- **Inverse Kinematics (IK)**: Given desired pose `T`, compute `θ`. Can be solved **analytically** (closed‑form) or **numerically** (iterative).
 
-### Why IK Is Harder
-
-For most real arms, multiple (or zero) solutions exist, and joint limits add constraints. A 5‑DOF arm may have redundant solutions in position but limited orientation freedom.
+**Why IK Is Harder**: Many arms have multiple (or no) solutions, and joint limits add constraints. A 5‑DOF arm may have redundant positional solutions but limited orientation control.
 
 ---
 
-## 3. Workflow for PathfinderBot
+## 3. Suggested Workflow for PathfinderBot
 
 1. **Model the Arm**
+   - Measure all link lengths (L₁…L₄), gripper length, and joint offsets.
+   - Construct your DH parameter table (`aᵢ`, `αᵢ`, `dᵢ`, `θᵢ`).
 
-   * Measure link lengths (L1…L4), gripper length, and joint offsets.
-   * Create DH table ($a_i, \alpha_i, d_i, \theta_i$).
-2. **Implement FK** (verify with measured positions).
-3. **Derive Analytical IK** (recommended for real‑time on Raspberry Pi):
+2. **Implement Forward Kinematics**
+   - Verify FK results match real-world measurements.
 
-   * **Base Angle ($\theta_1$)** from target **X,Y**: $\theta_1 = \"operatorname"{atan2}(y,x)$
-   * **Planar 2‑link Solution** for Shoulder ($\theta_2$) and Elbow ($\theta_3$) using law of cosines in the vertical plane.
-   * **Wrist Pitch ($\theta_4$)** ensures end‑effector points to target angle.
-4. **Check Joint Limits** (clip or reject invalid solutions).
-5. **Command Servos** with smooth interpolation (ease‑in/out ramps).
+3. **Derive Analytical IK**
+   - Compute base angle (`θ₁`) from target X, Y:
+     ```
+     θ₁ = atan2(y, x)
+     ```
+   - Use a planar 2‑link law‑of‑cosines solution for Shoulder (`θ₂`) and Elbow (`θ₃`) in the vertical plane.
+   - Determine Wrist Pitch (`θ₄`) to orient the end‑effector appropriately.
+
+4. **Apply Joint Limits**
+   - Clip or reject any invalid solutions beyond the physical range.
+
+5. **Command the Servos**
+   - Send smooth, interpolated servo commands (e.g., ease‑in/ease‑out ramps).
 
 ---
 
-## 4. Example Python (PyPi `ikpy` Numeric Solver)
+## 4. Example Python (Numerical IK via `ikpy`)
 
 ```python
 from ikpy.chain import Chain
 from ikpy.link import URDFLink
 import numpy as np
 
-# Define simplified 5‑DOF chain
 arm_chain = Chain(name='5dof_arm', links=[
-    URDFLink(rotation=[0, 0, 1], bounds=(-np.pi, np.pi)),   # Base
-    URDFLink(length=0.06, rotation=[0, 1, 0], bounds=(-1.4, 1.4)), # Shoulder
-    URDFLink(length=0.08, rotation=[0, 1, 0], bounds=(-1.4, 1.4)), # Elbow
-    URDFLink(length=0.05, rotation=[0, 1, 0], bounds=(-1.4, 1.4)), # Wrist pitch
-    URDFLink(rotation=[0, 0, 1], bounds=(-np.pi, np.pi))    # Gripper yaw
+    URDFLink(rotation=[0, 0, 1], bounds=(-np.pi, np.pi)),        # Base
+    URDFLink(length=0.06, rotation=[0, 1, 0], bounds=(-1.4, 1.4)),# Shoulder
+    URDFLink(length=0.08, rotation=[0, 1, 0], bounds=(-1.4, 1.4)),# Elbow
+    URDFLink(length=0.05, rotation=[0, 1, 0], bounds=(-1.4, 1.4)),# Wrist pitch
+    URDFLink(rotation=[0, 0, 1], bounds=(-np.pi, np.pi))          # Gripper yaw
 ])
 
 target = [0.15, 0.05, 0.10]  # meters (x, y, z)
 pose = np.eye(4)
-pose[:3, 3] = target          # only position, leave orientation default
+pose[:3, 3] = target
 
 angles = arm_chain.inverse_kinematics(pose)
 print("Computed joint angles (rad):", angles[1:])
 ```
 
-> Replace link lengths and limits with your measurements. Map `angles` to PWM values for each servo.
+_Map `angles` to PWM commands for your actual servos._
 
 ---
 
 ## 5. Calibration & Testing Tips
 
-* **Zero the Joints**: Physically align servos to known zero positions.
-* **Iterate Slowly**: Move one joint at a time during first tests.
-* **Workspace Check**: Plot reachable positions to avoid commands outside range.
-* **Add Safety Margins**: Stop motion if large error persists.
+- **Zero the Joints**: Align all servos to a known zero position physically.
+- **Incremental Testing**: Move one joint at a time during initial tests.
+- **Workspace Mapping**: Visualize reachable coordinates to ensure safety.
+- **Safety Margins**: Implement error thresholds and motion stops for safety.
 
 ---
 
-## 6. Resources & Further Reading
+## 6. Up‑to‑Date Resources & Further Reading
 
-* **Modern Robotics Textbook (open access)** – Chapter 11 covers IK: [https://modernrobotics.northwestern.edu/book.html](https://modernrobotics.northwestern.edu/book.html)
-* **IkPy Docs**: [https://ikpy.readthedocs.io/](https://ikpy.readthedocs.io/)
-* **ROS MoveIt IK Tutorial**: [https://ros-planning.github.io/moveit\_tutorials/doc/ikfast\_tutorial/ikfast\_tutorial.html](https://ros-planning.github.io/moveit_tutorials/doc/ikfast_tutorial/ikfast_tutorial.html)
-* **HiWonder ArmPi Sample Code** (demonstrates FK/IK): [https://github.com/Hiwonder-Tech/hiwonder\_armpi\_firmware](https://github.com/Hiwonder-Tech/hiwonder_armpi_firmware)
-* **Lecture Video: 5‑DOF Arm IK Explained**: [https://www.youtube.com/watch?v=\_j1qN2Xqh40](https://www.youtube.com/watch?v=_j1qN2Xqh40)
+- **Modern Robotics (Book & Online Resources)** – Chapter 11 covers IK thoroughly: [https://modernrobotics.northwestern.edu/book/](https://modernrobotics.northwestern.edu/book/)
+- **IkPy Documentation**: [https://ikpy.readthedocs.io/en/latest/](https://ikpy.readthedocs.io/en/latest/)
+- **ROS MoveIt IK Tutorials**: [https://ros-planning.github.io/moveit_tutorials/](https://ros-planning.github.io/moveit_tutorials/)
+- **HiWonder ArmPi Firmware (GitHub)**: [https://github.com/HiWonder-Tech/hiwonder_armpi_firmware](https://github.com/HiWonder-Tech/hiwonder_armpi_firmware)
+- **YouTube Tutorial: 5‑DOF Robotic Arm IK Explained**: [https://www.youtube.com/watch?v=_j1qN2Xqh40](https://www.youtube.com/watch?v=_j1qN2Xqh40)
 
 ---
 
