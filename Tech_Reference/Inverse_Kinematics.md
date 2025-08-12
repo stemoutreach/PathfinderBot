@@ -84,7 +84,7 @@ print("Joint angles (rad):", angles[1:])
 
 ---
 
-## 6) Verified Resources (working links)
+## 6)  Resources 
 
 - **Modern Robotics (textbook page): Inverse Kinematics of Open Chains** — concise chapter overview.  
   https://modernrobotics.northwestern.edu/nu-gm-book-resource/inverse-kinematics-of-open-chains/
@@ -109,3 +109,4 @@ print("Joint angles (rad):", angles[1:])
 
 - **HiWonder ArmPi Pro Official Docs** — assembly, usage, and references for the platform.  
   https://docs.hiwonder.com/projects/ArmPi_Pro/en/latest/
+
