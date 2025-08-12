@@ -92,12 +92,6 @@ _Map `angles` to PWM commands for your actual servos._
 
 ## 6. Up‑to‑Date Resources & Further Reading
 
-- **Modern Robotics (Book & Online Resources)** – Chapter 11 covers IK thoroughly: [https://modernrobotics.northwestern.edu/book/](https://modernrobotics.northwestern.edu/book/)
 - **IkPy Documentation**: [https://ikpy.readthedocs.io/en/latest/](https://ikpy.readthedocs.io/en/latest/)
-- **ROS MoveIt IK Tutorials**: [https://ros-planning.github.io/moveit_tutorials/](https://ros-planning.github.io/moveit_tutorials/)
-- **HiWonder ArmPi Firmware (GitHub)**: [https://github.com/HiWonder-Tech/hiwonder_armpi_firmware](https://github.com/HiWonder-Tech/hiwonder_armpi_firmware)
-- **YouTube Tutorial: 5‑DOF Robotic Arm IK Explained**: [https://www.youtube.com/watch?v=_j1qN2Xqh40](https://www.youtube.com/watch?v=_j1qN2Xqh40)
 
----
 
-Mastering IK lets PathfinderBot pick, place, and interact with objects accurately. Combine this guide with your AprilTags and Mecanum drive knowledge to create fully autonomous challenges!
