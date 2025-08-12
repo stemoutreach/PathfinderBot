@@ -90,8 +90,5 @@ _Map `angles` to PWM commands for your actual servos._
 
 ---
 
-## 6. Up‑to‑Date Resources & Further Reading
-
-- **IkPy Documentation**: [https://ikpy.readthedocs.io/en/latest/](https://ikpy.readthedocs.io/en/latest/)
 
 
