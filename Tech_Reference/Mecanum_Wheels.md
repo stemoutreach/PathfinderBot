@@ -75,11 +75,8 @@ def move_robot(forward=0, strafe=0, rotate=0):
 ## Resources and Links
 
 * **Wikipedia – Mecanum Wheel**: [https://en.wikipedia.org/wiki/Mecanum_wheel](https://en.wikipedia.org/wiki/Mecanum_wheel)
-* **Wikipedia – Omni Wheel**: [https://en.wikipedia.org/wiki/Omni_wheel](https://en.wikipedia.org/wiki/Omni_wheel)
 * **FTC Mecanum Physics Tutorial**: [https://gm0.org/en/latest/docs/software/tutorials/mecanum-drive.html](https://gm0.org/en/latest/docs/software/tutorials/mecanum-drive.html)
 * **REV Robotics Mecanum Drivetrain Build Guide**: [https://docs.revrobotics.com/duo-build/mecanum-drivetrain-v2](https://docs.revrobotics.com/duo-build/mecanum-drivetrain-v2)
-* **Omni vs. Mecanum Comparison – VEX Forum**: [https://www.vexforum.com/t/omni-wheel-vs-mecanum/48151](https://www.vexforum.com/t/omni-wheel-vs-mecanum/48151)
-* **Video Explanation (YouTube)**: [Mecanum Wheels Explained](https://www.youtube.com/watch?v=cwp0yZpI3T8)
 
 ---
 
@@ -92,3 +89,4 @@ def move_robot(forward=0, strafe=0, rotate=0):
 ---
 
 Mecanum wheels give your PathfinderBot unmatched maneuverability—essential for navigating AprilTag courses and completing precision tasks!
+
