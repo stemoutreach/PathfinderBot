@@ -1,94 +1,111 @@
-# Inverse Kinematics
+# Inverse Kinematics (PathfinderBot Arm)
 
-Inverse Kinematics (IK) answers the question: **“What joint angles do we need so the end‑effector (gripper) reaches a desired position and orientation?”**  
-For PathfinderBot’s 5‑Degree‑of‑Freedom (DOF) servo arm, IK lets your code move the gripper precisely to pick up blocks and interact with AprilTag targets.
+Inverse Kinematics (IK) answers: **“What joint angles move the gripper to a desired position (and limited orientation)?”**  
+For PathfinderBot’s 5‑DOF servo arm (MasterPi/ArmPi‑style), IK lets you place the gripper precisely to pick up blocks and interact with AprilTags.
 
 ---
 
-## 1. Arm Layout & Joint Nomenclature
+## 1) Arm Layout & Joint Names
 
-Assuming the standard HiWonder MasterPi / ArmPi Pro configuration:
+Assuming a typical HiWonder MasterPi / ArmPi Pro configuration:
 
-| Joint # | Name           | Axis & Type                   |
+| Joint # | Name           | Motion Axis / Type            |
 |---------|----------------|-------------------------------|
-| 1       | Base Yaw       | Rotates arm around Z          |
-| 2       | Shoulder Pitch | Rotates in vertical plane     |
-| 3       | Elbow Pitch    | Rotates in vertical plane     |
-| 4       | Wrist Pitch    | Rotates in vertical plane     |
+| 1       | Base Yaw       | Rotation about Z              |
+| 2       | Shoulder Pitch | Rotation in vertical plane    |
+| 3       | Elbow Pitch    | Rotation in vertical plane    |
+| 4       | Wrist Pitch    | Rotation in vertical plane    |
 
-> **Note:** A 5‑DOF arm allows full XYZ positioning and a single rotational axis. Full 6‑DOF orientation (roll, pitch, yaw) isn’t possible—so specify only the gripper roll or allow limited orientation adjustments.
-
----
-
-## 2. Forward vs. Inverse Kinematics
-
-- **Forward Kinematics (FK)**: Given joint angles (`θ₁…θ₅`), compute the end‑effector pose (T). Typically implemented using Denavit–Hartenberg (DH) parameters.
-- **Inverse Kinematics (IK)**: Given desired pose `T`, compute `θ`. Can be solved **analytically** (closed‑form) or **numerically** (iterative).
-
-**Why IK Is Harder**: Many arms have multiple (or no) solutions, and joint limits add constraints. A 5‑DOF arm may have redundant positional solutions but limited orientation control.
+> **Note:** With 5‑DOF you can command **XYZ** and one orientation axis. Full 6‑DOF orientation (roll, pitch, yaw simultaneously) is not available.
 
 ---
 
-## 3. Suggested Workflow for PathfinderBot
+## 2) FK vs. IK (quick refresher)
 
-1. **Model the Arm**
-   - Measure all link lengths (L₁…L₄), gripper length, and joint offsets.
-   - Construct your DH parameter table (`aᵢ`, `αᵢ`, `dᵢ`, `θᵢ`).
-
-2. **Implement Forward Kinematics**
-   - Verify FK results match real-world measurements.
-
-3. **Derive Analytical IK**
-   - Compute base angle (`θ₁`) from target X, Y:
-     ```
-     θ₁ = atan2(y, x)
-     ```
-   - Use a planar 2‑link law‑of‑cosines solution for Shoulder (`θ₂`) and Elbow (`θ₃`) in the vertical plane.
-   - Determine Wrist Pitch (`θ₄`) to orient the end‑effector appropriately.
-
-4. **Apply Joint Limits**
-   - Clip or reject any invalid solutions beyond the physical range.
-
-5. **Command the Servos**
-   - Send smooth, interpolated servo commands (e.g., ease‑in/ease‑out ramps).
+- **Forward kinematics (FK)**: joint angles → end‑effector pose (use DH parameters).
+- **Inverse kinematics (IK)**: desired pose → joint angles. Can be **analytical** (closed form) or **numerical** (iterative). Multiple or no solutions may exist; joint limits and reachability matter.
 
 ---
 
-## 4. Example Python (Numerical IK via `ikpy`)
+## 3) Practical IK Workflow for PathfinderBot
+
+1. **Measure & Model**
+   - Measure link lengths (L1…L4), gripper length, offsets.
+   - Build a DH table (`aᵢ, αᵢ, dᵢ, θᵢ`).
+
+2. **Implement FK** and verify positions against real measurements.
+
+3. **Solve IK**
+   - Base yaw from target XY: `θ₁ = atan2(y, x)`.
+   - Shoulder/elbow from a planar 2‑link law‑of‑cosines in the vertical plane.
+   - Wrist pitch aligns the approach angle to the target.
+
+4. **Validate constraints**
+   - Clip to joint limits; reject unreachable poses.
+
+5. **Command servos smoothly**
+   - Use motion profiles (ease‑in/out) and rate limits to prevent overshoot.
+
+---
+
+## 4) Numeric IK in Python (IKPy example)
 
 ```python
+# pip install ikpy numpy
 from ikpy.chain import Chain
 from ikpy.link import URDFLink
 import numpy as np
 
-arm_chain = Chain(name='5dof_arm', links=[
-    URDFLink(rotation=[0, 0, 1], bounds=(-np.pi, np.pi)),        # Base
-    URDFLink(length=0.06, rotation=[0, 1, 0], bounds=(-1.4, 1.4)),# Shoulder
-    URDFLink(length=0.08, rotation=[0, 1, 0], bounds=(-1.4, 1.4)),# Elbow
-    URDFLink(length=0.05, rotation=[0, 1, 0], bounds=(-1.4, 1.4)),# Wrist pitch
-    URDFLink(rotation=[0, 0, 1], bounds=(-np.pi, np.pi))          # Gripper yaw
+arm = Chain(name="5dof_arm", links=[
+    URDFLink(rotation=[0, 0, 1], bounds=(-np.pi, np.pi)),          # base
+    URDFLink(length=0.06, rotation=[0, 1, 0], bounds=(-1.4, 1.4)), # shoulder
+    URDFLink(length=0.08, rotation=[0, 1, 0], bounds=(-1.4, 1.4)), # elbow
+    URDFLink(length=0.05, rotation=[0, 1, 0], bounds=(-1.4, 1.4)), # wrist pitch
+    URDFLink(rotation=[0, 0, 1], bounds=(-np.pi, np.pi))           # gripper yaw (if used)
 ])
 
-target = [0.15, 0.05, 0.10]  # meters (x, y, z)
-pose = np.eye(4)
-pose[:3, 3] = target
+target_xyz = [0.15, 0.05, 0.10]  # meters: x, y, z
+T = np.eye(4); T[:3, 3] = target_xyz
 
-angles = arm_chain.inverse_kinematics(pose)
-print("Computed joint angles (rad):", angles[1:])
+angles = arm.inverse_kinematics(T)  # radians, includes a dummy base element at index 0
+print("Joint angles (rad):", angles[1:])
 ```
 
-_Map `angles` to PWM commands for your actual servos._
+> Replace link lengths and bounds with your measurements. Map radians → PWM values for your servos.
 
 ---
 
-## 5. Calibration & Testing Tips
+## 5) Calibration & Safety
 
-- **Zero the Joints**: Align all servos to a known zero position physically.
-- **Incremental Testing**: Move one joint at a time during initial tests.
-- **Workspace Mapping**: Visualize reachable coordinates to ensure safety.
-- **Safety Margins**: Implement error thresholds and motion stops for safety.
+- **Zeroing:** Physically align servos to a known zero and store offsets.
+- **Incremental moves:** Test one joint at a time at reduced speed.
+- **Workspace check:** Avoid commanding poses outside reach (visualize or probe).
+- **Watch torque/overcurrent:** Add current/time guards; stop on excessive error.
 
 ---
 
+## 6) Verified Resources (working links)
 
+- **Modern Robotics (textbook page): Inverse Kinematics of Open Chains** — concise chapter overview.  
+  https://modernrobotics.northwestern.edu/nu-gm-book-resource/inverse-kinematics-of-open-chains/
 
+- **Modern Robotics (full preprint PDF)** — canonical reference used in many courses.  
+  https://hades.mech.northwestern.edu/images/2/25/MR-v2.pdf
+
+- **IKPy Documentation (Read the Docs)** — API and usage for Python IK.  
+  https://ikpy.readthedocs.io/
+
+- **IKPy GitHub repository** — source code, issues, examples.  
+  https://github.com/Phylliade/ikpy
+
+- **MoveIt IKFast Tutorial (PickNik docs)** — how analytic IK is integrated in MoveIt.  
+  https://moveit.picknik.ai/main/doc/examples/ikfast/ikfast_tutorial.html
+
+- **MoveIt Tutorials (index)** — motion planning + kinematics across ROS releases.  
+  https://moveit.github.io/moveit_tutorials/
+
+- **Robotics Toolbox for Python: Inverse Kinematics** (Peter Corke) — solid numerical IK alternatives and theory notes.  
+  https://petercorke.github.io/robotics-toolbox-python/IK/ik.html
+
+- **HiWonder ArmPi Pro Official Docs** — assembly, usage, and references for the platform.  
+  https://docs.hiwonder.com/projects/ArmPi_Pro/en/latest/
