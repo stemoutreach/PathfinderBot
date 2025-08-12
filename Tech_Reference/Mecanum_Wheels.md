@@ -44,6 +44,9 @@ Basic velocity table:
 | Rotate Right | +  | -  | +  | -  |
 | Rotate Left  | -  | +  | -  | +  |
 
+<img src="/zzimages/MecanumImage.jpg" width="400" > 
+
+
 Note: `+` indicates forward motor rotation, `-` indicates reverse.
 
 ---
@@ -89,4 +92,5 @@ def move_robot(forward=0, strafe=0, rotate=0):
 ---
 
 Mecanum wheels give your PathfinderBot unmatched maneuverability—essential for navigating AprilTag courses and completing precision tasks!
+
 
