@@ -14,9 +14,6 @@ A Python library for detecting AprilTags — a type of visual fiducial marker. I
 
 ## 💻 Programming & Development Tools
 
-### `jupyter`
-Jupyter provides an interactive coding environment through notebooks. It’s useful for developing and testing Python code in a step-by-step manner with immediate visual feedback.
-
 ### `PyYAML`
 PyYAML is a YAML parser and emitter for Python. It's used to read and write configuration files in a human-readable format.
 
@@ -58,3 +55,4 @@ Steps to create the OS images
 ## [2 Robot Pi Build Steps](OS_Image/Robot_Pi_Build_Steps.md)
 
 [Return to Setup and Installation Page](README.md)
+
