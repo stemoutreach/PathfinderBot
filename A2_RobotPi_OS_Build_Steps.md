@@ -62,13 +62,6 @@
     sudo pip install pupil-apriltags
     ~~~
 
-
-1. **(Optional)Install Juptyer Notebook**
-
-    ~~~
-    sudo pip3 install jupyter
-    ~~~
-
 1. **Additional libraries needed**
 
     ~~~
@@ -100,5 +93,6 @@
 
 
 1. **Add AutonomousEdgeRobotics folder to /home/pi/Desktop/**
+
 
 
