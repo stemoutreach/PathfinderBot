@@ -48,11 +48,3 @@ VS Code is a lightweight, extensible code editor that supports Python and remote
 ## 🛠️ MasterPi
 software provided by MasterPI robot
 
-# Build Raspberry Pi OS image for Pi 500 and Robot Pi
-
-Steps to create the OS images
-## [1 Pi 500 Build Steps](OS_Image/Pi500_Build_Steps.md)
-## [2 Robot Pi Build Steps](OS_Image/Robot_Pi_Build_Steps.md)
-
-[Return to Setup and Installation Page](README.md)
-
