@@ -30,3 +30,5 @@
     - from the pi menu, select Preferences/Recomended Software
     - scroll down and check Visual Studio Code and VNC Viewer
     - Click Apply
+
+1. **Open Visual Studio Code and add Python **
