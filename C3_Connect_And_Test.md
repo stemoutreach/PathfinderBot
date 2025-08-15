@@ -95,6 +95,11 @@
     sudo python pf_demo_web_drive.py
     ~~~
 
+
+   <img src="/zzimages/pi_webserver.jpg" width="600" > 
+
+
+
     <img src="/zzimages/pf_simple_web_drive.jpg" width="400" > 
 
 
@@ -163,6 +168,7 @@
     ~~~
   
 [Return to main workshop page](/README.md)
+
 
 
 
