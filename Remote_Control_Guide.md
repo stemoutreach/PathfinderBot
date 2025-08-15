@@ -5,7 +5,6 @@ This guide explains how to control the PathfinderBot remotely using a web interf
 - **Mecanum Web Drive** [pf_mecanum_web_drive.py](/code/pf_mecanum_web_drive.py) – Adds diagonal movement and speed control sliders
 - **AprilTag Navigation Web Drive** [pf_April_nav_web_drive.py](/code/pf_April_nav_web_drive.py) – Enables tag-based autonomous navigation and arm control
 - **AprilTag Navigation + Store Mode** [pf_April_nav_web_drive_store.py](/code/pf_April_nav_web_drive_store.py) – Adds advanced pickup sequence for storing blocks
-- **AprilTag Navigation + Store Mode + continue** [pf_April_nav_web_drive_store_continue.py](/code/pf_April_nav_web_drive_store_continue.py) – Adds advanced pickup sequence for storing blocks
 
 pf_mecanum_web_drive.py
 
@@ -46,11 +45,6 @@ pf_mecanum_web_drive.py
    ```bash
    cd /home/robot/code
    sudo python pf_April_nav_web_drive_store.py
-   ```
-
-   ```bash
-   cd /home/robot/code
-   sudo python pf_April_nav_web_drive_store_continue.py
    ```
 
 Then open your browser to:
