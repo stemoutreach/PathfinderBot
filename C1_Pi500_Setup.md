@@ -1,4 +1,4 @@
-# **Setup Pi500 with monitor**
+# **C1 Setup Pi500 with monitor**
 
 The purpose of the Raspberry Pi 500 is to connect to the robot
 
@@ -43,5 +43,6 @@ The purpose of the Raspberry Pi 500 is to connect to the robot
    
 
 [Return to main workshop page](/README.md)
+
 
 
