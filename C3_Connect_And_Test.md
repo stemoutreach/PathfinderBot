@@ -1,4 +1,4 @@
-# **Connecting and Testing Instructions**
+# ** C3 Connecting and Testing Instructions**
 
 ## Prerequisites:
 
@@ -168,6 +168,7 @@
     ~~~
   
 [Return to main workshop page](/README.md)
+
 
 
 
