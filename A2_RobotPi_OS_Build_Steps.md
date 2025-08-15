@@ -94,6 +94,7 @@
 
 1. **Add folder to /home/robot/code**
 
-  Download code from [Pathfinder Code](/code) to  /home/robot/code
+    Download code from [Pathfinder Code](/code) to  /home/robot/code
+
 
 
