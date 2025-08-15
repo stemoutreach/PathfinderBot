@@ -24,7 +24,7 @@
 
    Check the network icon top right of the Taskbar. If the network icon looks like the image below, click icon and select the correct network to connect to.
 
-   Use the same wifi instructions as the Pi500.  See GuestWiFI.pdf on the pi's desktop.
+   Use the same wifi instructions as the Pi500.  See GuestWifi.pdf on the pi's desktop.
 
    <img src="/zzimages/wifisetup-01.jpg" width="200" > 
 
@@ -40,6 +40,7 @@
 
 
     
+
 
 
 
