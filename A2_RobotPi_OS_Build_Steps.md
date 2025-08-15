@@ -92,9 +92,10 @@
    ~~~
 
 
-1. **Add folder to /home/robot/code**
+1. **Add code folder and example python files**
 
     Download code from [Pathfinder Code](/code) to  /home/robot/code
+
 
 
 
