@@ -24,7 +24,7 @@ The purpose of the Raspberry Pi 500 is to connect to the robot
 
    Open the Configuation tool at **Pi -> Preferences -> Raspberry Pi Configuation** and follow instructions.   
    
-   <img src="/zzimages/PiConfigPWandHost.jpg" width="500" > 
+   <img src="/zzimages/PiConfigPW.jpg" width="500" > 
 
 
 1. **Connect to WiFi**
@@ -43,4 +43,5 @@ The purpose of the Raspberry Pi 500 is to connect to the robot
    
 
 [Return to main workshop page](/README.md)
+
 
