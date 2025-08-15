@@ -59,7 +59,7 @@ You’ll see live video from the camera and control buttons.
 
 ## 🕹️ Control Interface
 
-  <img src="/zzimages/pf_simple_web_drive.jpg" width="200" >   <img src="/zzimages/pf_mecanum_web_drive.jpg" width="200" >   <img src="/zzimages/pf_April_nav_web_drive.jpg" width="200" >   <img src="/zzimages/pf_April_nav_web_drive_store.jpg" width="200" > 
+   <img src="/zzimages/pf_mecanum_web_drive.jpg" width="200" >   <img src="/zzimages/pf_April_nav_web_drive.jpg" width="200" >   <img src="/zzimages/pf_April_nav_web_drive_store.jpg" width="200" > 
 
 
 ### Shared Controls (All Scripts)
