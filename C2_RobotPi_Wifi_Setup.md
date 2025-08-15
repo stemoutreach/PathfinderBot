@@ -32,12 +32,15 @@
 
 ### 4 Get the assigned IP for the robot
 
-   Hover the mouse cursor over the active WiFi icon and copy the assigned IP address. This IP will be used to connect the Pi500 to the robot.   
+   Hover the mouse cursor over the active WiFi icon and write down the assigned IP address. This IP will be used to connect the Pi500 to the robot.   
+
+   <img src="/zzimages/robotwifi.jpg" width="600" > 
 
 [Return to main workshop page](/README.md)
 
 
     
+
 
 
 
