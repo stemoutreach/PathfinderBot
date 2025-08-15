@@ -49,6 +49,8 @@ pf_mecanum_web_drive.py
 
 Then open your browser to:
 
+   <img src="/zzimages/pi_webserver.jpg" width="600" > 
+
 ```
 http://<your-pi-ip>:5000
 ```
