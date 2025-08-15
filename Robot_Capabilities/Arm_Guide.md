@@ -10,7 +10,7 @@
 **Arm Interface**
 
    ~~~
-   python MasterPi_PC_Software/Arm.py
+   python /home/pi/MasterPi_PC_Software/Arm.py
    ~~~
 
    <img src="/zzimages/ArmAction.png" width="600" >   
@@ -18,4 +18,5 @@
 ---
 
 [Return to Simple Arm Movements Guide](Simple_Arm_Movements_Guide.md)
+
 
