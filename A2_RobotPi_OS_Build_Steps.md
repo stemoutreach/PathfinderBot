@@ -92,7 +92,8 @@
    ~~~
 
 
-1. **Add AutonomousEdgeRobotics folder to /home/pi/Desktop/**
+1. **Add folder to /home/robot/code**
 
+  Download code from [Pathfinder Code](/code) to  /home/robot/code
 
 
