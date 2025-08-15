@@ -5,10 +5,8 @@ The purpose of the Raspberry Pi 500 is to connect to the robot
 ## 🧰 Materials Needed
 
 * Raspberry 500 kit
-* SD card for the 500
 * Portable monitor
 * Micro HDMI to HDMI Adapter (to connect the pi to the monitor's HDMI cable)
-* Wifi connection info
 
 ## 📝 Instructions
 
@@ -31,7 +29,7 @@ The purpose of the Raspberry Pi 500 is to connect to the robot
 
    Check the network icon in the top right side of the Taskbar. If the network icon looks like the image below, click the network icon and select the correct network to connect to.
 
-   See GuestWiFI.pdf on the pi's desktop.
+   See GuestWifi.pdf on the pi's desktop.
 
    <img src="/zzimages/wifisetup-01.jpg" width="200" > 
    
@@ -43,6 +41,7 @@ The purpose of the Raspberry Pi 500 is to connect to the robot
    
 
 [Return to main workshop page](/README.md)
+
 
 
 
