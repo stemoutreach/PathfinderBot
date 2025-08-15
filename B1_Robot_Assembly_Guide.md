@@ -28,7 +28,7 @@
 
   <img src="/zzimages/WheelsOn.jpg" width="400" > 
 
-## 8. Should be completed in step C1 RobotPi WiFi Setup
+## 8. Should be completed in C1 RobotPi WiFi Setup
   <img src="/zzimages/Pi-HeatSink-SD-Card.jpg" width="400" > 
 
 ## 9. 
@@ -60,5 +60,6 @@
 
 
 [Return to main workshop page](/README.md)
+
 
 
