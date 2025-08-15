@@ -1,4 +1,4 @@
-# **Robot WiFi Setup**
+# **C1 RobotPi WiFi Setup**
 
 ## if robot is assembled, skip to the section below - 2. Start here if robot is assembled
 
@@ -53,6 +53,7 @@
 [Return to main workshop page](/README.md)
 
     
+
 
 
 
