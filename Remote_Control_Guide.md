@@ -117,9 +117,24 @@ In AprilTag versions:
 - Live camera feed shows detected tags
 - Display includes:
   - Voltage (color-coded)
-  - Currently visible AprilTag name (or ID)
+  - Currently visible AprilTag name (or ID) defined in  [pf_AprilCamera.py](/code/pf_AprilCamera.py)
 
----
+   ---
+      TAG_TABLE = {
+          0:"TURN_LEFT",
+          1:"TURN_RIGHT",
+          2:"STRAFE_LEFT",
+          3:"STRAFE_RIGHT",
+          4:"TURN_LEFT_STRAFE_LEFT",
+          5:"BACKWARD_TURN_LEFT",
+          6:"BACKWARD_TURN_RIGHT",
+          7:"TURN_RIGHT_STRAFE_RIGHT",
+          8:"TURN_AROUND_STRAFE_RIGHT",
+          9:"TURN_AROUND_STRAFE_LEFT",
+          10:"FINISH",
+      }
+   ---
+
 
 ## 🧠 How It Works
 
