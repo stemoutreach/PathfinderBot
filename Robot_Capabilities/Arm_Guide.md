@@ -15,8 +15,21 @@
 
    <img src="/zzimages/ArmAction.png" width="600" >   
 
+
+   <img src="/zzimages/armBasics.jpg" width="600" >   
+
+   <img src="/zzimages/armBasics2.jpg" width="600" >   
+
+   <img src="/zzimages/armBasics3.jpg" width="600" >   
+
+   <img src="/zzimages/armBasics4.jpg" width="600" >   
+
+
+
+
 ---
 
 [Return to Simple Arm Movements Guide](Simple_Arm_Movements_Guide.md)
+
 
 
