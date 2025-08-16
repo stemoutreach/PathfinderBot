@@ -12,9 +12,6 @@ This guide shows you how to control your PathfinderBot's motors using basic dire
 - Robot is on the floor and able to move
 
 ---
-## Run sample code [pf_simple_drive_functions.py](/code/pf_simple_drive_functions.py) from the Raspberry Pi 500
-
-
 
 
 1. **SSH Connection**
@@ -30,7 +27,7 @@ This guide shows you how to control your PathfinderBot's motors using basic dire
    This script runs through all the functions detailed below
    ~~~
    cd /home/robot/code
-   sudo python pf_simple_drive_functions.py
+   sudo python pf_demo_drive_movements.py
    ~~~
 
 ---
