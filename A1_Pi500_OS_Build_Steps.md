@@ -1,4 +1,4 @@
-# **Pi500 Builde Steps** 
+# **Pi500 OS Build Steps** 
 
 1. **Create a fresh Raspberry Pi OS**
   Use Raspberry Pi Imager to create a fresh Raspberry Pi OS (64-bit) SD card
@@ -32,3 +32,4 @@
     - Click Apply
 
 1. **Open Visual Studio Code and add Python **
+
