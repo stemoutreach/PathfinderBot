@@ -1,4 +1,4 @@
-# **D3 Arm UI** Guide
+# **E3 Arm UI** Guide
 
 ## Prerequisites:
 
@@ -30,6 +30,7 @@
 ---
 
 [Return to Simple Arm Movements Guide](Simple_Arm_Movements_Guide.md)
+
 
 
 
