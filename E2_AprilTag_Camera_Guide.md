@@ -1,5 +1,5 @@
 
-# 🏷️ E1 AprilTag Camera Guide (`AprilCamera.py`)
+# 🏷️ E2 AprilTag Camera Guide (`AprilCamera.py`)
 
 This guide walks through how to use the PathfinderBot’s `AprilCamera.py` module to detect AprilTags in real time using your robot’s calibrated camera.
 
