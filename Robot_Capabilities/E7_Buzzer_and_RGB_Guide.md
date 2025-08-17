@@ -1,5 +1,5 @@
 
-# 🤖 Buzzer + RGB Control Guide
+# 🤖 E7 Buzzer + RGB Control Guide
 
 This guide combines control of the **buzzer** and **RGB LEDs** using the `Board` module. You’ll learn how to create sounds, light effects, and synchronized patterns.
 
