@@ -9,7 +9,7 @@ from pupil_apriltags import Detector
 from mecanum import MecanumChassis as Mecanum
 from pf_AprilTagNavigator import AprilTagNavigator
 from multidetector_integration import init_multidetector, register_multidetector_routes, overlay_with_current_result
-from pf_StartRobot import initialize_robot
+from pf_start_robot import initialize_robot
 
 initialize_robot()
 voltage = 0.0
