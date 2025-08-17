@@ -57,4 +57,4 @@ Each team will consist of 3 members, each with a designated role to encourage co
 
 **PathfinderBot | STEM Outreach Initiative**
 
-*updated 08/10/2025*
+*updated 08/17/2025*
