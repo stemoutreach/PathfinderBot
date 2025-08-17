@@ -1,5 +1,5 @@
 
-# 🦾 Arm Inverse Kinematics Guide (`ArmMoveIK.py`)
+# 🦾 E4 Arm Inverse Kinematics Guide (`ArmMoveIK.py`)
 
 `ArmMoveIK.py` lets you move the robot arm **by giving target X / Y / Z coordinates and a desired pitch angle** instead of manually tweaking every servo.  
 It wraps two main parts:
