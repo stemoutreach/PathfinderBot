@@ -1,5 +1,5 @@
 
-# 🕹️ D1 Simple Drive Guide
+# 🕹️ D1 Basic Drive Guide
 
 This guide shows you how to control your PathfinderBot's motors using basic directional functions. 
 
