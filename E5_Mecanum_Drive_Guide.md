@@ -1,5 +1,5 @@
 
-# 🚗 Mecanum Drive Guide
+# 🚗 E5 Mecanum Drive Guide
 
 `mecanum.py` provides the **`MecanumChassis`** class that lets you drive the robot in any direction (omnidirectional) and rotate in place using four mecanum wheels.
 
