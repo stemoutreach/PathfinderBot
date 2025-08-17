@@ -1,4 +1,4 @@
-# pf_follow_me.py — Follow‑Me AprilTag Guide
+# D4 Follow‑Me AprilTag Guide
 
 **Last updated:** Aug 15, 2025  
 **Maintainer:** PathfinderBot
