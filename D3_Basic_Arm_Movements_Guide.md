@@ -1,5 +1,5 @@
 
-# 🤖 Simple Arm Movements Guide
+# 🤖 D3 Simple Arm Movements Guide
 
 This guide explains how to use the `Board.setPWMServoPulse()` function to control the robot arm. Each servo is identified by an ID from 1 to 6, and you can control the position and speed using pulse-width modulation (PWM).
 
