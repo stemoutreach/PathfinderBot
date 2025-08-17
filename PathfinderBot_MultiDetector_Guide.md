@@ -34,29 +34,12 @@ From the provided `pathfinderbot_multidet_bundle.zip` you will have:
 -   `pf_nav_web_multidetector.py` -- standalone demo server
 
 -   `README_MULTIDET.md` -- quick reference
-
-------------------------------------------------------------------------
-
-## 2. Setup
-
-1.  Copy the entire bundle to your robot's code folder:
-
-    ``` bash
-    scp pathfinderbot_multidet_bundle.zip robot@<robot-ip>:/home/robot/code/
-    ```
-
-2.  SSH into the robot and unzip:
-
-    ``` bash
-    cd /home/robot/code
-    unzip pathfinderbot_multidet_bundle.zip
-    ```
-
+--------------------------------------------------------------------------
 3.  Make sure dependencies are installed (already present if AprilTags
     worked):
 
     ``` bash
-    pip install flask opencv-python pupil-apriltags imutils
+    sudo pip install flask opencv-python pupil-apriltags imutils
     ```
 
 ------------------------------------------------------------------------
@@ -67,7 +50,7 @@ Run the integrated server:
 
 ``` bash
 cd /home/robot/code
-python3 pf_April_nav_web_drive_store_continue_multidet.py
+sudo python pf_April_nav_web_drive_store_continue_multidet.py
 ```
 
 Then open in your browser:
