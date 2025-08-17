@@ -1,5 +1,5 @@
 
-# 🏷️ PathfinderBot AprilTag Camera Guide (`AprilCamera.py`)
+# 🏷️ E1 AprilTag Camera Guide (`AprilCamera.py`)
 
 This guide walks through how to use the PathfinderBot’s `AprilCamera.py` module to detect AprilTags in real time using your robot’s calibrated camera.
 
@@ -150,7 +150,5 @@ cv2.destroyAllWindows()
 AprilTags let you build advanced navigation and interaction systems. Combine with robot movement for full autonomy!
 
 ---
-
-[Return to Robot Capabilities page](README.md)
 
 [Return to PathfinderBot Workshop page](/README.md)
