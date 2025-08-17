@@ -125,11 +125,10 @@ time.sleep(1.5)
 | 6        | Gripper |
 
 
-[UI for ARM movements](Arm_Guide.md)   
+[E3 Arm Guide](E3_Arm_Guide.md)   
 <img src="/zzimages/ArmAction.png" width="300" >   
 
 ---
-[Return to Robot Capabilities page](README.md)
 
 [Return to PathfinderBot Workshop page](/README.md)
 
