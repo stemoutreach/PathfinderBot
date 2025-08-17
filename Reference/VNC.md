@@ -1,16 +1,4 @@
-# Robot Capabilities
-
-## Basic Features
-
-1. **[Simple Drive Guide](Simple_Drive_Guide.md)**
-
-1. **[Simple Arm Movements Guide](Simple_Arm_Movements_Guide.md)**
-  
-1. **[Sonar Guide](Sonar_Guide.md)**
-
-1. **[Buzzer and RGB Guide](Buzzer_and_RGB_Guide.md)**
-
-## Camera - these require VNC connetions to see the camera feed. 
+# VNC (remote Desktop)
 
 1. **VNC Connection**
 
@@ -42,10 +30,7 @@
 
       See the links below for more details on these two scripts. 
    
-1. **[Camera Guide](Camera_Guide.md)**
-
-1. **[April Tags with Camera](AprilTag_Camera_Guide.md)**
-
    ---
 
 [Return to PathfinderBot Workshop page](/README.md)
+
