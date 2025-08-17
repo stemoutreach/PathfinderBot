@@ -1,4 +1,4 @@
-# PathfinderBot Remote Control Guide
+# D5 PathfinderBot Remote Control Guide
 
 This guide explains how to control the PathfinderBot remotely using a web interface. Multiple versions are available:
 
