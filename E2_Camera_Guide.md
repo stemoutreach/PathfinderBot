@@ -1,5 +1,5 @@
 
-# 📷 PathfinderBot Camera Module Guide (`Camera.py`)
+# 📷 E2 Camera Module Guide (`Camera.py`)
 
 This guide walks through how to use the PathfinderBot's camera module using the `Camera.py` class. It handles capturing frames, undistorting images using calibration data, and making live video streaming simple and threaded.
 
