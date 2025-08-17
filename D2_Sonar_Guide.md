@@ -1,5 +1,5 @@
 
-# 🧭 Sonar Guide: Using the Sonar and RGB LEDs
+# 🧭 D2 Sonar Guide: Using the Sonar and RGB LEDs
 
 This guide will help you learn how to:
 - 📏 Read distances using the ultrasonic sonar sensor.
