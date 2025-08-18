@@ -59,6 +59,7 @@ Participants will work collaboratively in teams to:
 - **Raspberry Pi 500 (Pi500)**: Team’s programming and control hub.  
 - **Wi-Fi Networking**: Connects Pi500 and RobotPi for SSH, VNC, and real-time monitoring.  
 
+<img src="/zzimages/PathfinerBotWorkshop.jpg" width="400" >
 ---
 
 ## Documentation & Guides
