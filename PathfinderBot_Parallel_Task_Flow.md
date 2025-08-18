@@ -2,8 +2,6 @@
 
 This document shows the **sequence and parallelization** for PathfinderBot tasks, plus explicit dependencies. Group **E** is optional and gated off **C3**, with item-level prerequisites noted.
 
-> ⚠️ **Note on links:** The Group E filenames below reflect your new names/order. If your repo still uses the previous names, update the files or adjust links accordingly.
-
 ---
 
 ## Pre-Built for Teams (Done Before Workshop)
