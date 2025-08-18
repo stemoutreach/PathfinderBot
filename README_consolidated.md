@@ -99,7 +99,7 @@ The repository includes a structured set of guides:
 
 ## Parallel Task Flow
 
-Tasks are designed for **parallelization** to maximize team efficiency:
+To maximize efficiency, teams will complete tasks in **parallel** rather than assigning rigid roles (Builder, Programmer, Strategist).  
 
 - **Pre-Built:** OS images (A1, A2) are preloaded on SD cards.  
 - **Step 1:** Robot assembly (B1) and Pi500 setup (C1) in parallel.  
