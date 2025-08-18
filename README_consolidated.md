@@ -108,7 +108,63 @@ To maximize efficiency, teams will complete tasks in **parallel** rather than as
 - **Step 4:** Core robot functionality (D1–D5) after connection.  
 - **Step 5:** Optional features (E1–E7), each with specific dependencies.  
 
-A Mermaid diagram in [PathfinderBot_Parallel_Task_Flow.md](PathfinderBot_Parallel_Task_Flow.md) illustrates these dependencies.
+### Visual Flow
+
+```mermaid
+flowchart TD
+
+    subgraph Pre-Built
+        A1[A1_Pi500_OS_Build_Steps]
+        A2[A2_RobotPi_OS_Build_Steps]
+    end
+
+    subgraph Step1
+        B1[B1_Robot_Assembly]
+        C1[C1_Pi500_Setup]
+    end
+
+    subgraph Step2
+        C2[C2_RobotPi_Wifi_Setup]
+    end
+
+    subgraph Step3
+        C3[C3_Connect_And_Test]
+    end
+
+    subgraph Step4
+        D1[D1_Basic_Drive]
+        D2[D2_Sonar]
+        D3[D3_Basic_Arm_Movements]
+        D4[D4_Follow_Me]
+        D5[D5_Remote_Control]
+    end
+
+    subgraph Step5_Optional
+        E1[E1_Camera_Guide]
+        E2[E2_AprilTag_Camera_Guide]
+        E3[E3_Arm_Guide]
+        E4[E4_Arm_Inverse_Kinematics_Guide]
+        E5[E5_Mecanum_Drive_Guide]
+        E6[E6_MultiDetector_Guide]
+        E7[E7_Buzzer_and_RGB_Guide]
+    end
+
+    A1 --> B1
+    A2 --> C1
+    B1 --> C2
+    C1 --> C3
+    C2 --> C3
+    C3 --> D1 & D2 & D3 & D4 & D5
+
+    %% Optional dependencies
+    C3 --> E1
+    E1 --> E2
+    D3 --> E3
+    E3 --> E4
+    D1 --> E5
+    D5 --> E6
+    C3 --> E7
+```
 
 ---
 
