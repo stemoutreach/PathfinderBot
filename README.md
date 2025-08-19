@@ -39,7 +39,7 @@ Participants will work collaboratively in teams to:
    - Demonstrate teamwork, problem-solving, and strategy under time constraints.
    - Build a small cource in each room to test for best robot
    - Sslect the best performaing robot from each room to move on to the finals.
-   - Best score in 5 mins
+   - Best score in 5 minutes. You do not have to finish the course.
      - add 3 points each for correctly following the main course Apriltages. 
      - add 5 points for each large block stored on/with the robot.
      - add 10 points for each of the red blocks stored on/with the robot
