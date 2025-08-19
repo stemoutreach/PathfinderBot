@@ -40,10 +40,10 @@ Participants will work collaboratively in teams to:
    - Build a small cource in each room to test for best robot
    - Sslect the best performaing robot from each room to move on to the finals.
    - Best score in 5 mins
-     - add 3 points each for correctly following the main course April tage. 
+     - add 3 points each for correctly following the main course Apriltages. 
      - add points for each large block stored on the robot.
      - add 10 points for each of the red blocks stored on the robot
-     - subtract 3 points each for following the distractor April tage.
+     - subtract 3 points each for following the distractor Apriltages.
        
      
        <img src="/zzimages/PathfinderFInals.png" width="600" >
