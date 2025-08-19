@@ -58,7 +58,7 @@ Participants will work collaboratively in teams to:
 | 10:30 AM | Break                                               |
 | 12:30 PM | Team Activity Continues                             |   
 | 3:30 PM  | Pathfinder Competition Starts (7 teams 5 min each)  |
-| 4:15 PM  | Follow Me Competition (all at once?)                |
+| 4:15 PM  | Follow Me Competition (all at once in main area)    |
 | 4:45 PM  | Team Activity Ends                                  |
 
 
