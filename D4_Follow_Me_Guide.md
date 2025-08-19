@@ -1,8 +1,5 @@
 # D4 Follow‑Me AprilTag Guide
 
-**Last updated:** Aug 15, 2025  
-**Maintainer:** PathfinderBot
-
 This guide explains how the **Follow‑Me** behavior works, how to run it, and how to tune it. The program makes a robot **follow the closest AprilTag** and maintain a target standoff distance (default **18 inches / 0.4572 m**). It’s designed so a line of robots can trail a driver‑controlled lead robot.
 
 ---
@@ -11,7 +8,7 @@ This guide explains how the **Follow‑Me** behavior works, how to run it, and h
 
 ### Run
 ```bash
-python3 pf_follow_me.py
+sudo python pf_follow_me.py
 ```
 The robot will:
 1. Initialize posture via `pf_start_robot.initialize_robot()` (sets camera/arm, motors idle).
