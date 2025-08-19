@@ -49,8 +49,8 @@ Participants will work collaboratively in teams to:
        <img src="/zzimages/PathfinderFInals.png" width="600" >
 
 4. **Formation Challenge**
-   - STart with the [D4_Follow_Me_Guide.md](D4_Follow_Me_Guide.md)
-   - Exiperiment hold an April tag in in front of the robot while in follow me mode. then move the tag around keeping it in the robot's view 
+   - Start with the [D4_Follow_Me_Guide.md](D4_Follow_Me_Guide.md)
+   - Experiment hold an April tag in in front of the robot while in follow me mode. then move the tag around keeping it in the robot's view 
    - See how many robots can follow one leader
    - Is an infinite loop possible?
 
