@@ -41,8 +41,8 @@ Participants will work collaboratively in teams to:
    - Sslect the best performaing robot from each room to move on to the finals.
    - Best score in 5 mins
      - add 3 points each for correctly following the main course Apriltages. 
-     - add 5 points for each large block stored on the robot.
-     - add 10 points for each of the red blocks stored on the robot
+     - add 5 points for each large block stored on/with the robot.
+     - add 10 points for each of the red blocks stored on/with the robot
      - subtract 3 points each for following the distractor Apriltages.
        
      
