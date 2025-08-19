@@ -25,30 +25,41 @@ Participants will work collaboratively in teams to:
 
 1. **Robot Assembly**  
    - Teams assemble the MasterPi robot using detailed instructions.  
-   - Components include mecanum wheels, robotic arm, camera, and onboard Raspberry Pi.  
-
+   - Components include mecanum wheels, robotic arm, camera, and onboard Raspberry Pi.
+   - Modify the robot to store blocks after picking them up. Use any materials to help the robot store blocks after picking them up.
+     
 2. **Capabilities Exploration**  
    - Test drive and explore robot features using provided Python scripts.  
-   - Capabilities include mecanum drive, sonar obstacle detection, AprilTag navigation, camera streaming, and arm manipulation.  
+   - Capabilities include mecanum drive, sonar obstacle detection, AprilTag navigation, camera streaming, and arm manipulation.
+   - Pay attention to speed vs performance
 
-3. **Obstacle Course Challenge**  
+3. **Course Challenge** 
    - Navigate a course with AprilTags and obstacles.  
    - Perform tasks such as block pickup and delivery.  
-   - Demonstrate teamwork, problem-solving, and strategy under time constraints.  
+   - Demonstrate teamwork, problem-solving, and strategy under time constraints.
+   - Build a small cource in each room to test for best robot
+   - Sslect the best performaing robot from each room to move on to the finals.
+
+4. **Formation Challenge**
+   - STart with the [D4_Follow_Me_Guide.md](D4_Follow_Me_Guide.md)
+   - Exiperiment hold an April tag in in front of the robot while in follow me mode. then move the tag around keeping it in the robot's view 
+   - See how many robots can follow one leader
+   - Is an infinite loop possible?
 
 ---
 
 ## Workshop Timeline
 
 **Tuesday**
-| Time     | Activity                                       |
-| -------- | ---------------------------------------------- |
-| 8:00 AM  | Workshop Overview                              |
-| 8:30 AM  | Team Activity Begins                           |
-| 10:30 AM | Break                                          |
-| 12:30 PM | Team Activity Continues                        |   
-| 3:00 PM  | Competition Starts                             |
-| 4:45 PM  | Team Activity Ends                             |
+| Time     | Activity                                            |
+| -------- | --------------------------------------------------- |
+| 8:00 AM  | Workshop Overview                                   |
+| 8:30 AM  | Team Activity Begins                                |
+| 10:30 AM | Break                                               |
+| 12:30 PM | Team Activity Continues                             |   
+| 3:30 PM  | Pathfinder Competition Starts (7 teams 5 min each)  |
+| 4:15 PM  | Follow Me Competition (all at once?)                |
+| 4:45 PM  | Team Activity Ends                                  |
 
 
 ---
