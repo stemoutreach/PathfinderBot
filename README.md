@@ -48,28 +48,6 @@ Participants will work collaboratively in teams to:
      
        <img src="/zzimages/PathfinderFInals.png" width="600" >
 
-4. **Formation Challenge**
-   - Start with the [D4_Follow_Me_Guide.md](D4_Follow_Me_Guide.md)
-   - Experiment hold an April tag in in front of the robot while in follow me mode. then move the tag around keeping it in the robot's view 
-   - See how many robots can follow one leader
-   - Is an infinite loop possible?
-
----
-
-## Workshop Timeline
-
-**Tuesday**
-| Time     | Activity                                            |
-| -------- | --------------------------------------------------- |
-| 8:00 AM  | Workshop Overview                                   |
-| 8:30 AM  | Team Activity Begins                                |
-| 10:30 AM | Break                                               |
-| 12:30 PM | Team Activity Continues                             |   
-| 3:30 PM  | Pathfinder Competition Starts (7 teams 5 min each)  |
-| 4:15 PM  | Follow Me Competition (all at once in main area)    |
-| 4:45 PM  | Team Activity Ends                                  |
-
-
 ---
 
 ## System Overview: Pi500 + MasterPi
