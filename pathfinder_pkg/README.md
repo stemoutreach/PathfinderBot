@@ -1,152 +1,154 @@
-# PathfinderBot Package
+# PathfinderBot Python Package
 
-This package contains the improved codebase for the PathfinderBot robotics platform, implementing the enhancements outlined in the PathfinderBot Improvement PRD.
-
-## Overview
-
-The PathfinderBot is a sophisticated robotics platform built for STEM outreach and education. It features a mobile robot with mecanum wheels for omnidirectional movement, a 5-DOF robotic arm with gripper, camera system with AprilTag detection, and various sensors.
-
-This package provides a complete, well-organized Python framework for controlling the robot, processing sensor data, detecting objects, and providing web interfaces for remote control.
+This Python package provides a modular and well-organized codebase for the PathfinderBot robotics platform used for STEM outreach and education.
 
 ## Package Structure
 
-The package is organized into several modules:
+The package is organized into the following modules:
 
-```
-pathfinder_pkg/
-├── __init__.py        # Package initialization
-├── core/              # Core robot functionality
-│   ├── __init__.py
-│   ├── robot.py       # Main robot class
-│   └── mecanum.py     # Mecanum drive control
-├── detectors/         # Computer vision detectors
-│   ├── __init__.py
-│   ├── base.py        # Base detector class
-│   └── block_detector.py  # Enhanced block detector
-├── web/               # Web interface components
-│   ├── __init__.py
-│   ├── server.py      # Flask web server
-│   ├── websocket.py   # WebSocket server
-│   └── templates/     # HTML templates
-│       ├── index.html
-│       └── drive.html
-├── utils/             # Utility functions
-│   ├── __init__.py
-│   └── logging.py     # Logging configuration
-├── navigation/        # Navigation and mapping
-│   └── __init__.py
-├── config/            # Configuration files
-│   └── __init__.py
-└── run.py             # Main entry point
-```
+- `core`: Core functionality for robot control, including the robot class, arm control, and mecanum wheel drive
+- `detectors`: Various object detection modules, including AprilTag and block detection
+- `web`: Web interface and WebSocket communication for remote control
+- `navigation`: Navigation and mapping capabilities
+- `utils`: Utility functions and common tools
+- `education`: Educational components, including learning tracks, code templates, and challenges
+- `config`: Configuration files and settings
+- `simulations`: Simulation capabilities for testing without physical hardware
 
-## Key Improvements
+## Getting Started
 
-### 1. Code Organization and Documentation
+### Installation
 
-- Created a proper Python package structure with `__init__.py` files
-- Implemented a common logging framework across modules
-- Added comprehensive docstrings to all functions, classes, and modules
-- Standardized naming conventions across modules
+1. Clone the repository:
+   ```
+   git clone https://github.com/yourusername/PathfinderBot.git
+   cd PathfinderBot
+   ```
 
-### 2. Enhanced Block Detection and Manipulation
+2. Install the required dependencies:
+   ```
+   pip install -r requirements.txt
+   ```
 
-- Improved block detector with better color segmentation and shape analysis
-- Added feedback mechanisms during block pickup using the camera
-- Implemented retry mechanisms for failed pickup attempts
-- Created better tracking of blocks across frames
+3. Install the package in development mode:
+   ```
+   pip install -e .
+   ```
 
-### 3. Web Interface Enhancements
+### Running the PathfinderBot
 
-- Created a unified, responsive web UI that works well on mobile devices
-- Implemented WebSockets for real-time communication instead of polling
-- Added a telemetry dashboard showing robot state, battery, sensor readings
-- Created recording and replay functionality for robot movements
-
-### 4. Navigation and Mapping
-
-*To be implemented in future releases.*
-
-## Usage
-
-### Running the System
-
-To start the PathfinderBot system:
+The main entry point for the package is `run.py`. You can use the following commands to run different components:
 
 ```bash
-python -m pathfinder_pkg.run
+# Start the web interface
+python -m pathfinder_pkg.run --web
+
+# Start the robot with AprilTag navigation
+python -m pathfinder_pkg.run --apriltag-nav
+
+# Start the robot with block detection
+python -m pathfinder_pkg.run --block-detection
+
+# Run a demo sequence
+python -m pathfinder_pkg.run --demo
+
+# Launch the Jupyter notebook server for educational content
+python -m pathfinder_pkg.run --jupyter
 ```
 
-Command line options:
+Add the `--sim` flag to run in simulation mode without requiring physical hardware.
 
+## Educational Components
+
+The package includes several educational components to help students learn robotics:
+
+### Learning Tracks
+
+Learning tracks provide a structured curriculum with progressive difficulty levels.
+
+```python
+from pathfinder_pkg.education.learning_levels import LearningTrackManager
+
+# Load available tracks
+manager = LearningTrackManager()
+manager.load_tracks()
+
+# Get a specific track
+track = manager.get_track("track_id")
 ```
---web-port PORT     Port for the web server (default: 5000)
---ws-port PORT      Port for the WebSocket server (default: 8765)
---host HOST         Host address to bind servers to (default: 0.0.0.0)
---debug             Enable debug mode
---no-robot          Run without connecting to robot hardware
---log-level LEVEL   Set the logging level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
+
+### Code Templates
+
+Code templates provide scaffolded coding exercises with fill-in-the-blank portions.
+
+```python
+from pathfinder_pkg.education.code_templates import TemplateManager
+
+# Load available templates
+manager = TemplateManager()
+manager.load_templates()
+
+# Get a specific template
+template = manager.get_template("template_id")
 ```
 
-### Web Interface
+### Challenges
 
-The web interface is available at:
+Challenges provide goal-oriented activities with specific success criteria.
 
-- Main interface: http://localhost:5000/
-- Drive control: http://localhost:5000/drive
-- Block detection: http://localhost:5000/blocks
-- Telemetry dashboard: http://localhost:5000/telemetry
+```python
+from pathfinder_pkg.education.challenge_system import ChallengeManager
 
-### API Endpoints
+# Load available challenges
+manager = ChallengeManager()
+manager.load_challenges()
 
-The system provides several REST API endpoints:
+# Get a specific challenge
+challenge = manager.get_challenge("challenge_id")
+```
 
-- `GET /api/status` - Get system status
-- `POST /api/robot/move` - Move the robot
-- `POST /api/robot/stop` - Stop the robot
-- `POST /api/recording/start` - Start recording movements
-- `POST /api/recording/stop` - Stop recording
-- `GET /api/recording/list` - List available recordings
-- `POST /api/recording/play` - Play back a recording
+### Jupyter Notebook Integration
+
+For interactive learning, the package integrates with Jupyter notebooks:
+
+```python
+from pathfinder_pkg.education.jupyter_integration import (
+    display_robot_controls,
+    display_learning_track_selector,
+    display_code_template,
+    display_challenge_selector
+)
+
+# Display interactive robot controls
+robot = display_robot_controls(use_simulator=True)
+
+# Display learning track selector
+tracks = display_learning_track_selector()
+
+# Display code template selector
+templates = display_code_template()
+
+# Display challenge selector
+challenges = display_challenge_selector()
+```
 
 ## Development
 
-### Adding New Components
+### Coding Standards
 
-To add a new component to the robot:
+- Follow PEP 8 style guidelines
+- Use Google-style docstrings
+- Write unit tests for all new features
+- Keep modules focused and cohesive
 
-1. Create a new class for your component
-2. Add it to the robot in `init_robot()` function in `run.py`:
+### Testing
 
-```python
-from pathfinder_pkg.your_module import YourComponent
+Run the test suite:
 
-# In init_robot()
-your_component = YourComponent()
-robot.add_component('your_component_name', your_component)
+```bash
+pytest
 ```
 
-### Adding New Detectors
+## License
 
-To create a new detector:
-
-1. Create a new class that inherits from `Detector` in `detectors/base.py`
-2. Implement the required `infer()` method
-3. Register it in the appropriate place (e.g., `run.py` or a detector manager)
-
-## Dependencies
-
-- Python 3.7+
-- OpenCV
-- NumPy
-- Flask
-- Websockets
-- Various hardware-specific libraries (depending on your robot configuration)
-
-## Future Work
-
-- Implement SLAM (Simultaneous Localization And Mapping)
-- Add multi-robot coordination capabilities
-- Create more educational extensions
-- Optimize performance for resource-constrained hardware
-- Add comprehensive testing suite
+This project is licensed under the MIT License - see the LICENSE file for details.
