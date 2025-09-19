@@ -79,6 +79,31 @@ Alternatively, you can use API endpoints:
 
 ------------------------------------------------------------------------
 
+## 4.1 Detection Mode Switching
+
+The diagram below illustrates how you can switch between different detection modes:
+
+```mermaid
+stateDiagram-v2
+   [*] --> AprilTagMode
+   AprilTagMode --> ObjectDetectionMode: Switch Mode
+   ObjectDetectionMode --> ColorDetectionMode: Switch Mode
+   ColorDetectionMode --> BlockDetectionMode: Switch Mode
+   BlockDetectionMode --> AprilTagMode: Switch Mode
+   AprilTagMode: Detect AprilTags
+   AprilTagMode: Navigation Based on Tags
+   ObjectDetectionMode: COCO MobileNet SSD
+   ObjectDetectionMode: Detect Common Objects
+   ColorDetectionMode: HSV Filtering
+   ColorDetectionMode: Track Red Objects
+   BlockDetectionMode: Specialized for Workshop
+   BlockDetectionMode: Detect Red Blocks
+```
+
+You can switch modes at any time through the web interface buttons or API endpoints. Each detector processes the camera feed differently and provides specialized functionality.
+
+------------------------------------------------------------------------
+
 ## 5. Notes on Detectors
 
 -   **AprilTag** → Uses your existing `pf_AprilCamera` code and

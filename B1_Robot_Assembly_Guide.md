@@ -1,5 +1,21 @@
 # **Assemble Robot**
 
+This guide walks you through the complete assembly process for the PathfinderBot. The diagram below shows the overall assembly flow:
+
+```mermaid
+flowchart TD
+   A[1. Unpack Robot] --> B[2. Assemble Wheels]
+   B --> C[3. Add Standoffs]
+   C --> D[4. Install Motors]
+   D --> E[5. Attach Battery Holder]
+   E --> G[7. Add Wheels to Chassis]
+   G --> H[10. Connect Motor Wires]
+   H --> I[11. Assemble Arm]
+   I --> J[13. Connect Power and Camera]
+   J --> K[14. Assemble Chassis Cover]
+   K --> L[15. Connect HDMI]
+```
+
 ## 1. Unpack the robot
 
   <img src="/zzimages/RobotUnpacked.jpg" width="400" > 
@@ -60,6 +76,3 @@
 
 
 [Return to main workshop page](/README.md)
-
-
-

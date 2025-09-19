@@ -1,7 +1,20 @@
 # Inverse Kinematics (PathfinderBot Arm)
 
-Inverse Kinematics (IK) answers: **“What joint angles move the gripper to a desired position (and limited orientation)?”**  
-For PathfinderBot’s 5‑DOF servo arm (MasterPi/ArmPi‑style), IK lets you place the gripper precisely to pick up blocks and interact with AprilTags.
+Inverse Kinematics (IK) answers: **"What joint angles move the gripper to a desired position (and limited orientation)?"**  
+For PathfinderBot's 5‑DOF servo arm (MasterPi/ArmPi‑style), IK lets you place the gripper precisely to pick up blocks and interact with AprilTags.
+
+```mermaid
+graph TD
+   Base["Base Yaw (θ₁)"] --> Shoulder["Shoulder Pitch (θ₂)"]
+   Shoulder --> Elbow["Elbow Pitch (θ₃)"]
+   Elbow --> Wrist["Wrist Pitch (θ₄)"]
+   Wrist --> Gripper["Gripper"]
+   style Base fill:#d0e0ff,stroke:#333
+   style Shoulder fill:#d0e0ff,stroke:#333
+   style Elbow fill:#d0e0ff,stroke:#333
+   style Wrist fill:#d0e0ff,stroke:#333
+   style Gripper fill:#ffe0d0,stroke:#333
+```
 
 ---
 
@@ -71,6 +84,19 @@ angles = arm.inverse_kinematics(T)  # radians, includes a dummy base element at 
 print("Joint angles (rad):", angles[1:])
 ```
 
+```mermaid
+flowchart TD
+   A[Target XYZ Position] --> B[Calculate Base Yaw (θ₁)]
+   A --> C[Project to YZ Plane]
+   C --> D[Law of Cosines for Shoulder/Elbow]
+   D --> E[Calculate Wrist Pitch]
+   B --> F[Final Joint Angles]
+   E --> F
+   F --> G{Check Joint Limits}
+   G -- Valid --> H[Send to Servos]
+   G -- Invalid --> I[Reject Solution]
+```
+
 > Replace link lengths and bounds with your measurements. Map radians → PWM values for your servos.
 
 ---
@@ -109,4 +135,3 @@ print("Joint angles (rad):", angles[1:])
 
 - **HiWonder ArmPi Pro Official Docs** — assembly, usage, and references for the platform.  
   https://docs.hiwonder.com/projects/ArmPi_Pro/en/latest/
-

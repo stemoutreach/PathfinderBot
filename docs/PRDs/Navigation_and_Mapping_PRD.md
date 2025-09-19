@@ -16,6 +16,24 @@ These capabilities are suitable for basic operation but lack the sophistication 
 
 ## Detailed Requirements
 
+```mermaid
+flowchart TD
+   A[Camera Input] --> B[Feature Extraction]
+   C[Sonar Sensors] --> D[Distance Measurements]
+   E[Wheel Encoders] --> F[Odometry]
+   B --> G[Visual SLAM]
+   D --> G
+   F --> G
+   G --> H[Map Generation]
+   G --> I[Localization]
+   H --> J[Occupancy Grid]
+   I --> K[Position Tracking]
+   J --> L[Path Planning]
+   K --> L
+   L --> M[Navigation Controls]
+   M --> N[Motor Commands]
+```
+
 ### 1. SLAM Implementation
 
 #### 1.1 Environmental Mapping
@@ -37,6 +55,17 @@ These capabilities are suitable for basic operation but lack the sophistication 
 - Implement path smoothing for more natural movement
 
 ### 2. Sensor Integration
+
+```mermaid
+flowchart LR
+   A[Camera] --> D{Sensor Fusion}
+   B[Sonar] --> D
+   C[Encoders] --> D
+   D --> E[Position Estimate]
+   D --> F[Environment Map]
+   E --> G[Navigation]
+   F --> G
+```
 
 #### 2.1 Enhanced Camera Usage
 - Implement feature extraction for visual SLAM

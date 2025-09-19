@@ -40,6 +40,30 @@ Test
 - Better understanding for students learning from the code
 - Reduced debugging time
 
+```mermaid
+classDiagram
+   class Robot {
+      +init()
+      +drive()
+      +sensor_readings()
+   }
+   class Navigation {
+      +plan_path()
+      +avoid_obstacles()
+   }
+   class Vision {
+      +detect_apriltags()
+      +detect_objects()
+   }
+   class WebInterface {
+      +serve_video()
+      +handle_controls()
+   }
+   Robot --> Navigation
+   Robot --> Vision
+   Robot <-- WebInterface
+```
+
 ### 2. Enhanced Block Detection and Manipulation
 
 The current block detection and manipulation capabilities could be improved for more reliable operation.
@@ -108,6 +132,19 @@ For classroom settings, enabling robots to work together would add significant e
 - Demonstration of swarm robotics concepts
 - Enhanced team-based learning opportunities
 - More engaging classroom activities
+
+```mermaid
+sequenceDiagram
+   participant CentralServer
+   participant Robot1
+   participant Robot2
+   CentralServer->>Robot1: Assign Task 1
+   CentralServer->>Robot2: Assign Task 2
+   Robot1->>CentralServer: Report Status
+   Robot2->>CentralServer: Report Status
+   Robot1->>Robot2: Coordinate Movement
+   Robot2->>Robot1: Acknowledge
+```
 
 ### 6. Educational Extensions
 

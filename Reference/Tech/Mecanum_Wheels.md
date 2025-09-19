@@ -47,6 +47,21 @@ Basic velocity table:
 Note: `+` indicates forward motor rotation, `-` indicates reverse.
 
 
+```mermaid
+graph TD
+   subgraph Movement Vectors
+      A["Forward<br/>(FL+,FR+,RL+,RR+)"] --- B["Backward<br/>(FL-,FR-,RL-,RR-)"]
+      C["Strafe Left<br/>(FL-,FR+,RL+,RR-)"] --- D["Strafe Right<br/>(FL+,FR-,RL-,RR+)"]
+      E["Rotate Left<br/>(FL-,FR+,RL-,RR+)"] --- F["Rotate Right<br/>(FL+,FR-,RL+,RR-)"]
+   end
+   style A fill:#f5f5f5,stroke:#333
+   style B fill:#f5f5f5,stroke:#333
+   style C fill:#f5f5f5,stroke:#333
+   style D fill:#f5f5f5,stroke:#333
+   style E fill:#f5f5f5,stroke:#333
+   style F fill:#f5f5f5,stroke:#333
+```
+
 <img src="/zzimages/MecanumImage.jpg" width="400" > 
 
 ---
@@ -92,6 +107,3 @@ def move_robot(forward=0, strafe=0, rotate=0):
 ---
 
 Mecanum wheels give your PathfinderBot unmatched maneuverability—essential for navigating AprilTag courses and completing precision tasks!
-
-
-
