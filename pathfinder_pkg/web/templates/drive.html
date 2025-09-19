@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PathfinderBot - Drive Control</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --background-color: #ecf0f1;
+            --text-color: #2c3e50;
+            --border-color: #bdc3c7;
+            --success-color: #2ecc71;
+            --warning-color: #f39c12;
+            --error-color: #e74c3c;
+            --control-size: 200px;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 5px;
+        }
+        
+        .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-left: 20px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 3px;
+        }
+        
+        nav a:hover, nav a.active {
+            background-color: var(--secondary-color);
+        }
+        
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .panel {
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        
+        h1 {
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+        
+        h2 {
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+        
+        .joystick-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .joystick {
+            position: relative;
+            width: var(--control-size);
+            height: var(--control-size);
+            background-color: #f0f0f0;
+            border-radius: 50%;
+            border: 2px solid var(--border-color);
+            touch-action: none;
+            user-select: none;
+            margin-bottom: 10px;
+        }
+        
+        .joystick-knob {
+            position: absolute;
+            width: 40%;
+            height: 40%;
+            background-color: var(--secondary-color);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            cursor: pointer;
+        }
+        
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .control-button {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.2s;
+        }
+        
+        .control-button:hover {
+            background-color: var(--primary-color);
+        }
+        
+        .control-button.danger {
+            background-color: var(--error-color);
+        }
+        
+        .control-button.danger:hover {
+            background-color: #c0392b;
+        }
+        
+        .telemetry {
+            margin-top: 20px;
+        }
+        
+        .telemetry-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .telemetry-label {
+            font-weight: bold;
+        }
+        
+        .status {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        
+        .status.connected {
+            background-color: var(--success-color);
+            color: white;
+        }
+        
+        .status.disconnected {
+            background-color: var(--error-color);
+            color: white;
+        }
+        
+        .speed-control {
+            width: 80%;
+            margin: 20px auto;
+            text-align: center;
+        }
+        
+        .speed-control label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .speed-control input {
+            width: 100%;
+        }
+        
+        .speed-value {
+            display: inline-block;
+            margin-top: 5px;
+            font-weight: bold;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 5px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 10px;
+            }
+            
+            nav li {
+                margin: 0 10px;
+            }
+            
+            .content {
+                grid-template-columns: 1fr;
+            }
+            
+            .joystick-container {
+                margin-bottom: 30px;
+            }
+        }
+        
+        /* For mobile devices */
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav li {
+                margin: 5px;
+            }
+            
+            :root {
+                --control-size: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">PathfinderBot</div>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/drive" class="active">Drive</a></li>
+                    <li><a href="/arm">Arm</a></li>
+                    <li><a href="/blocks">Blocks</a></li>
+                    <li><a href="/telemetry">Telemetry</a></li>
+                    <li><a href="/settings">Settings</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="content">
+            <div class="panel">
+                <h1>Drive Control</h1>
+                
+                <div class="joystick-container">
+                    <h2>Movement Joystick</h2>
+                    <div id="movement-joystick" class="joystick">
+                        <div class="joystick-knob"></div>
+                    </div>
+                    <div id="movement-values">X: 0, Y: 0</div>
+                </div>
+                
+                <div class="joystick-container">
+                    <h2>Rotation Joystick</h2>
+                    <div id="rotation-joystick" class="joystick">
+                        <div class="joystick-knob"></div>
+                    </div>
+                    <div id="rotation-values">Rotation: 0</div>
+                </div>
+                
+                <div class="speed-control">
+                    <label for="speed-slider">Movement Speed</label>
+                    <input type="range" id="speed-slider" min="10" max="100" value="50">
+                    <div class="speed-value" id="speed-value">50%</div>
+                </div>
+                
+                <div class="button-container">
+                    <button id="forward-btn" class="control-button">Forward</button>
+                    <button id="stop-btn" class="control-button danger">STOP</button>
+                    <button id="backward-btn" class="control-button">Backward</button>
+                </div>
+                
+                <div class="button-container">
+                    <button id="left-btn" class="control-button">Left</button>
+                    <button id="right-btn" class="control-button">Right</button>
+                </div>
+            </div>
+            
+            <div class="panel">
+                <h1>Telemetry</h1>
+                
+                <div id="motor-positions" class="telemetry">
+                    <h2>Motor Positions</h2>
+                    <div class="telemetry-item">
+                        <span class="telemetry-label">Front Left:</span>
+                        <span id="fl-motor-value">0</span>
+                    </div>
+                    <div class="telemetry-item">
+                        <span class="telemetry-label">Front Right:</span>
+                        <span id="fr-motor-value">0</span>
+                    </div>
+                    <div class="telemetry-item">
+                        <span class="telemetry-label">Rear Left:</span>
+                        <span id="rl-motor-value">0</span>
+                    </div>
+                    <div class="telemetry-item">
+                        <span class="telemetry-label">Rear Right:</span>
+                        <span id="rr-motor-value">0</span>
+                    </div>
+                </div>
+                
+                <div id="sensors" class="telemetry">
+                    <h2>Sensors</h2>
+                    <div class="telemetry-item">
+                        <span class="telemetry-label">Sonar Distance:</span>
+                        <span id="sonar-value">N/A</span>
+                    </div>
+                </div>
+                
+                <div id="camera-stream" class="telemetry">
+                    <h2>Camera</h2>
+                    <div style="text-align: center;">
+                        <p>Camera stream will appear here when available.</p>
+                        <!-- Camera stream will be injected here when available -->
+                    </div>
+                </div>
+
+                <div id="connection-status" class="status">
+                    Checking connection status...
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>PathfinderBot Control Interface &copy; 2025</p>
+        </footer>
+    </div>
+
+    <script>
+        // Variables for joystick control
+        const movementJoystick = document.getElementById('movement-joystick');
+        const movementKnob = movementJoystick.querySelector('.joystick-knob');
+        const movementValues = document.getElementById('movement-values');
+        const rotationJoystick = document.getElementById('rotation-joystick');
+        const rotationKnob = rotationJoystick.querySelector('.joystick-knob');
+        const rotationValues = document.getElementById('rotation-values');
+        
+        // Variables for direction buttons
+        const forwardBtn = document.getElementById('forward-btn');
+        const backwardBtn = document.getElementById('backward-btn');
+        const leftBtn = document.getElementById('left-btn');
+        const rightBtn = document.getElementById('right-btn');
+        const stopBtn = document.getElementById('stop-btn');
+        
+        // Speed control
+        const speedSlider = document.getElementById('speed-slider');
+        const speedValue = document.getElementById('speed-value');
+        
+        // Status elements
+        const statusElement = document.getElementById('connection-status');
+        
+        // Motor position displays
+        const flMotorValue = document.getElementById('fl-motor-value');
+        const frMotorValue = document.getElementById('fr-motor-value');
+        const rlMotorValue = document.getElementById('rl-motor-value');
+        const rrMotorValue = document.getElementById('rr-motor-value');
+        
+        // Sensor value displays
+        const sonarValue = document.getElementById('sonar-value');
+        
+        // Movement state
+        let movementX = 0;
+        let movementY = 0;
+        let rotationValue = 0;
+        let speedMultiplier = 0.5; // 50%
+        let isConnected = false;
+        let ws = null;
+        let lastCommandTime = 0;
+        const commandThrottleMs = 100; // Minimum time between commands (ms)
+        
+        // Initialize WebSocket connection
+        function initWebSocket() {
+            // Get the host from the current URL
+            const host = window.location.hostname;
+            const wsProtocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsUrl = `${wsProtocol}//${host}:8765`;
+            
+            updateConnectionStatus(false, 'Connecting to robot...');
+            
+            // Create WebSocket connection
+            ws = new WebSocket(wsUrl);
+            
+            // Connection opened
+            ws.addEventListener('open', (event) => {
+                updateConnectionStatus(true);
+                console.log('Connected to WebSocket server');
+                
+                // Start telemetry
+                startTelemetry();
+            });
+            
+            // Listen for messages
+            ws.addEventListener('message', (event) => {
+                try {
+                    const data = JSON.parse(event.data);
+                    console.log('Message from server:', data);
+                    
+                    // Handle telemetry data
+                    if (data.type === 'telemetry') {
+                        updateTelemetry(data.data);
+                    }
+                } catch (e) {
+                    console.error('Error parsing message:', e);
+                }
+            });
+            
+            // Connection closed
+            ws.addEventListener('close', (event) => {
+                updateConnectionStatus(false);
+                console.log('Connection closed');
+                
+                // Try to reconnect after a delay
+                setTimeout(initWebSocket, 5000);
+            });
+            
+            // Connection error
+            ws.addEventListener('error', (event) => {
+                updateConnectionStatus(false, 'Connection error');
+                console.error('WebSocket error:', event);
+            });
+        }
+        
+        // Send movement command to robot
+        function sendMovementCommand() {
+            if (!isConnected || !ws) return;
+            
+            // Throttle commands to avoid overwhelming the server
+            const now = Date.now();
+            if (now - lastCommandTime < commandThrottleMs) return;
+            lastCommandTime = now;
+            
+            // Scale values by speed multiplier
+            const scaledX = movementX * speedMultiplier;
+            const scaledY = -movementY * speedMultiplier; // Invert Y axis
+            const scaledRotation = rotationValue * speedMultiplier;
+            
+            // Send command via WebSocket
+            ws.send(JSON.stringify({
+                command: 'move',
+                x: scaledX,
+                y: scaledY,
+                rotation: scaledRotation
+            }));
+            
+            // Also send via API for redundancy
+            fetch('/api/robot/move', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    x: scaledX,
+                    y: scaledY,
+                    rotation: scaledRotation
+                })
+            }).catch(error => {
+                console.error('API error:', error);
+            });
+        }
+        
+        // Send stop command to robot
+        function sendStopCommand() {
+            if (!isConnected) return;
+            
+            // Send via WebSocket
+            if (ws) {
+                ws.send(JSON.stringify({
+                    command: 'stop'
+                }));
+            }
+            
+            // Also send via API for redundancy
+            fetch('/api/robot/stop', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({})
+            }).catch(error => {
+                console.error('API error:', error);
+            });
+            
+            // Reset joystick positions
+            resetJoysticks();
+        }
+        
+        // Start receiving telemetry data
+        function startTelemetry() {
+            if (!isConnected || !ws) return;
+            
+            ws.send(JSON.stringify({
+                command: 'start_telemetry',
+                interval: 0.2 // 5 updates per second
+            }));
+        }
+        
+        // Update telemetry displays
+        function updateTelemetry(data) {
+            if (!data) return;
+            
+            // Update motor positions
+            if (data.motor_positions && data.motor_positions.length >= 4) {
+                flMotorValue.textContent = data.motor_positions[0];
+                frMotorValue.textContent = data.motor_positions[1];
+                rlMotorValue.textContent = data.motor_positions[2];
+                rrMotorValue.textContent = data.motor_positions[3];
+            }
+            
+            // Update sonar reading
+            if (data.sonar) {
+                sonarValue.textContent = `${data.sonar.toFixed(2)} cm`;
+            }
+        }
+        
+        // Update connection status display
+        function updateConnectionStatus(connected, message) {
+            isConnected = connected;
+            
+            if (connected) {
+                statusElement.className = 'status connected';
+                statusElement.textContent = 'Connected to robot';
+            } else {
+                statusElement.className = 'status disconnected';
+                statusElement.textContent = message || 'Disconnected from robot';
+            }
+        }
+        
+        // Joystick drag functionality
+        function setupJoystick(joystickElement, knobElement, valueDisplay, isRotation = false) {
+            let isDragging = false;
+            
+            const joystickRect = joystickElement.getBoundingClientRect();
+            const centerX = joystickRect.width / 2;
+            const centerY = joystickRect.height / 2;
+            const maxDistance = joystickRect.width / 2 - knobElement.clientWidth / 2;
+            
+            function handleStart(e) {
+                isDragging = true;
+                joystickElement.classList.add('active');
+                handleMove(e);
+            }
+            
+            function handleMove(e) {
+                if (!isDragging) return;
+                
+                e.preventDefault();
+                
+                // Get position (support both mouse and touch)
+                let clientX, clientY;
+                if (e.type === 'touchmove' || e.type === 'touchstart') {
+                    clientX = e.touches[0].clientX;
+                    clientY = e.touches[0].clientY;
+                } else {
+                    clientX = e.clientX;
+                    clientY = e.clientY;
+                }
+                
+                // Calculate position relative to joystick center
+                const rect = joystickElement.getBoundingClientRect();
+                let deltaX = clientX - rect.left - centerX;
+                let deltaY = clientY - rect.top - centerY;
+                
+                // Calculate distance from center
+                const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+                
+                // Clamp to max distance
+                if (distance > maxDistance) {
+                    const scale = maxDistance / distance;
+                    deltaX *= scale;
+                    deltaY *= scale;
+                }
+                
+                // Update knob position
+                knobElement.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
+                
+                // Calculate normalized values (-1 to 1)
+                const normalizedX = deltaX / maxDistance;
+                const normalizedY = deltaY / maxDistance;
+                
+                // Update values
+                if (isRotation) {
+                    // For rotation joystick, only use X-axis
+                    rotationValue = normalizedX;
+                    valueDisplay.textContent = `Rotation: ${(rotationValue * 100).toFixed(0)}%`;
+                } else {
+                    // For movement joystick, use both axes
+                    movementX = normalizedX;
+                    movementY = normalizedY;
+                    valueDisplay.textContent = `X: ${(movementX * 100).toFixed(0)}%, Y: ${(movementY * 100).toFixed(0)}%`;
+                }
+                
+                // Send command
+                sendMovementCommand();
+            }
+            
+            function handleEnd() {
+                if (!isDragging) return;
+                
+                isDragging = false;
+                joystickElement.classList.remove('active');
+                
+                // Return knob to center
+                knobElement.style.transform = `translate(-50%, -50%)`;
+                
+                // Reset values
+                if (isRotation) {
+                    rotationValue = 0;
+                    valueDisplay.textContent = `Rotation: 0`;
+                } else {
+                    movementX = 0;
+                    movementY = 0;
+                    valueDisplay.textContent = `X: 0, Y: 0`;
+                }
+                
+                // Send stop command
+                sendMovementCommand();
+            }
+            
+            // Add event listeners for both mouse and touch
+            joystickElement.addEventListener('mousedown', handleStart);
+            document.addEventListener('mousemove', handleMove);
+            document.addEventListener('mouseup', handleEnd);
+            
+            joystickElement.addEventListener('touchstart', handleStart, { passive: false });
+            document.addEventListener('touchmove', handleMove, { passive: false });
+            document.addEventListener('touchend', handleEnd);
+        }
+        
+        // Reset joysticks to center position
+        function resetJoysticks() {
+            movementKnob.style.transform = `translate(-50%, -50%)`;
+            rotationKnob.style.transform = `translate(-50%, -50%)`;
+            
+            movementX = 0;
+            movementY = 0;
+            rotationValue = 0;
+            
+            movementValues.textContent = `X: 0, Y: 0`;
+            rotationValues.textContent = `Rotation: 0`;
+        }
+        
+        // Update speed multiplier
+        function updateSpeedMultiplier() {
+            speedMultiplier = speedSlider.value / 100;
+            speedValue.textContent = `${speedSlider.value}%`;
+        }
+        
+        // Button press handlers for direction control
+        function handleDirectionButton(directionX, directionY) {
+            // Set movement values based on button
+            movementX = directionX;
+            movementY = directionY;
+            
+            // Update joystick knob position for visual feedback
+            const maxDistance = movementJoystick.clientWidth / 2 - movementKnob.clientWidth / 2;
+            const translateX = directionX * maxDistance;
+            const translateY = directionY * maxDistance;
+            movementKnob.style.transform = `translate(${translateX}px, ${translateY}px)`;
+            
+            // Update display
+            movementValues.textContent = `X: ${(directionX * 100).toFixed(0)}%, Y: ${(directionY * 100).toFixed(0)}%`;
+            
+            // Send command
+            sendMovementCommand();
+        }
+        
+        // Initialize when the page loads
+        window.addEventListener('load', () => {
+            // Initialize WebSocket connection
+            initWebSocket();
+            
+            // Initialize joysticks
+            setupJoystick(movementJoystick, movementKnob, movementValues);
+            setupJoystick(rotationJoystick, rotationKnob, rotationValues, true);
+            
+            // Initialize speed slider
+            speedSlider.addEventListener('input', updateSpeedMultiplier);
+            updateSpeedMultiplier();
+            
+            // Initialize direction buttons
+            forwardBtn.addEventListener('mousedown', () => handleDirectionButton(0, -1));
+            forwardBtn.addEventListener('mouseup', resetJoysticks);
+            forwardBtn.addEventListener('touchstart', () => handleDirectionButton(0, -1), { passive: false });
+            forwardBtn.addEventListener('touchend', resetJoysticks);
+            
+            backwardBtn.addEventListener('mousedown', () => handleDirectionButton(0, 1));
+            backwardBtn.addEventListener('mouseup', resetJoysticks);
+            backwardBtn.addEventListener('touchstart', () => handleDirectionButton(0, 1), { passive: false });
+            backwardBtn.addEventListener('touchend', resetJoysticks);
+            
+            leftBtn.addEventListener('mousedown', () => handleDirectionButton(-1, 0));
+            leftBtn.addEventListener('mouseup', resetJoysticks);
+            leftBtn.addEventListener('touchstart', () => handleDirectionButton(-1, 0), { passive: false });
+            leftBtn.addEventListener('touchend', resetJoysticks);
+            
+            rightBtn.addEventListener('mousedown', () => handleDirectionButton(1, 0));
+            rightBtn.addEventListener('mouseup', resetJoysticks);
+            rightBtn.addEventListener('touchstart', () => handleDirectionButton(1, 0), { passive: false });
+            rightBtn.addEventListener('touchend', resetJoysticks);
+            
+            stopBtn.addEventListener('click', sendStopCommand);
+            stopBtn.addEventListener('touchstart', sendStopCommand, { passive: false });
+        });
+    </script>
+</body>
+</html>
