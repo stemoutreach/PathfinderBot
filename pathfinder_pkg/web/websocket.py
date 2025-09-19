@@ -9,6 +9,10 @@ import json
 import asyncio
 import threading
 from pathlib import Path
+try:
+    from websockets.server import serve
+except Exception:
+    from websockets import serve
 import websockets
 from pathfinder_pkg.utils.logging import get_logger
 
@@ -46,7 +50,9 @@ class WebSocketServer:
         self.loop = None
         self._thread = None
 
-    async def _handler(self, websocket, path):
+    async def _handler(self, websocket, path=None):
+        if path is None:
+            path = getattr(websocket, "path", "/")
         """
         Handle WebSocket connections.
 
@@ -127,7 +133,7 @@ class WebSocketServer:
 
     async def _server_task(self):
         """Run the WebSocket server in the current event loop."""
-        async with websockets.serve(self._handler, self.host, self.port):
+        async with serve(self._handler, self.host, self.port):
             self.running = True
             logger.info(f"WebSocket server started on {self.host}:{self.port}")
             # Keep the server running until stopped
