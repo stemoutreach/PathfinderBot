@@ -1,10 +1,11 @@
 """
-Web interface modules for PathfinderBot.
+Web module for PathfinderBot.
 
-This package provides web interfaces for controlling and monitoring
-the PathfinderBot, including HTTP and WebSocket servers.
+This module provides a web-based interface for controlling the robot,
+visualizing its state, and configuring its parameters. It uses Flask
+to serve a responsive web application that works on desktop and mobile devices.
 """
 
-from .websocket import WebSocketServer, RobotWebSocketServer
+from pathfinder_pkg.web.server import WebInterface
 
-__all__ = ["WebSocketServer", "RobotWebSocketServer"]
+__all__ = ["WebInterface"]

@@ -1,477 +1,457 @@
 """
-Web server module for PathfinderBot.
+Web server for PathfinderBot navigation interface.
 
-This module provides a Flask-based web server with responsive
-design for controlling and monitoring the PathfinderBot.
+This module provides a Flask-based web server with WebSocket support
+for real-time communication between the robot and web clients.
 """
 
 import os
-import json
 import time
+import json
 import threading
-from pathlib import Path
-from datetime import datetime
-from flask import (
-    Flask,
-    render_template,
-    Response,
-    request,
-    jsonify,
-    send_from_directory,
-)
-from pathfinder_pkg.utils.logging import get_logger
+import logging
+from typing import Dict, List, Optional, Any, Callable, Union
+from flask import Flask, render_template, request, jsonify, send_from_directory
+from flask_socketio import SocketIO, emit
+import numpy as np
+import base64
 
+from pathfinder_pkg.utils.logging import get_logger
+from pathfinder_pkg.navigation.map import OccupancyGridMap
+from pathfinder_pkg.navigation.localization import Pose
+from pathfinder_pkg.navigation.slam.slam import SLAM
+from pathfinder_pkg.navigation.behaviors.navigator import (
+    NavigationController,
+    NavigationQueue,
+    NavigationStatus,
+)
+from pathfinder_pkg.navigation.visualization.visualizer import WebVisualizer
+
+# Initialize logger
 logger = get_logger(__name__)
 
+# Declare global variables
+app = Flask(__name__)
+app.config["SECRET_KEY"] = "pathfinderbot-secret!"
+socketio = SocketIO(app, cors_allowed_origins="*", async_mode="threading")
 
-class WebServer:
+# Global objects
+slam_system: Optional[SLAM] = None
+nav_controller: Optional[NavigationController] = None
+nav_queue: Optional[NavigationQueue] = None
+visualizer: Optional[WebVisualizer] = None
+robot_controller: Optional[Any] = None  # This would be the actual robot controller
+
+# Status tracking
+update_interval: float = 0.5
+status_thread: Optional[threading.Thread] = None
+status_running: bool = False
+
+
+class WebInterface:
     """
-    Web server for PathfinderBot control interface.
+    Web interface manager for PathfinderBot.
 
-    This class implements a Flask-based web server that provides
-    a responsive interface for controlling and monitoring the robot.
-
-    Attributes:
-        app (Flask): The Flask application instance.
-        host (str): Host address to bind the server to.
-        port (int): Port to listen on.
-        static_folder (str): Path to static files (HTML, CSS, JS, etc.).
-        template_folder (str): Path to template files.
-        robot: The robot instance to control.
-        ws_server: WebSocket server instance for real-time communication.
-        record_path (str): Path to store recording files.
-        recording (bool): Whether recording is active.
-        playback (bool): Whether playback is active.
+    This class provides methods for initializing and controlling the web interface
+    for the PathfinderBot navigation system.
     """
 
     def __init__(
         self,
-        host="0.0.0.0",
-        port=5000,
-        static_folder=None,
-        template_folder=None,
-        robot=None,
-        ws_server=None,
+        slam_system_instance: SLAM,
+        navigation_controller: NavigationController,
+        robot_ctrl: Any,
+        host: str = "0.0.0.0",
+        port: int = 5000,
+        debug: bool = False,
+        update_rate: float = 0.5,
     ):
         """
-        Initialize the web server.
+        Initialize the web interface.
 
         Args:
-            host (str, optional): Host address to bind the server to.
-            port (int, optional): Port to listen on.
-            static_folder (str, optional): Path to static files.
-            template_folder (str, optional): Path to template files.
-            robot: The robot instance to control.
-            ws_server: WebSocket server instance for real-time communication.
+            slam_system_instance: SLAM system for localization and mapping
+            navigation_controller: Navigation controller for robot movement
+            robot_ctrl: Robot controller for direct hardware control
+            host: Host address to bind the server to
+            port: Port to run the server on
+            debug: Whether to run in debug mode
+            update_rate: Rate to update status information (seconds)
         """
-        self.host = host
-        self.port = port
+        global slam_system, nav_controller, nav_queue, robot_controller, update_interval
 
-        # Set up paths
-        pkg_dir = Path(__file__).parent.parent
-        self.static_folder = static_folder or str(pkg_dir / "web" / "static")
-        self.template_folder = template_folder or str(pkg_dir / "web" / "templates")
+        # Store global references
+        slam_system = slam_system_instance
+        nav_controller = navigation_controller
+        robot_controller = robot_ctrl
+        update_interval = update_rate
 
-        # Create Flask app
-        self.app = Flask(
-            __name__,
-            static_folder=self.static_folder,
-            template_folder=self.template_folder,
+        # Create navigation queue
+        nav_queue = NavigationQueue(nav_controller)
+
+        # Create web visualizer
+        global visualizer
+        visualizer = WebVisualizer(
+            slam_system=slam_system,
+            navigation_controller=nav_controller,
+            update_interval=update_rate,
+            width=640,
+            height=480,
         )
 
-        self.robot = robot
-        self.ws_server = ws_server
+        # Store server parameters
+        self.host = host
+        self.port = port
+        self.debug = debug
 
-        # Recording and playback
-        self.record_path = os.path.join(self.static_folder, "recordings")
-        os.makedirs(self.record_path, exist_ok=True)
-        self.recording = False
-        self.playback = False
-        self._record_thread = None
-        self._playback_thread = None
+        # Initialize static directory
+        static_dir = os.path.join(os.path.dirname(__file__), "static")
+        if not os.path.exists(static_dir):
+            os.makedirs(static_dir)
 
-        # Register routes
-        self._register_routes()
+        # Initialize templates directory
+        template_dir = os.path.join(os.path.dirname(__file__), "templates")
+        if not os.path.exists(template_dir):
+            os.makedirs(template_dir)
 
-    def _register_routes(self):
-        """Register the Flask routes."""
-        app = self.app
+        logger.info(f"Web interface initialized at http://{host}:{port}")
 
-        # Home page
-        @app.route("/")
-        def index():
-            return render_template("index.html")
+    def start(self):
+        """Start the web server and background threads."""
+        # Start the status update thread
+        self._start_status_updates()
 
-        # Drive interface
-        @app.route("/drive")
-        def drive():
-            return render_template("drive.html")
+        # Start the visualizer
+        if visualizer:
+            visualizer.start()
 
-        # Arm control interface
-        @app.route("/arm")
-        def arm():
-            return render_template("arm.html")
+        # Start the web server
+        socketio.run(app, host=self.host, port=self.port, debug=self.debug)
 
-        # Block detection interface
-        @app.route("/blocks")
-        def blocks():
-            return render_template("blocks.html")
+    def stop(self):
+        """Stop the web server and background threads."""
+        # Stop the status update thread
+        self._stop_status_updates()
 
-        # Telemetry dashboard
-        @app.route("/telemetry")
-        def telemetry():
-            return render_template("telemetry.html")
+        # Stop the visualizer
+        if visualizer:
+            visualizer.stop()
 
-        # Settings page
-        @app.route("/settings")
-        def settings():
-            return render_template("settings.html")
+    def _start_status_updates(self):
+        """Start the status update thread."""
+        global status_thread, status_running
 
-        # API endpoints
-        @app.route("/api/status")
-        def api_status():
+        if status_thread and status_thread.is_alive():
+            logger.warning("Status update thread is already running")
+            return
+
+        status_running = True
+        status_thread = threading.Thread(target=_status_update_loop, daemon=True)
+        status_thread.start()
+        logger.info("Status update thread started")
+
+    def _stop_status_updates(self):
+        """Stop the status update thread."""
+        global status_thread, status_running
+
+        status_running = False
+        if status_thread:
+            status_thread.join(timeout=2.0)
+        logger.info("Status update thread stopped")
+
+
+def _status_update_loop():
+    """Background thread function for sending status updates to clients."""
+    global status_running, update_interval
+
+    logger.info("Status update loop started")
+
+    while status_running:
+        try:
+            # Get current status
+            status_data = _get_current_status()
+
+            # Send status to clients
+            socketio.emit("status_update", status_data)
+
+            # Send map image if available
+            if visualizer:
+                map_image = visualizer.get_current_frame()
+                if map_image:
+                    map_base64 = base64.b64encode(map_image).decode("utf-8")
+                    socketio.emit("map_update", {"image": map_base64})
+
+            # Sleep until next update
+            time.sleep(update_interval)
+
+        except Exception as e:
+            logger.error(f"Error in status update loop: {e}")
+            time.sleep(1.0)
+
+
+def _get_current_status() -> Dict[str, Any]:
+    """
+    Get the current status of the robot.
+
+    Returns:
+        Dictionary with status information
+    """
+    status = {
+        "timestamp": time.time(),
+        "pose": None,
+        "battery": None,
+        "navigation": {
+            "status": "IDLE",
+            "goal": None,
+            "path_length": 0,
+            "distance_to_goal": None,
+        },
+        "sensors": {},
+    }
+
+    # Get pose if available
+    if slam_system:
+        pose = slam_system.get_pose()
+        if pose:
+            status["pose"] = {"x": pose.x, "y": pose.y, "theta": pose.theta}
+
+    # Get battery status if available
+    if robot_controller and hasattr(robot_controller, "get_battery_level"):
+        status["battery"] = robot_controller.get_battery_level()
+    else:
+        # Mock battery level for testing
+        status["battery"] = {"level": 85, "charging": False}
+
+    # Get navigation status if available
+    if nav_controller:
+        nav_status = nav_controller.navigation_status.name
+        status["navigation"]["status"] = nav_status
+
+        # Get goal if available
+        if nav_controller.goal_pose:
+            status["navigation"]["goal"] = {
+                "x": nav_controller.goal_pose.x,
+                "y": nav_controller.goal_pose.y,
+                "theta": nav_controller.goal_pose.theta,
+            }
+
+        # Get path length if available
+        if hasattr(nav_controller, "current_path") and nav_controller.current_path:
+            status["navigation"]["path_length"] = len(nav_controller.current_path)
+
+        # Calculate distance to goal if both pose and goal are available
+        if status["pose"] and status["navigation"]["goal"]:
+            dx = status["navigation"]["goal"]["x"] - status["pose"]["x"]
+            dy = status["navigation"]["goal"]["y"] - status["pose"]["y"]
+            status["navigation"]["distance_to_goal"] = np.sqrt(dx * dx + dy * dy)
+
+    # Get sensor data if available
+    if robot_controller:
+        # Sonar sensors
+        if hasattr(robot_controller, "get_sonar_readings"):
+            status["sensors"]["sonar"] = robot_controller.get_sonar_readings()
+
+        # Camera status
+        if hasattr(robot_controller, "get_camera_status"):
+            status["sensors"]["camera"] = robot_controller.get_camera_status()
+
+        # IMU data
+        if hasattr(robot_controller, "get_imu_data"):
+            status["sensors"]["imu"] = robot_controller.get_imu_data()
+
+    return status
+
+
+# Flask routes
+@app.route("/")
+def index():
+    """Serve the main page."""
+    return render_template("index.html")
+
+
+@app.route("/static/<path:path>")
+def serve_static(path):
+    """Serve static files."""
+    return send_from_directory("static", path)
+
+
+@app.route("/api/status", methods=["GET"])
+def get_status():
+    """Get the current status of the robot."""
+    return jsonify(_get_current_status())
+
+
+@app.route("/api/map", methods=["GET"])
+def get_map():
+    """Get the current map."""
+    if slam_system:
+        grid_map = slam_system.get_map()
+        if grid_map:
             return jsonify(
                 {
-                    "status": "ok",
-                    "robot_connected": self.robot is not None,
-                    "websocket_active": self.ws_server is not None
-                    and getattr(self.ws_server, "running", False),
-                    "time": time.time(),
+                    "width": grid_map.width,
+                    "height": grid_map.height,
+                    "resolution": grid_map.resolution,
+                    "origin_x": grid_map.origin_x,
+                    "origin_y": grid_map.origin_y,
+                    "grid": grid_map.get_grid().tolist(),
                 }
             )
 
-        @app.route("/api/robot/move", methods=["POST"])
-        def api_robot_move():
-            data = request.json
-            if not self.robot:
-                return (
-                    jsonify({"status": "error", "message": "Robot not connected"}),
-                    503,
-                )
+    return jsonify({"error": "Map not available"}), 404
 
-            try:
-                x = float(data.get("x", 0))
-                y = float(data.get("y", 0))
-                rotation = float(data.get("rotation", 0))
 
-                # Apply movement
-                if hasattr(self.robot, "set_velocity"):
-                    self.robot.set_velocity(x, y, rotation)
-                elif hasattr(self.robot, "translation"):
-                    if abs(rotation) < 0.01:
-                        self.robot.translation(x, y)
-                    else:
-                        self.robot.rotation(rotation)
+@app.route("/api/waypoints", methods=["GET"])
+def get_waypoints():
+    """Get the current waypoints."""
+    if nav_controller and hasattr(nav_controller, "current_path"):
+        waypoints = []
+        for wp in nav_controller.current_path:
+            waypoints.append(
+                {"x": wp.x, "y": wp.y, "theta": wp.theta, "action": wp.action}
+            )
+        return jsonify(waypoints)
 
-                return jsonify({"status": "ok"})
-            except Exception as e:
-                logger.error(f"Error moving robot: {e}")
-                return jsonify({"status": "error", "message": str(e)}), 500
+    return jsonify([])
 
-        @app.route("/api/robot/stop", methods=["POST"])
-        def api_robot_stop():
-            if not self.robot:
-                return (
-                    jsonify({"status": "error", "message": "Robot not connected"}),
-                    503,
-                )
 
-            try:
-                if hasattr(self.robot, "stop"):
-                    self.robot.stop()
-                elif hasattr(self.robot, "reset_motors"):
-                    self.robot.reset_motors()
+@app.route("/api/set_goal", methods=["POST"])
+def set_goal():
+    """Set a navigation goal."""
+    data = request.json
+    if not data:
+        return jsonify({"error": "No data provided"}), 400
 
-                return jsonify({"status": "ok"})
-            except Exception as e:
-                logger.error(f"Error stopping robot: {e}")
-                return jsonify({"status": "error", "message": str(e)}), 500
+    # Extract goal coordinates
+    x = data.get("x")
+    y = data.get("y")
+    theta = data.get("theta")
 
-        # Recording and playback
-        @app.route("/api/recording/start", methods=["POST"])
-        def api_recording_start():
-            if self.recording:
-                return jsonify({"status": "error", "message": "Already recording"})
+    if x is None or y is None:
+        return jsonify({"error": "Missing coordinates"}), 400
 
-            try:
-                filename = request.json.get("filename")
-                if not filename:
-                    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-                    filename = f"recording_{timestamp}.json"
-
-                self.start_recording(filename)
-                return jsonify({"status": "ok", "filename": filename})
-            except Exception as e:
-                logger.error(f"Error starting recording: {e}")
-                return jsonify({"status": "error", "message": str(e)}), 500
-
-        @app.route("/api/recording/stop", methods=["POST"])
-        def api_recording_stop():
-            if not self.recording:
-                return jsonify({"status": "error", "message": "Not recording"})
-
-            try:
-                self.stop_recording()
-                return jsonify({"status": "ok"})
-            except Exception as e:
-                logger.error(f"Error stopping recording: {e}")
-                return jsonify({"status": "error", "message": str(e)}), 500
-
-        @app.route("/api/recording/list")
-        def api_recording_list():
-            try:
-                recordings = []
-                for file in os.listdir(self.record_path):
-                    if file.endswith(".json"):
-                        path = os.path.join(self.record_path, file)
-                        size = os.path.getsize(path)
-                        mtime = os.path.getmtime(path)
-                        recordings.append(
-                            {"filename": file, "size": size, "modified": mtime}
-                        )
-
-                recordings.sort(key=lambda x: x["modified"], reverse=True)
-                return jsonify({"status": "ok", "recordings": recordings})
-            except Exception as e:
-                logger.error(f"Error listing recordings: {e}")
-                return jsonify({"status": "error", "message": str(e)}), 500
-
-        @app.route("/api/recording/play", methods=["POST"])
-        def api_recording_play():
-            if self.playback:
-                return jsonify({"status": "error", "message": "Already playing back"})
-
-            try:
-                filename = request.json.get("filename")
-                if not filename:
-                    return jsonify(
-                        {"status": "error", "message": "No filename provided"}
-                    )
-
-                self.start_playback(filename)
-                return jsonify({"status": "ok", "filename": filename})
-            except Exception as e:
-                logger.error(f"Error starting playback: {e}")
-                return jsonify({"status": "error", "message": str(e)}), 500
-
-        @app.route("/api/recording/stop_playback", methods=["POST"])
-        def api_recording_stop_playback():
-            if not self.playback:
-                return jsonify({"status": "error", "message": "Not playing back"})
-
-            try:
-                self.stop_playback()
-                return jsonify({"status": "ok"})
-            except Exception as e:
-                logger.error(f"Error stopping playback: {e}")
-                return jsonify({"status": "error", "message": str(e)}), 500
-
-        @app.route("/api/recording/download/<filename>")
-        def api_recording_download(filename):
-            try:
-                return send_from_directory(
-                    self.record_path, filename, as_attachment=True
-                )
-            except Exception as e:
-                logger.error(f"Error downloading recording: {e}")
-                return jsonify({"status": "error", "message": str(e)}), 500
-
-    def start(self, debug=False, threaded=True):
-        """
-        Start the web server.
-
-        Args:
-            debug (bool, optional): Whether to run in debug mode.
-            threaded (bool, optional): Whether to run with threading.
-
-        Returns:
-            The result of app.run().
-        """
-        logger.info(f"Starting web server on {self.host}:{self.port}")
-        return self.app.run(
-            host=self.host, port=self.port, debug=debug, threaded=threaded
+    # Add goal to navigation queue
+    if nav_queue:
+        task_index = nav_queue.add_goal(x, y, theta)
+        return jsonify(
+            {
+                "success": True,
+                "task_index": task_index,
+                "message": f"Goal added at ({x}, {y})",
+            }
         )
 
-    def start_recording(self, filename):
-        """
-        Start recording robot telemetry and commands.
+    return jsonify({"error": "Navigation system not available"}), 503
 
-        Args:
-            filename (str): The filename to save the recording to.
-        """
-        if self.recording:
-            logger.warning("Already recording")
+
+@app.route("/api/cancel_navigation", methods=["POST"])
+def cancel_navigation():
+    """Cancel current navigation."""
+    if nav_controller:
+        nav_controller.cancel()
+        return jsonify({"success": True, "message": "Navigation cancelled"})
+
+    return jsonify({"error": "Navigation system not available"}), 503
+
+
+@app.route("/api/clear_queue", methods=["POST"])
+def clear_queue():
+    """Clear the navigation queue."""
+    if nav_queue:
+        nav_queue.clear_queue()
+        return jsonify({"success": True, "message": "Navigation queue cleared"})
+
+    return jsonify({"error": "Navigation queue not available"}), 503
+
+
+@app.route("/api/control/move", methods=["POST"])
+def control_move():
+    """Direct control of robot movement."""
+    data = request.json
+    if not data:
+        return jsonify({"error": "No data provided"}), 400
+
+    # Extract velocity commands
+    linear_velocity = data.get("linear", 0.0)
+    angular_velocity = data.get("angular", 0.0)
+
+    # Send to robot controller
+    if robot_controller and hasattr(robot_controller, "set_velocity"):
+        robot_controller.set_velocity(linear_velocity, angular_velocity)
+        return jsonify({"success": True})
+
+    return jsonify({"error": "Robot controller not available"}), 503
+
+
+# SocketIO events
+@socketio.on("connect")
+def handle_connect():
+    """Handle client connection."""
+    logger.info(f"Client connected: {request.sid}")
+
+
+@socketio.on("disconnect")
+def handle_disconnect():
+    """Handle client disconnection."""
+    logger.info(f"Client disconnected: {request.sid}")
+
+
+@socketio.on("control_command")
+def handle_control_command(data):
+    """Handle control commands from clients."""
+    command = data.get("command")
+    params = data.get("params", {})
+
+    if not command:
+        emit("command_response", {"error": "No command specified"})
+        return
+
+    # Direct movement control
+    if command == "move":
+        linear = params.get("linear", 0.0)
+        angular = params.get("angular", 0.0)
+
+        if robot_controller and hasattr(robot_controller, "set_velocity"):
+            robot_controller.set_velocity(linear, angular)
+            emit("command_response", {"success": True, "command": command})
+        else:
+            emit("command_response", {"error": "Robot controller not available"})
+
+    # Set navigation goal
+    elif command == "set_goal":
+        x = params.get("x")
+        y = params.get("y")
+        theta = params.get("theta")
+
+        if x is None or y is None:
+            emit("command_response", {"error": "Missing coordinates"})
             return
 
-        self.recording = True
+        if nav_queue:
+            task_index = nav_queue.add_goal(x, y, theta)
+            emit(
+                "command_response",
+                {"success": True, "command": command, "task_index": task_index},
+            )
+        else:
+            emit("command_response", {"error": "Navigation queue not available"})
 
-        # Make sure the directory exists
-        os.makedirs(self.record_path, exist_ok=True)
+    # Cancel navigation
+    elif command == "cancel_navigation":
+        if nav_controller:
+            nav_controller.cancel()
+            emit("command_response", {"success": True, "command": command})
+        else:
+            emit("command_response", {"error": "Navigation controller not available"})
 
-        # Start recording in a separate thread
-        def record_loop():
-            filepath = os.path.join(self.record_path, filename)
-            try:
-                with open(filepath, "w") as f:
-                    f.write('{"recordings":[\n')
+    # Clear navigation queue
+    elif command == "clear_queue":
+        if nav_queue:
+            nav_queue.clear_queue()
+            emit("command_response", {"success": True, "command": command})
+        else:
+            emit("command_response", {"error": "Navigation queue not available"})
 
-                    last_write = time.time()
-                    first_entry = True
-
-                    while self.recording:
-                        # Only record at a reasonable rate (e.g., 10 Hz)
-                        now = time.time()
-                        if now - last_write < 0.1:
-                            time.sleep(0.01)
-                            continue
-
-                        # Get telemetry data
-                        data = {}
-                        if self.robot:
-                            # Similar to WebSocket telemetry data
-                            data = {
-                                "timestamp": now,
-                                "motors": getattr(
-                                    self.robot, "get_motor_positions", lambda: []
-                                )(),
-                            }
-
-                            # Add component data if available
-                            if hasattr(self.robot, "get_component"):
-                                for comp_name in ["camera", "sonar", "imu"]:
-                                    comp = self.robot.get_component(comp_name)
-                                    if comp:
-                                        try:
-                                            if hasattr(comp, "get_data"):
-                                                data[comp_name] = comp.get_data()
-                                            elif hasattr(comp, "get_reading"):
-                                                data[comp_name] = comp.get_reading()
-                                        except:
-                                            pass
-
-                        # Write to file
-                        if not first_entry:
-                            f.write(",\n")
-                        else:
-                            first_entry = False
-
-                        json.dump({"time": now, "data": data}, f)
-                        last_write = now
-
-                    # Close the JSON array
-                    f.write("\n]}\n")
-                logger.info(f"Recording saved to {filepath}")
-            except Exception as e:
-                logger.error(f"Error during recording: {e}")
-                self.recording = False
-
-        self._record_thread = threading.Thread(target=record_loop)
-        self._record_thread.daemon = True
-        self._record_thread.start()
-
-        logger.info(f"Started recording to {filename}")
-
-    def stop_recording(self):
-        """Stop recording."""
-        if not self.recording:
-            logger.warning("Not recording")
-            return
-
-        self.recording = False
-        if self._record_thread:
-            self._record_thread.join(timeout=2.0)
-            self._record_thread = None
-
-        logger.info("Recording stopped")
-
-    def start_playback(self, filename):
-        """
-        Start playing back a recording.
-
-        Args:
-            filename (str): The filename to play back.
-        """
-        if self.playback:
-            logger.warning("Already playing back")
-            return
-
-        filepath = os.path.join(self.record_path, filename)
-        if not os.path.exists(filepath):
-            raise FileNotFoundError(f"Recording file not found: {filepath}")
-
-        self.playback = True
-
-        # Start playback in a separate thread
-        def playback_loop():
-            try:
-                with open(filepath, "r") as f:
-                    recording = json.load(f)
-                    entries = recording.get("recordings", [])
-
-                    if not entries:
-                        logger.warning(f"No entries found in recording: {filename}")
-                        self.playback = False
-                        return
-
-                    # Get the first timestamp to use as a reference
-                    start_time = entries[0]["time"]
-                    real_start_time = time.time()
-
-                    for i, entry in enumerate(entries):
-                        if not self.playback:
-                            break
-
-                        # Calculate the time when this entry should be played
-                        entry_offset = entry["time"] - start_time
-                        play_at = real_start_time + entry_offset
-
-                        # Wait until it's time to play this entry
-                        wait_time = play_at - time.time()
-                        if wait_time > 0:
-                            time.sleep(wait_time)
-
-                        # Apply the data if applicable
-                        if self.robot and self.ws_server:
-                            try:
-                                # Broadcast telemetry via WebSocket
-                                asyncio.run_coroutine_threadsafe(
-                                    self.ws_server.broadcast(
-                                        {"type": "playback", "data": entry["data"]}
-                                    ),
-                                    self.ws_server.loop,
-                                )
-
-                                # TODO: Actually control the robot based on the recorded data
-                                # This would require additional data in the recording
-
-                            except Exception as e:
-                                logger.error(f"Error applying playback data: {e}")
-
-                logger.info(f"Playback of {filename} completed")
-            except Exception as e:
-                logger.error(f"Error during playback: {e}")
-            finally:
-                self.playback = False
-
-        self._playback_thread = threading.Thread(target=playback_loop)
-        self._playback_thread.daemon = True
-        self._playback_thread.start()
-
-        logger.info(f"Started playback of {filename}")
-
-    def stop_playback(self):
-        """Stop playback."""
-        if not self.playback:
-            logger.warning("Not playing back")
-            return
-
-        self.playback = False
-        if self._playback_thread:
-            self._playback_thread.join(timeout=2.0)
-            self._playback_thread = None
-
-        logger.info("Playback stopped")
-
-
-# Import asyncio for WebSocket communication
-import asyncio
+    # Unknown command
+    else:
+        emit("command_response", {"error": f"Unknown command: {command}"})

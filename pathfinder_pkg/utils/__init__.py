@@ -1,7 +1,5 @@
 """
-Utilities for the PathfinderBot package.
+Utilities module for PathfinderBot.
+
+This module contains utility functions and classes used throughout the PathfinderBot system.
 """
-
-from .logging import get_logger, set_log_level, logger
-
-__all__ = ["get_logger", "set_log_level", "logger"]

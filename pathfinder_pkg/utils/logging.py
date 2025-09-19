@@ -1,84 +1,59 @@
 """
-Logging module for PathfinderBot
+Logging utilities for PathfinderBot.
 
-Provides a centralized logging configuration for the entire package.
+This module provides functions for setting up and managing logging for the PathfinderBot system.
 """
 
-import logging
 import os
-import sys
-from datetime import datetime
+import logging
+from typing import Optional
+
+# Default logging format
+DEFAULT_FORMAT = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 
 
-def get_logger(name, level=None):
+def setup_logging(
+    level: str = "INFO",
+    log_file: Optional[str] = None,
+    log_format: str = DEFAULT_FORMAT,
+) -> None:
     """
-    Get a logger with the specified name and optional level.
+    Set up logging for the PathfinderBot system.
 
     Args:
-        name (str): The name of the logger, typically the module name using __name__.
-        level (int, optional): The logging level. Defaults to logging.INFO.
+        level: Logging level ('DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL')
+        log_file: Path to log file (if None, logs will only be printed to console)
+        log_format: Format string for log messages
+    """
+    # Convert string level to logging level
+    numeric_level = getattr(logging, level.upper(), logging.INFO)
+
+    # Configure root logger
+    logging.basicConfig(
+        level=numeric_level, format=log_format, handlers=[logging.StreamHandler()]
+    )
+
+    # Add file handler if log_file is specified
+    if log_file:
+        # Ensure directory exists
+        log_dir = os.path.dirname(log_file)
+        if log_dir and not os.path.exists(log_dir):
+            os.makedirs(log_dir)
+
+        # Add file handler
+        file_handler = logging.FileHandler(log_file)
+        file_handler.setFormatter(logging.Formatter(log_format))
+        logging.getLogger().addHandler(file_handler)
+
+
+def get_logger(name: str) -> logging.Logger:
+    """
+    Get a logger for the specified module.
+
+    Args:
+        name: Name of the module (usually __name__)
 
     Returns:
-        logging.Logger: A configured logger instance.
+        Logger instance
     """
-    if level is None:
-        # Default to INFO, but allow override through environment variable
-        level = getattr(logging, os.environ.get("PATHFINDER_LOG_LEVEL", "INFO"))
-
-    logger = logging.getLogger(name)
-
-    # Only configure the logger if it hasn't been configured yet
-    if not logger.handlers:
-        logger.setLevel(level)
-
-        # Console handler for terminal output
-        console_handler = logging.StreamHandler(sys.stdout)
-        console_handler.setLevel(level)
-        console_format = logging.Formatter(
-            "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-        )
-        console_handler.setFormatter(console_format)
-        logger.addHandler(console_handler)
-
-        # Check if we should log to file based on environment variable
-        log_to_file = (
-            os.environ.get("PATHFINDER_LOG_TO_FILE", "false").lower() == "true"
-        )
-        if log_to_file:
-            log_dir = os.environ.get("PATHFINDER_LOG_DIR", "logs")
-
-            # Create log directory if it doesn't exist
-            if not os.path.exists(log_dir):
-                os.makedirs(log_dir)
-
-            # Use timestamped filename to avoid overwriting logs
-            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-            log_file = os.path.join(log_dir, f"pathfinder_{timestamp}.log")
-
-            file_handler = logging.FileHandler(log_file)
-            file_handler.setLevel(level)
-            file_format = logging.Formatter(
-                "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-            )
-            file_handler.setFormatter(file_format)
-            logger.addHandler(file_handler)
-
-    return logger
-
-
-def set_log_level(logger_name, level):
-    """
-    Set the log level for a specific logger.
-
-    Args:
-        logger_name (str): The name of the logger.
-        level (int): The logging level to set.
-    """
-    logger = logging.getLogger(logger_name)
-    logger.setLevel(level)
-    for handler in logger.handlers:
-        handler.setLevel(level)
-
-
-# Create the root logger for the package
-logger = get_logger("pathfinder_pkg")
+    return logging.getLogger(name)
