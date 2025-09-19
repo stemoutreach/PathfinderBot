@@ -2,7 +2,7 @@
 
 **Empowering Engineers Through Hands-On Robotics and Leadership Development**
 
-Welcome to the **PathfinderBot** repository! This project provides engineers and technical teams with a hands-on robotics and leadership development experience. Participants will assemble, program, and operate the **MasterPi robot**, applying both technical and strategic skills to complete challenges.
+Welcome to the **PathfinderBot** repository! This project provides engineers and technical teams with a hands-on robotics and leadership development experience. Participants will assemble, program, and operate the **MasterPi robot**, applying both technical and strategic skills to complete all of the challenges.
 
 ![Workshop Setup](/zzimages/2025Setup500Robot.jpg)
 
