@@ -1,0 +1,24 @@
+# Performance Optimization Dependencies
+# These packages are required for the performance-optimized features
+
+# Core dependencies
+numpy>=1.19.0
+websockets>=10.0
+flask>=2.0.0
+psutil>=5.8.0
+
+# WebSocket server
+websockets>=10.3.0
+
+# Performance monitoring
+psutil>=5.9.0
+
+# Web interface
+flask>=2.0.0
+flask-socketio>=5.0.0
+eventlet>=0.30.0
+
+# Optional - for hardware acceleration
+# Uncomment if your platform supports it
+# opencv-python-headless>=4.5.0
+# tensorflow-lite>=2.8.0

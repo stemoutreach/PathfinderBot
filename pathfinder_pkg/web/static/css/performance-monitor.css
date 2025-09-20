@@ -1,0 +1,228 @@
+/**
+ * PathfinderBot Performance Monitor Styles
+ * 
+ * Optimized CSS for the performance monitoring component:
+ * - Uses CSS variables for easy theming
+ * - Implements efficient transforms for animations
+ * - Employs will-change for GPU acceleration
+ * - Designed for responsive layouts with minimal reflows
+ */
+
+:root {
+  --pm-background: #1e2124;
+  --pm-text-color: #e8e8e8;
+  --pm-border-color: #444;
+  --pm-header-bg: #2c2f33;
+  --pm-good-color: #43b581;
+  --pm-warning-color: #faa61a;
+  --pm-critical-color: #f04747;
+  --pm-battery-bg: #292b2f;
+  --pm-connection-dot-size: 8px;
+  --pm-bar-height: 10px;
+  --pm-section-margin: 12px;
+  --pm-border-radius: 4px;
+}
+
+/* Base container */
+.performance-monitor {
+  background-color: var(--pm-background);
+  color: var(--pm-text-color);
+  border: 1px solid var(--pm-border-color);
+  border-radius: var(--pm-border-radius);
+  padding: 12px;
+  width: 100%;
+  max-width: 500px;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Header */
+.monitor-header {
+  background-color: var(--pm-header-bg);
+  margin: -12px -12px 12px -12px;
+  padding: 8px 12px;
+  border-radius: var(--pm-border-radius) var(--pm-border-radius) 0 0;
+  border-bottom: 1px solid var(--pm-border-color);
+}
+
+.monitor-header h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* Metric sections */
+.metric-section {
+  margin-bottom: var(--pm-section-margin);
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--pm-border-color);
+}
+
+.metric-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.metric-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.metric-title {
+  font-weight: 500;
+}
+
+.metric-value {
+  font-family: monospace;
+  font-size: 15px;
+}
+
+/* Bar chart */
+.metric-bar-container {
+  height: var(--pm-bar-height);
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 4px;
+  will-change: transform;
+}
+
+.metric-bar {
+  height: 100%;
+  width: 0;
+  transition: width 0.3s ease-out, background-color 0.3s ease;
+  border-radius: 2px;
+  transform: translateZ(0);
+}
+
+.metric-bar.good {
+  background-color: var(--pm-good-color);
+}
+
+.metric-bar.warning {
+  background-color: var(--pm-warning-color);
+}
+
+.metric-bar.critical {
+  background-color: var(--pm-critical-color);
+}
+
+/* Metric details */
+.metric-details {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Battery specific */
+.battery-section {
+  margin-top: 16px;
+}
+
+.battery-indicator {
+  height: 16px;
+  background-color: var(--pm-battery-bg);
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 4px;
+  will-change: transform;
+}
+
+.battery-level {
+  height: 100%;
+  width: 0;
+  transition: width 0.3s ease-out, background-color 0.3s ease;
+  border-radius: 7px;
+  transform: translateZ(0);
+}
+
+.battery-level.good {
+  background-color: var(--pm-good-color);
+}
+
+.battery-level.warning {
+  background-color: var(--pm-warning-color);
+}
+
+.battery-level.critical {
+  background-color: var(--pm-critical-color);
+}
+
+.battery-status {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+/* Connection status */
+.connection-status {
+  display: flex;
+  align-items: center;
+  margin-top: 16px;
+  font-size: 12px;
+}
+
+.status-dot {
+  width: var(--pm-connection-dot-size);
+  height: var(--pm-connection-dot-size);
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.status-dot.connected {
+  background-color: var(--pm-good-color);
+  box-shadow: 0 0 5px var(--pm-good-color);
+}
+
+.status-dot.disconnected {
+  background-color: var(--pm-critical-color);
+  box-shadow: 0 0 5px var(--pm-critical-color);
+}
+
+/* Mini charts container */
+.mini-charts-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+  margin-top: var(--pm-section-margin);
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .performance-monitor {
+    padding: 8px;
+    font-size: 13px;
+  }
+  
+  .monitor-header {
+    margin: -8px -8px 8px -8px;
+    padding: 6px 8px;
+  }
+  
+  .monitor-header h3 {
+    font-size: 14px;
+  }
+  
+  .metric-section {
+    margin-bottom: 8px;
+  }
+  
+  .metric-value {
+    font-size: 13px;
+  }
+  
+  .metric-details {
+    font-size: 10px;
+  }
+  
+  .battery-status {
+    font-size: 11px;
+  }
+}
