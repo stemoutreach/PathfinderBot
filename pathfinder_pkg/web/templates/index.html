@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PathfinderBot Control Interface for robot operation and monitoring">
     <title>PathfinderBot Control Interface</title>
     
     <!-- Preload critical resources -->
     <link rel="preload" href="/static/css/performance-monitor.css" as="style">
     <link rel="preload" href="/static/js/websocket-client.js" as="script">
+    <link rel="preload" href="/static/js/telemetry-system.js" as="script">
     
     <!-- CSS stylesheets -->
     <link rel="stylesheet" href="/static/css/performance-monitor.css">
@@ -321,6 +323,33 @@
     <!-- Load JavaScript files -->
     <script src="/static/js/websocket-client.js"></script>
     <script src="/static/js/performance-monitor.js"></script>
+    <script src="/static/js/telemetry-system.js"></script>
     <script src="/static/js/main.js"></script>
+    
+    <script>
+        // Initialize the telemetry system when the page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof TelemetrySystem !== 'undefined') {
+                // Configure telemetry with appropriate collection intervals
+                TelemetrySystem.configure({
+                    collectionInterval: 1000, // 1 second intervals
+                    batchSize: 10,
+                    storageMode: 'memory',
+                    enableAnomaly: true
+                });
+                
+                // Start telemetry collection
+                TelemetrySystem.start();
+                
+                // Register custom metrics if needed
+                TelemetrySystem.registerMetric('ui.interaction', function() {
+                    return {
+                        lastInteraction: window.lastUserInteraction || Date.now(),
+                        interactionCount: window.interactionCount || 0
+                    };
+                });
+            }
+        });
+    </script>
 </body>
 </html>

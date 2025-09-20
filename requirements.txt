@@ -1,4 +1,5 @@
-# PathfinderBot Package Requirements
+PathfinderBot Package Requirements
+
 # Core dependencies
 numpy>=1.19.0
 opencv-python>=4.5.1
@@ -8,11 +9,16 @@ picamera>=1.13  # For Raspberry Pi camera
 pupil-apriltags>=1.0.4  # For AprilTag detection
 matplotlib>=3.3.0
 PyYAML>=5.1
+psutil>=5.9.0  # For system resource monitoring
 
 # Web interface
 flask>=2.0.0
 flask-socketio>=5.0.0
 simple-websocket>=0.5.0
+eventlet>=0.30.0  # For improved WebSocket performance
+
+# WebSocket communication
+websockets>=10.3.0  # For efficient binary protocol communication
 
 # Educational extensions
 jupyter>=1.0.0
@@ -22,12 +28,19 @@ ipython>=7.0.0
 # Testing
 pytest>=6.0.0
 pytest-mock>=3.5.0
+pytest-cov>=2.12.0  # For test coverage reporting
 
 # Documentation
 sphinx>=4.0.0
 sphinx-rtd-theme>=0.5.0
+mermaid-cli>=0.5.1  # For generating mermaid diagrams in documentation
 
 # Development tools
 black>=21.5b2  # Code formatter
 flake8>=3.9.0  # Linter
 mypy>=0.812  # Type checking
+
+# Optional - for hardware acceleration
+# Uncomment if your platform supports it
+# opencv-python-headless>=4.5.0
+# tensorflow-lite>=2.8.0
