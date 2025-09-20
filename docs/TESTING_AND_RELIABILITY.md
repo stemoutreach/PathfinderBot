@@ -320,6 +320,9 @@ The telemetry collection module records and stores operational metrics for monit
 - **Telemetry Storage**: Multiple storage backends (memory, file, SQLite)
 - **Telemetry Collectors**: Register functions to automatically collect metrics
 - **Querying**: Retrieve and filter telemetry data
+- **WebSocket Interface**: Real-time telemetry streaming to web clients
+- **Web Dashboard**: Interactive visualization of telemetry data
+- **Anomaly Detection**: Configurable thresholds for abnormal values
 
 ### Telemetry Architecture
 
@@ -338,6 +341,11 @@ graph TD
     
     C -->|Real-time Analysis| H[Anomaly Detection]
     H -->|Trigger| I[Alerts]
+    
+    C -->|Stream| J[WebSocket Server]
+    J -->|Push| K[Web Clients]
+    K -->|Render| L[Interactive Dashboard]
+    K -->|Custom Metrics| C
 ```
 
 ### Telemetry Flow
