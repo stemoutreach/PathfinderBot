@@ -31,5 +31,9 @@
     - scroll down and check Visual Studio Code and VNC Viewer
     - Click Apply
 
-1. **Open Visual Studio Code and add Python **
+1. **Open Visual Studio Code and add extentions**
 
+    - Python
+    - Remote ssh
+    - Cline
+    - jupyter 
