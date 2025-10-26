@@ -4,8 +4,8 @@
   Use Raspberry Pi Imager to create a fresh Raspberry Pi OS (64-bit) SD card
    - https://www.raspberrypi.com/software/
    - current imager version 1.9.6
-   - current Pi OS Released: 2025-05-13
-   - Last tested 2025-07-25
+   - current Pi OS Released: 2025-10-01
+   - Last tested 2025-10-26
   
 1. **Boot the Raspberry Pi with the new card**
 
@@ -37,3 +37,4 @@
     - Remote ssh
     - Cline
     - jupyter 
+
