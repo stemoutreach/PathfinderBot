@@ -4,8 +4,8 @@
   Use Raspberry Pi Imager to create a fresh Raspberry Pi OS (64-bit) SD card
    - https://www.raspberrypi.com/software/
    - current imager version 1.9.6
-   - current Pi OS Released: 2025-05-13
-   - Last tested 2025-07-25
+   - current Pi OS Released: 2025-10-01
+   - Last tested 2025-10-26
   
 1. **Boot the Raspberry Pi with the new card**
    
@@ -38,7 +38,7 @@
 1. **Remove update block**
 
     ~~~
-    sudo rm /usr/lib/python3.11/EXTERNALLY-MANAGED
+    sudo rm /usr/lib/python3.13/EXTERNALLY-MANAGED
     ~~~
 
     
@@ -49,7 +49,7 @@
     sudo pip install opencv-python opencv-contrib-python
     ~~~
 
-1. **View OpenCV version that was installed (4.10.0)**
+1. **View OpenCV version that was installed (4.12.0)**
 
     ~~~
     sudo python3 -c "import cv2; print(cv2.__version__)"
@@ -79,6 +79,9 @@
     - scroll down and check Visual Studio Code
     - Click Apply
 
+1. **Open Visual Studio Code and add extentions**
+
+    - Python
 
 1. **Add MasterPi and MasterPi_PC_Software folder to /home/pi/**
    
@@ -95,6 +98,7 @@
 1. **Add code folder and example python files**
 
     Download code from [Pathfinder Code](/code) to  /home/robot/code
+
 
 
 
