@@ -12,12 +12,6 @@ This guide shows how to configure your Raspberry Pi 4–based PathfinderBot to a
 
 On the robot, make sure the script runs correctly **from the absolute path**:
 
-```bash
-sudo python3 /home/robot/code/pf_mecanum_gamepad_drive.py
-```
-
-- If your system only uses `python`, change the command to:
-
   ```bash
   sudo python /home/robot/code/pf_mecanum_gamepad_drive.py
   ```
