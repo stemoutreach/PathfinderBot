@@ -12,9 +12,9 @@ This guide shows how to configure your Raspberry Pi 4–based PathfinderBot to a
 
 On the robot, make sure the script runs correctly **from the absolute path**:
 
-  ```bash
-  sudo python /home/robot/code/pf_mecanum_gamepad_drive.py
-  ```
+```bash
+sudo python /home/robot/code/pf_mecanum_gamepad_drive.py
+```
 
 Once you confirm it runs as expected, press `Ctrl + C` to stop it.
 
@@ -28,7 +28,7 @@ Create a new service file called `pf_mecanum_gamepad.service`:
 sudo nano /etc/systemd/system/pf_mecanum_gamepad.service
 ```
 
-Paste in the following content (adjust the `ExecStart` line if your Python path is different). You can check your Python path with `which python`:
+Paste in the following content. If you’re unsure of your Python path, you can check it with `which python` (often `/usr/bin/python`):
 
 ```ini
 [Unit]
@@ -41,7 +41,7 @@ Type=simple
 # Start in the code folder so relative imports and files work
 WorkingDirectory=/home/robot/code
 
-# Use python or python as appropriate
+# Use python (system default)
 ExecStart=/usr/bin/python /home/robot/code/pf_mecanum_gamepad_drive.py
 
 # Restart service if it crashes
@@ -61,7 +61,7 @@ Save and exit:
 - Press `Ctrl + O`, then `Enter` to save.
 - Press `Ctrl + X` to exit.
 
-> **Note:** If `which python` returns a different path (for example `/usr/bin/python`), update the `ExecStart` line to match.
+> **Note:** If `which python` returns a different path (for example `/usr/local/bin/python`), update the `ExecStart` line to match.
 
 ---
 
@@ -163,18 +163,12 @@ sudo systemctl enable pf_mecanum_gamepad.service
 
 ## 8. Common tweaks
 
-### Change the Python interpreter
+### Change the Python interpreter path
 
-If you need to use a specific Python version or virtual environment, update the `ExecStart` line. Examples:
-
-```ini
-ExecStart=/usr/bin/python /home/robot/code/pf_mecanum_gamepad_drive.py
-```
-
-or
+If you need to use a specific Python binary, update the `ExecStart` line. Example:
 
 ```ini
-ExecStart=/home/robot/.venv/bin/python /home/robot/code/pf_mecanum_gamepad_drive.py
+ExecStart=/usr/local/bin/python /home/robot/code/pf_mecanum_gamepad_drive.py
 ```
 
 ### Confirm the working directory
@@ -192,7 +186,7 @@ Then check the logs with:
 journalctl -u pf_mecanum_gamepad.service -n 50 -f
 ```
 
-You should see:
+You should see something like:
 
 ```text
 CWD is: /home/robot/code
