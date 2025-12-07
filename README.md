@@ -78,7 +78,8 @@ The repository includes a structured set of guides:
 - [D2_Sonar_Guide.md](D2_Sonar_Guide.md)  
 - [D3_Basic_Arm_Movements_Guide.md](D3_Basic_Arm_Movements_Guide.md)  
 - [D4_Follow_Me_Guide.md](D4_Follow_Me_Guide.md)  
-- [D5_Remote_Control_Guide.md](D5_Remote_Control_Guide.md)  
+- [D5_Remote_Control_Guide.md](D5_Remote_Control_Guide.md)
+- [D6_Gamepad_Remote_Control_Guide.md](D5_Gamepad_Remote_Control_Guide.md)
 
 ### Advanced / Optional
 - [E1_Camera_Guide.md](E1_Camera_Guide.md)  
