@@ -207,3 +207,13 @@ Make small changes, test briefly, and keep values conservative during workshops 
 | Start             | Quit gamepad drive script                                 |
 
 Use this guide with your team to practice **smooth driving, precise block handling, and clear driver–spotter communication** during the PathfinderBot challenge.
+
+---
+
+## Setup AutoStart
+
+Configure your PathfinderBot to automatically start the mecanum gamepad drive script after boot.
+
+[**AutoStart Guide**](/Reference/PathfinderBot_Gamepad_AutoStart_Guide.md)
+
+
