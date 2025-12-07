@@ -28,7 +28,7 @@ Create a new service file called `pf_mecanum_gamepad.service`:
 sudo nano /etc/systemd/system/pf_mecanum_gamepad.service
 ```
 
-Paste in the following content (adjust the `ExecStart` line if your Python path is different). You can check your Python path with `which python3`:
+Paste in the following content (adjust the `ExecStart` line if your Python path is different). You can check your Python path with `which python`:
 
 ```ini
 [Unit]
@@ -41,8 +41,8 @@ Type=simple
 # Start in the code folder so relative imports and files work
 WorkingDirectory=/home/robot/code
 
-# Use python3 or python as appropriate
-ExecStart=/usr/bin/python3 /home/robot/code/pf_mecanum_gamepad_drive.py
+# Use python or python as appropriate
+ExecStart=/usr/bin/python /home/robot/code/pf_mecanum_gamepad_drive.py
 
 # Restart service if it crashes
 Restart=on-failure
@@ -61,7 +61,7 @@ Save and exit:
 - Press `Ctrl + O`, then `Enter` to save.
 - Press `Ctrl + X` to exit.
 
-> **Note:** If `which python3` returns a different path (for example `/usr/bin/python`), update the `ExecStart` line to match.
+> **Note:** If `which python` returns a different path (for example `/usr/bin/python`), update the `ExecStart` line to match.
 
 ---
 
