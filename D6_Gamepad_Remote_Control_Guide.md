@@ -2,6 +2,8 @@
 
 This guide explains how to drive PathfinderBot with a Logitech F710 wireless gamepad using the script `pf_mecanum_gamepad_drive.py`. It combines mecanum drive, analog triggers, bumpers, and arm presets so your team can practice smooth, precise driving.
 
+- [**Mecanum Gamepad Drive**](/code/pf_mecanum_gamepad_drive.py) 
+
 ---
 
 ## Prerequisites
