@@ -17,6 +17,9 @@ This guide explains how to drive PathfinderBot with a Logitech F710 wireless gam
 ```bash
 sudo apt-get update
 sudo apt-get install python3-pygame
+sudo apt-get install joystick
+lsusb | grep -i logitech
+
 ```
 
 - Logitech Gamepad F710:
@@ -215,5 +218,9 @@ Use this guide with your team to practice **smooth driving, precise block handli
 Configure your PathfinderBot to automatically start the mecanum gamepad drive script after boot.
 
 [**AutoStart Guide**](/Reference/PathfinderBot_Gamepad_AutoStart_Guide.md)
+
+---
+
+## additional libraries 
 
 
