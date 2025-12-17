@@ -83,9 +83,8 @@ BTN_LB    = 4
 BTN_RB    = 5
 BTN_BACK  = 6
 BTN_START = 7
-BTN_LS = 10  # Left stick press (L3)  <-- from your test
-BTN_RS = 9   # Right stick press (R3) <-- from your test
-
+BTN_LS = 10  # Left stick press (L3) (Logitech F710: your test showed index=10)
+BTN_RS    = 9   # Right stick press (R3)
 # BTN_GUIDE = 10  # (Optional) Logitech / Guide button if exposed by your OS
 
 
@@ -354,26 +353,26 @@ def drive_loop(bot: Mecanum, js: pygame.joystick.Joystick):
                         running = False
 
 
-                        # Sonar toggle: R3 = ON, L3 = OFF
-                        if js.get_button(BTN_RS):
-                            if not _SONAR_AVAILABLE:
-                                print("[R3] Sonar not available on this image (missing Sonar module).")
-                            else:
-                                if sonar is None:
-                                    print("[R3] Initializing Sonar...")
-                                    sonar = Sonar()
-                                    sonar.setRGBMode(0)  # solid/static mode
-                                sonar_enabled = True
-                                last_sonar_check = 0.0
-                                last_sonar_rand  = 0.0
-                                print("[R3] Sonar display ON")
+                    # Sonar toggle: R3 = ON, L3 = OFF
+                    if js.get_button(BTN_RS):
+                        if not _SONAR_AVAILABLE:
+                            print("[R3] Sonar not available on this image (missing Sonar module).")
+                        else:
+                            if sonar is None:
+                                print("[R3] Initializing Sonar...")
+                                sonar = Sonar()
+                                sonar.setRGBMode(0)  # solid/static mode
+                            sonar_enabled = True
+                            last_sonar_check = 0.0
+                            last_sonar_rand  = 0.0
+                            print("[R3] Sonar display ON")
 
-                        if js.get_button(BTN_LS):
-                            sonar_enabled = False
-                            if sonar is not None:
-                                _sonar_led_off(sonar)
-                            _robot_led_set(Board.PixelColor(0, 0, 0))
-                            print("[L3] Sonar display OFF")
+                    if js.get_button(BTN_LS):
+                        sonar_enabled = False
+                        if sonar is not None:
+                            _sonar_led_off(sonar)
+                        _robot_led_set(Board.PixelColor(0, 0, 0))
+                        print("[L3] Sonar display OFF")
 
                 # --- D-PAD (HAT) ---
                 if event.type == pygame.JOYHATMOTION:
