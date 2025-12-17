@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 """
 pf_mecanum_gamepad_drive.py
 
@@ -64,6 +64,14 @@ SONAR_DISTANCE_THRESHOLD_MM = 305   # ~1 ft: red when closer than this
 SONAR_CAUTION_THRESHOLD_MM  = 610   # ~2 ft: yellow when between 1–2 ft, green when beyond
 SONAR_CHECK_INTERVAL_SEC    = 0.10  # how often to read distance
 SONAR_RANDOM_COLOR_SEC      = 0.50  # how often to randomize the sonar LEDs
+
+# "Critical" zone: 4 inches or less (strong rumble + fast flashing + sonar LEDs red)
+SONAR_CRITICAL_THRESHOLD_MM      = 102   # ~4 inches
+SONAR_CRITICAL_FLASH_INTERVAL_SEC = 0.08  # faster flash when critical
+SONAR_CRITICAL_RUMBLE_COOLDOWN_SEC = 0.35 # more frequent pulses when critical
+SONAR_CRITICAL_RUMBLE_DURATION_MS  = 200  # pulse length (ms)
+SONAR_CRITICAL_RUMBLE_LOW          = 1.00 # strong low-frequency motor
+SONAR_CRITICAL_RUMBLE_HIGH         = 1.00 # strong high-frequency motor
 
 
 # Extra feedback when we're in the "too close" zone (red)
@@ -251,6 +259,17 @@ def _sonar_led_randomize(sonar):
         print(f"[WARN] Sonar LED update failed: {e}")
 
 
+
+def _sonar_led_solid(sonar, r: int, g: int, b: int):
+    """Set both sonar LEDs to a solid color."""
+    try:
+        c = Board.PixelColor(int(r), int(g), int(b))
+        sonar.setPixelColor(0, c)
+        sonar.setPixelColor(1, c)
+        sonar.show()
+    except Exception as e:
+        print(f"[WARN] Sonar LED update failed: {e}")
+
 def _sonar_led_off(sonar):
     """Turn off sonar LEDs."""
     try:
@@ -331,6 +350,8 @@ def drive_loop(bot: Mecanum, js: pygame.joystick.Joystick):
     # Sonar alert helpers (flash + rumble when very close)
     last_dist_mm = None
     last_rumble_time = 0.0
+    last_critical_rumble_time = 0.0
+    critical_mode = False
     last_flash_time = 0.0
     flash_on = True
     rumble_supported = hasattr(js, "rumble") and callable(getattr(js, "rumble", None))
@@ -382,6 +403,8 @@ def drive_loop(bot: Mecanum, js: pygame.joystick.Joystick):
                             last_sonar_rand  = 0.0
                             last_dist_mm = None
                             last_rumble_time = 0.0
+                            last_critical_rumble_time = 0.0
+                            critical_mode = False
                             last_flash_time = 0.0
                             flash_on = True
                             print("[R3] Sonar display ON")
@@ -507,8 +530,40 @@ def drive_loop(bot: Mecanum, js: pygame.joystick.Joystick):
                     except Exception:
                         d = None
 
-                    if d is not None and d < SONAR_DISTANCE_THRESHOLD_MM:
-                        # Flash red / off
+                    if d is not None and d <= SONAR_CRITICAL_THRESHOLD_MM:
+                        # ---- CRITICAL zone (<= 4 inches): fast flash + strong rumble + sonar LEDs red ----
+                        if not critical_mode:
+                            critical_mode = True
+                            _sonar_led_solid(sonar, 255, 0, 0)   # sonar LEDs solid red
+                            flash_on = True
+
+                        # Fast flash red / off
+                        if (now - last_flash_time) >= SONAR_CRITICAL_FLASH_INTERVAL_SEC:
+                            last_flash_time = now
+                            flash_on = not flash_on
+
+                        if flash_on:
+                            _robot_led_set(Board.PixelColor(255, 0, 0))
+                        else:
+                            _robot_led_set(Board.PixelColor(0, 0, 0))
+
+                        # Strong rumble pulse (cooldown) if supported
+                        if rumble_supported and (now - last_critical_rumble_time) >= SONAR_CRITICAL_RUMBLE_COOLDOWN_SEC:
+                            try:
+                                js.rumble(SONAR_CRITICAL_RUMBLE_LOW, SONAR_CRITICAL_RUMBLE_HIGH, SONAR_CRITICAL_RUMBLE_DURATION_MS)
+                            except Exception:
+                                rumble_supported = False
+                            last_critical_rumble_time = now
+
+                    elif d is not None and d < SONAR_DISTANCE_THRESHOLD_MM:
+                        # ---- TOO CLOSE zone (< ~1 ft): soft rumble + normal flash ----
+                        if critical_mode:
+                            # Leaving critical zone → go back to random sonar colors immediately
+                            critical_mode = False
+                            _sonar_led_randomize(sonar)
+                            last_sonar_rand = now
+
+                        # Flash red / off (slower than critical)
                         if (now - last_flash_time) >= SONAR_FLASH_INTERVAL_SEC:
                             last_flash_time = now
                             flash_on = not flash_on
@@ -518,21 +573,28 @@ def drive_loop(bot: Mecanum, js: pygame.joystick.Joystick):
                         else:
                             _robot_led_set(Board.PixelColor(0, 0, 0))
 
-                        # Rumble pulse (cooldown) if supported
+                        # Soft rumble pulse (cooldown) if supported
                         if rumble_supported and (now - last_rumble_time) >= SONAR_RUMBLE_COOLDOWN_SEC:
                             try:
                                 js.rumble(SONAR_RUMBLE_LOW, SONAR_RUMBLE_HIGH, SONAR_RUMBLE_DURATION_MS)
                             except Exception:
                                 rumble_supported = False
                             last_rumble_time = now
+
                     else:
                         # Not in the "too close" zone → steady LED based on distance
+                        if critical_mode:
+                            # Leaving critical zone → go back to random sonar colors immediately
+                            critical_mode = False
+                            _sonar_led_randomize(sonar)
+                            last_sonar_rand = now
+
                         flash_on = True
                         if distance_updated:
                             _robot_led_from_distance(last_dist_mm)
 
                 # Randomize the *sonar* LEDs for fun / visibility
-                if (now - last_sonar_rand) >= SONAR_RANDOM_COLOR_SEC:
+                if (not critical_mode) and ((now - last_sonar_rand) >= SONAR_RANDOM_COLOR_SEC):
                     last_sonar_rand = now
                     _sonar_led_randomize(sonar)
             time.sleep(0.02)  # ~50 Hz update rate
