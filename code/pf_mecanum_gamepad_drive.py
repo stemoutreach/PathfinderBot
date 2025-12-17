@@ -22,13 +22,13 @@ Actions
 - B button:       look_sad (expression)
 - X button:       say_no
 - Y button:       say_yes
+- Logitech button: look_around
 - D-pad UP:       pickup_block
 - D-pad DOWN:     backward_drop_block
 - D-pad LEFT:     left_pickup_block
 - D-pad RIGHT:    right_pickup_block
 - Back button:    all-stop (motors off)
 - Start button:   quit program
-
 Requires:
     pygame (install via your OS package manager or pip)
 
@@ -118,6 +118,7 @@ BTN_LB    = 4
 BTN_RB    = 5
 BTN_BACK  = 6
 BTN_START = 7
+BTN_LOGITECH = 8  # Logitech / Guide button (your mapping)
 BTN_LS = 10  # Left stick press (L3) (Logitech F710: your test showed index=10)
 BTN_RS    = 9   # Right stick press (R3)
 # BTN_GUIDE = 10  # (Optional) Logitech / Guide button if exposed by your OS
@@ -131,6 +132,21 @@ def look_forward():
     Board.setPWMServoPulse(5, 790, 1000)
     Board.setPWMServoPulse(6, 1500, 1000)
     time.sleep(1)
+
+def look_around():
+    Board.setPWMServoPulse(1, 1500, 500)
+    Board.setPWMServoPulse(3, 700, 500)
+    Board.setPWMServoPulse(4, 2425, 500)
+    Board.setPWMServoPulse(5, 790, 500)
+    Board.setPWMServoPulse(6, 1500, 500)
+
+    Board.setPWMServoPulse(6,2500, 2000)
+    time.sleep(2)
+    Board.setPWMServoPulse(6, 1500, 500)
+    time.sleep(.5)    
+    Board.setPWMServoPulse(3, 800, 1000)
+    say_no()
+
 
 def look_sad():
     #Board.setPWMServoPulse(1, 1500, 500)
@@ -428,7 +444,7 @@ def drive_loop(bot: Mecanum, js: pygame.joystick.Joystick):
                         look_forward()
 
                     if js.get_button(BTN_B):
-                        print("[B] Pickup block sequence")
+                        print("[B] Look sad pose")
                         look_sad()
                         
 
@@ -437,7 +453,7 @@ def drive_loop(bot: Mecanum, js: pygame.joystick.Joystick):
                         say_yes()
 
                     if js.get_button(BTN_X):
-                        print("[B] say no sequence")
+                        print("[X] say no sequence")
                         say_no()
 
                     if js.get_button(BTN_BACK):
@@ -447,6 +463,11 @@ def drive_loop(bot: Mecanum, js: pygame.joystick.Joystick):
                     if js.get_button(BTN_START):
                         print("[Start] Quit requested")
                         running = False
+
+
+                    if js.get_button(BTN_LOGITECH):
+                        print("[Logitech] Look around sequence")
+                        )
 
 
                     # Sonar toggle: R3 = ON, L3 = OFF
@@ -716,7 +737,8 @@ def main():
 
     print("Gamepad control ready. "
           "Sticks = tank/strafe, triggers = analog forward/back, bumpers = turn, "
-          "A = look_forward, B = pickup_block, R3 = sonar ON, L3 = sonar OFF.")
+          "A = look_forward, B = look_sad, Logitech = look_around, "
+          "D-pad = arm actions, R3 = sonar ON, L3 = sonar OFF, Back = STOP, Start = quit.")
     drive_loop(bot, js)
 
 
