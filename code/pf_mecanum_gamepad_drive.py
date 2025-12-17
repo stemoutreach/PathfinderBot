@@ -60,13 +60,13 @@ TRIGGER_THRESHOLD   = 0.1   # minimal analog trigger magnitude to count as "pres
 # ----- Sonar / LED behavior -----
 # Right stick button (R3) enables sonar display; Left stick button (L3) disables it.
 # Distances are in millimeters (mm).
-SONAR_DISTANCE_THRESHOLD_MM = 305   # ~1 ft: red when closer than this
-SONAR_CAUTION_THRESHOLD_MM  = 610   # ~2 ft: yellow when between 1–2 ft, green when beyond
+SONAR_DISTANCE_THRESHOLD_MM = 203   # ~8 inches red when closer than this
+SONAR_CAUTION_THRESHOLD_MM  = 406   # ~16 inches: yellow when between 8 and 16 inches, green when beyond
 SONAR_CHECK_INTERVAL_SEC    = 0.10  # how often to read distance
 SONAR_RANDOM_COLOR_SEC      = 0.50  # how often to randomize the sonar LEDs
 
 # "Critical" zone: 4 inches or less (strong rumble + fast flashing + sonar LEDs red)
-SONAR_CRITICAL_THRESHOLD_MM      = 102   # ~4 inches
+SONAR_CRITICAL_THRESHOLD_MM      = 75   # ~3 inches
 SONAR_CRITICAL_FLASH_INTERVAL_SEC = 0.08  # faster flash when critical
 SONAR_CRITICAL_RUMBLE_COOLDOWN_SEC = 0.35 # more frequent pulses when critical
 SONAR_CRITICAL_RUMBLE_DURATION_MS  = 200  # pulse length (ms)
