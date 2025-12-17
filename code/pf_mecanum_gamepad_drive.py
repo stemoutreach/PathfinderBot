@@ -65,6 +65,14 @@ SONAR_CAUTION_THRESHOLD_MM  = 610   # ~2 ft: yellow when between 1–2 ft, green
 SONAR_CHECK_INTERVAL_SEC    = 0.10  # how often to read distance
 SONAR_RANDOM_COLOR_SEC      = 0.50  # how often to randomize the sonar LEDs
 
+
+# Extra feedback when we're in the "too close" zone (red)
+SONAR_FLASH_INTERVAL_SEC    = 0.20  # robot LED flashes red/off this often when too close
+SONAR_RUMBLE_COOLDOWN_SEC   = 1.00  # minimum time between rumble pulses
+SONAR_RUMBLE_DURATION_MS    = 250   # how long each rumble pulse lasts
+SONAR_RUMBLE_LOW            = 0.20  # low-frequency motor strength  (0.0..1.0)
+SONAR_RUMBLE_HIGH           = 1.00  # high-frequency motor strength (0.0..1.0)
+
 # These axis indices are typical for the F710 in XInput mode on Linux.
 # If movement is weird, run a small debug script to print all axes and adjust.
 AXIS_LX = 0
@@ -319,6 +327,13 @@ def drive_loop(bot: Mecanum, js: pygame.joystick.Joystick):
     # Sonar display state (distance -> robot LED, random colors on sonar LEDs)
     sonar_enabled = False
     sonar = None
+
+    # Sonar alert helpers (flash + rumble when very close)
+    last_dist_mm = None
+    last_rumble_time = 0.0
+    last_flash_time = 0.0
+    flash_on = True
+    rumble_supported = hasattr(js, "rumble") and callable(getattr(js, "rumble", None))
     last_sonar_check = 0.0
     last_sonar_rand  = 0.0
 
@@ -365,10 +380,15 @@ def drive_loop(bot: Mecanum, js: pygame.joystick.Joystick):
                             sonar_enabled = True
                             last_sonar_check = 0.0
                             last_sonar_rand  = 0.0
+                            last_dist_mm = None
+                            last_rumble_time = 0.0
+                            last_flash_time = 0.0
+                            flash_on = True
                             print("[R3] Sonar display ON")
 
                     if js.get_button(BTN_LS):
                         sonar_enabled = False
+                        last_dist_mm = None
                         if sonar is not None:
                             _sonar_led_off(sonar)
                         _robot_led_set(Board.PixelColor(0, 0, 0))
@@ -463,7 +483,9 @@ def drive_loop(bot: Mecanum, js: pygame.joystick.Joystick):
             # ----- Sonar background update (does not affect driving) -----
             if sonar_enabled and sonar is not None:
                 now = time.time()
-                # Read distance and set *robot* LED based on distance
+
+                # Read distance (throttled)
+                distance_updated = False
                 if (now - last_sonar_check) >= SONAR_CHECK_INTERVAL_SEC:
                     last_sonar_check = now
                     try:
@@ -471,10 +493,43 @@ def drive_loop(bot: Mecanum, js: pygame.joystick.Joystick):
                     except Exception as e:
                         print(f"[WARN] Sonar read failed: {e}")
                         sonar_enabled = False
+                        last_dist_mm = None
                         _sonar_led_off(sonar)
                         _robot_led_set(Board.PixelColor(0, 0, 0))
                     else:
-                        _robot_led_from_distance(dist_mm)
+                        last_dist_mm = dist_mm
+                        distance_updated = True
+
+                # Robot LED feedback + controller rumble when REALLY close
+                if last_dist_mm is not None:
+                    try:
+                        d = float(last_dist_mm)
+                    except Exception:
+                        d = None
+
+                    if d is not None and d < SONAR_DISTANCE_THRESHOLD_MM:
+                        # Flash red / off
+                        if (now - last_flash_time) >= SONAR_FLASH_INTERVAL_SEC:
+                            last_flash_time = now
+                            flash_on = not flash_on
+
+                        if flash_on:
+                            _robot_led_set(Board.PixelColor(255, 0, 0))
+                        else:
+                            _robot_led_set(Board.PixelColor(0, 0, 0))
+
+                        # Rumble pulse (cooldown) if supported
+                        if rumble_supported and (now - last_rumble_time) >= SONAR_RUMBLE_COOLDOWN_SEC:
+                            try:
+                                js.rumble(SONAR_RUMBLE_LOW, SONAR_RUMBLE_HIGH, SONAR_RUMBLE_DURATION_MS)
+                            except Exception:
+                                rumble_supported = False
+                            last_rumble_time = now
+                    else:
+                        # Not in the "too close" zone → steady LED based on distance
+                        flash_on = True
+                        if distance_updated:
+                            _robot_led_from_distance(last_dist_mm)
 
                 # Randomize the *sonar* LEDs for fun / visibility
                 if (now - last_sonar_rand) >= SONAR_RANDOM_COLOR_SEC:
