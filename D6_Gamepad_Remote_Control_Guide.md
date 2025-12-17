@@ -1,6 +1,9 @@
 # D6 Gamepad Remote Control Guide
 
-This guide explains how to drive PathfinderBot with a Logitech F710 wireless gamepad using the script `pf_mecanum_gamepad_drive.py`. It combines mecanum drive, analog triggers, bumpers, and arm presets so your team can practice smooth, precise driving.
+This guide explains how to drive PathfinderBot with a Logitech F710 wireless gamepad using:
+
+- `pf_mecanum_gamepad_drive.py` (mecanum drive + triggers/bumpers + arm presets)
+- Optional **Sonar “proximity alerts” mode** (LEDs + rumble + beeps)
 
 [**Mecanum Gamepad Drive Python script**](/code/pf_mecanum_gamepad_drive.py)
 
@@ -9,23 +12,22 @@ This guide explains how to drive PathfinderBot with a Logitech F710 wireless gam
 ## Prerequisites
 
 - PathfinderBot fully assembled and tested  
-  - Completed: **B1 Robot Assembly**, **C1/C2/C3 Setup & Connect**, **D1 Basic Drive**, **E5 Mecanum Drive**.
-- `pf_mecanum_gamepad_drive.py` copied into `/home/robot/code` on the robot.
-- Python 3 on the RobotPi.
+  - Completed: **B1 Robot Assembly**, **C1/C2/C3 Setup & Connect**, **D1 Basic Drive**, **E5 Mecanum Drive**
+- `pf_mecanum_gamepad_drive.py` copied into `/home/robot/code` on the robot
 - Pygame installed on the RobotPi:
 
 ```bash
 sudo apt-get update
-sudo apt-get install python3-pygame
-sudo apt-get install joystick
+sudo apt-get install python3-pygame joystick
 lsusb | grep -i logitech
-
 ```
 
 - Logitech Gamepad F710:
-  - Wireless USB receiver plugged into the **RobotPi**.
-  - Gamepad switched **ON**.
-  - **X** mode selected (switch on the back moved to **X**, not D).
+  - Wireless USB receiver plugged into the **RobotPi**
+  - Gamepad switched **ON**
+  - Back switch set to **X** (XInput), not **D**
+- Optional (recommended): **Sonar sensor** connected
+  - If the Sonar module isn’t installed, the script will print a warning and Sonar mode won’t enable.
 
 ---
 
@@ -52,7 +54,7 @@ cd /home/robot/code
 Run the gamepad script with sudo so it can access the hardware:
 
 ```bash
-sudo python3 pf_mecanum_gamepad_drive.py
+sudo python pf_mecanum_gamepad_drive.py
 ```
 
 You should see messages like:
@@ -61,10 +63,10 @@ You should see messages like:
 Initializing PathfinderBot hardware...
 Initializing Logitech F710 gamepad...
 Using gamepad: Logitech Gamepad F710 with X axes and Y buttons.
-Gamepad control ready. Sticks = tank/strafe, triggers = analog forward/back, bumpers = turn, A = look_forward, B = pickup_block.
+Gamepad control ready...
 ```
 
-If you see **“No gamepads detected. Is the F710 receiver plugged in?”**, check the dongle, batteries, and X-mode, then run the script again.
+If you see **“No gamepads detected…”**, check the dongle, batteries, and X-mode, then run the script again.
 
 ---
 
@@ -72,11 +74,9 @@ If you see **“No gamepads detected. Is the F710 receiver plugged in?”**, che
 
 The script uses tank-style control plus mecanum strafing:
 
-- **Left stick – Y axis**: controls the **left** side of the robot (forward/back).
-- **Right stick – Y axis**: controls the **right** side of the robot (forward/back).
-- **Both sticks up**: drive straight forward.
-- **Both sticks down**: drive straight backward.
-- **Left / Right stick – X axis**: contribute to left/right strafe. The script averages both X axes for smooth strafing.
+- **Left stick – Y axis**: controls the **left/right drive mix** (tank-style)
+- **Right stick – Y axis**: controls the **other side** (tank-style)
+- **Left / Right stick – X axis**: contributes to left/right **strafe** (the script averages both X axes)
 
 Small joystick movements near center are ignored by a **deadzone** so the robot doesn’t creep when the sticks are centered.
 
@@ -108,45 +108,72 @@ Use triggers for smooth approach/retreat and bumpers for quick orientation chang
 
 ## Step 5 – Face Buttons (Arm & Camera Actions)
 
-The script also maps F710 buttons to arm/camera presets:
+The script maps F710 buttons to arm/camera motions:
 
-| Button | Action                                           |
-|--------|--------------------------------------------------|
-| **A**  | `look_forward` – standard forward-looking pose   |
-| **B**  | `pickup_block` – arm sequence to pick up a block |
-| **Y**  | `say_yes` – nodding motion                       |
-| **X**  | `say_no` – side-to-side motion                   |
+| Button | Action |
+|--------|--------|
+| **A**  | `look_forward` – standard forward-looking pose |
+| **B**  | `look_sad` – “sad” motion/pose |
+| **Y**  | `say_yes` – nodding motion |
+| **X**  | `say_no` – side-to-side motion |
 
 Suggested use:
-
 - Press **A** at the start of a run to reset the arm to a known pose.
-- Use **B** when the gripper is over a block to run the full pickup sequence.
-- Use **Y** or **X** as “celebration” or feedback motions during challenges.
+- Use **Y** / **X** as “feedback” motions during challenges.
 
 ---
 
-## Step 6 – D-Pad Drop Directions
+## Step 6 – D-Pad Actions
 
-The D-Pad triggers different **drop-block** sequences so you can deliver a carried block in different directions relative to the robot:
+The D-Pad triggers quick sequences (useful for demos and student driving):
 
-| D-Pad Direction | Action                | Description                                 |
-|-----------------|-----------------------|---------------------------------------------|
-| **Up**          | `forward_drop_block`  | Drop a block in front of the robot          |
-| **Down**        | `backward_drop_block` | Drop a block behind the robot               |
-| **Left**        | `left_drop_block`     | Rotate/pose to drop a block on the **left** |
-| **Right**       | `right_drop_block`    | Rotate/pose to drop a block on the **right**|
+| D-Pad Direction | Action |
+|-----------------|--------|
+| **Up**          | `pickup_block()` |
+| **Down**        | `backward_drop_block()` |
+| **Left**        | `left_pickup_block()` |
+| **Right**       | `right_pickup_block()` |
 
-Typical sequence during a challenge:
-
-1. Drive to a block and line up.
-2. Press **B** to `pickup_block`.
-3. Drive to the delivery zone.
-4. Use the D-Pad direction that matches where you want to place the block.
-5. Press **A** to return to the `look_forward` pose.
+> Tip: These are “one-press” sequences. Keep people clear of the arm while they run.
 
 ---
 
-## Step 7 – Safety Controls
+## Step 7 – Sonar Proximity Alerts Mode (R3 ON / L3 OFF)
+
+Sonar mode is designed for **workshop driving**: it adds *visual + haptic + audio* feedback when the robot gets close to obstacles.
+
+| Control | Action |
+|---------|--------|
+| **R3** (Right stick click) | Turn **Sonar mode ON** |
+| **L3** (Left stick click)  | Turn **Sonar mode OFF** |
+
+### What you’ll see/hear/feel when Sonar is ON
+
+**Robot LEDs (distance color):**
+- **Green** when farther than ~16 in (≥ 406 mm)
+- **Yellow** when ~8–16 in (203–406 mm)
+- **Red** when closer than ~8 in (< 203 mm)
+
+**Fun mode (sonar sensor LEDs):**
+- When NOT critical, the **two LEDs on the sonar sensor change to random colors** every ~0.5 seconds.
+
+### Close / Critical alerts
+
+**Close zone (red zone) — closer than ~8 in (< 203 mm):**
+- Robot LEDs **flash red**
+- Gamepad does a **soft rumble pulse**
+- Robot does a **short beep**
+
+**Critical zone — ~3 in or less (≤ 75 mm):**
+- Robot LEDs **flash red fast**
+- Sonar LEDs go **solid red**
+- Gamepad does a **strong rumble pulse**
+- Robot does **rapid beeps**
+- When you back away (> ~3 in), it immediately returns to normal behavior.
+
+---
+
+## Step 8 – Safety Controls
 
 Always keep a hand near the **Back** and **Start** buttons:
 
@@ -164,52 +191,46 @@ You can also press **Ctrl + C** in the terminal to stop the script. The program 
 
 ## Optional – Tuning Sensitivity
 
-At the top of `pf_mecanum_gamepad_drive.py` there are constants you can adjust if you want different behavior:
+At the top of `pf_mecanum_gamepad_drive.py` there are constants you can adjust:
 
 ```python
-MAX_LINEAR_SPEED = 80.0   # mm/s
+MAX_LINEAR_SPEED = 80.0
 MAX_ROT_SPEED    = 50.0
 ROT_SCALE        = 0.008
 DEADZONE         = 0.15
 
-TRIGGER_DRIVE_VALUE = 1.0
-BUMPER_TURN_VALUE   = 0.8
-TRIGGER_THRESHOLD   = 0.1
+SONAR_DISTANCE_THRESHOLD_MM = 203   # ~8 inches (red/close)
+SONAR_CAUTION_THRESHOLD_MM  = 406   # ~16 inches (yellow/green boundary)
+SONAR_CRITICAL_THRESHOLD_MM = 75   # ~3 inches (critical)
 ```
 
-- **MAX_LINEAR_SPEED** – overall forward/back/strafe scale (higher = faster).
-- **MAX_ROT_SPEED + ROT_SCALE** – how quickly the robot can rotate.
-- **DEADZONE** – how much joystick movement is ignored around center.
-- **TRIGGER_DRIVE_VALUE** – scales trigger-controlled speed.
-- **BUMPER_TURN_VALUE** – how hard the bumpers turn.
-
-Make small changes, test briefly, and keep values conservative during workshops so teams can focus on strategy and teamwork.
+Make small changes, test briefly, and keep values conservative during workshops so teams can focus on driving and teamwork.
 
 ---
 
 ## Quick Reference – Gamepad Map
 
-| Control           | Action                                                     |
-|-------------------|------------------------------------------------------------|
-| Left stick (Y)    | Left side forward/back                                    |
-| Right stick (Y)   | Right side forward/back                                   |
-| Sticks (X)        | Strafe left/right (mecanum)                               |
-| Right trigger     | Analog forward (overrides sticks)                         |
-| Left trigger      | Analog backward (overrides sticks)                        |
-| Right bumper      | Turn right in place                                       |
-| Left bumper       | Turn left in place                                        |
-| A                 | Look forward pose                                         |
-| B                 | Pickup block sequence                                     |
-| Y                 | Say yes                                                   |
-| X                 | Say no                                                    |
-| D-Pad Up          | Forward drop block                                        |
-| D-Pad Down        | Backward drop block                                       |
-| D-Pad Left        | Left drop block                                           |
-| D-Pad Right       | Right drop block                                          |
-| Back              | STOP – reset motors                                       |
-| Start             | Quit gamepad drive script                                 |
-
-Use this guide with your team to practice **smooth driving, precise block handling, and clear driver–spotter communication** during the PathfinderBot challenge.
+| Control           | Action |
+|-------------------|--------|
+| Left stick (Y)    | Tank drive (one side) |
+| Right stick (Y)   | Tank drive (other side) |
+| Sticks (X)        | Strafe left/right (mecanum) |
+| Right trigger     | Analog forward (overrides sticks) |
+| Left trigger      | Analog backward (overrides sticks) |
+| Right bumper      | Turn right in place |
+| Left bumper       | Turn left in place |
+| A                 | Look forward pose |
+| B                 | Sad pose |
+| Y                 | Say yes |
+| X                 | Say no |
+| D-Pad Up          | Pickup block sequence |
+| D-Pad Down        | Backward drop block |
+| D-Pad Left        | Left pickup block |
+| D-Pad Right       | Right pickup block |
+| R3 (Right stick click) | Sonar mode ON |
+| L3 (Left stick click)  | Sonar mode OFF |
+| Back              | STOP – reset motors |
+| Start             | Quit script |
 
 ---
 
@@ -218,9 +239,3 @@ Use this guide with your team to practice **smooth driving, precise block handli
 Configure your PathfinderBot to automatically start the mecanum gamepad drive script after boot.
 
 [**AutoStart Guide**](/Reference/PathfinderBot_Gamepad_AutoStart_Guide.md)
-
----
-
-## additional libraries 
-
-
