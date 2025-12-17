@@ -83,8 +83,9 @@ BTN_LB    = 4
 BTN_RB    = 5
 BTN_BACK  = 6
 BTN_START = 7
-BTN_LS    = 8   # Left stick press (L3)
-BTN_RS    = 9   # Right stick press (R3)
+BTN_LS = 10  # Left stick press (L3)  <-- from your test
+BTN_RS = 9   # Right stick press (R3) <-- from your test
+
 # BTN_GUIDE = 10  # (Optional) Logitech / Guide button if exposed by your OS
 
 
