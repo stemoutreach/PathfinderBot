@@ -4,26 +4,36 @@ pf_mecanum_gamepad_drive.py
 
 Drive PathfinderBot with a Logitech F710 wireless gamepad.
 
-- Left stick Y:   tank-style control for LEFT side (forward/back)
-- Right stick Y:  tank-style control for RIGHT side (forward/back)
-- Left/Right X:   mecanum strafe left/right (we average both X axes)
+Notes:
+- Recommended: set the F710 switch to **X** (XInput) on the back of the controller.
+- This script intentionally swaps the left/right stick Y mapping to match the robot's motor wiring.
+
+Controls
+- Left stick Y:   RIGHT-side track forward/back (swapped)
+- Right stick Y:  LEFT-side track forward/back (swapped)
+- Left/Right X:   mecanum strafe left/right (average of both X axes)
 - Right trigger:  analog drive forward (both sides)
 - Left trigger:   analog drive backward (both sides)
 - Right bumper:   turn right in place
 - Left bumper:    turn left in place
-- 'A' button:     look_forward (arm/camera pose)
-- 'B' button:     pickup_block (arm pickup sequence)
-- 'Back' button:  all-stop
-- 'Start' button: quit program
 
-Make sure the F710 is in **X** mode (switch on the back) and its
-nano-receiver is plugged into the Pi.
+Actions
+- A button:       look_forward (arm/camera pose)
+- B button:       look_sad (expression)
+- X button:       say_no
+- Y button:       say_yes
+- D-pad UP:       pickup_block
+- D-pad DOWN:     backward_drop_block
+- D-pad LEFT:     left_pickup_block
+- D-pad RIGHT:    right_pickup_block
+- Back button:    all-stop (motors off)
+- Start button:   quit program
 
 Requires:
-    sudo apt-get install python3-pygame
-    # or:
-    # pip3 install pygame
+    pygame (install via your OS package manager or pip)
+
 """
+
 
 import math
 import sys
