@@ -133,21 +133,6 @@ def look_forward():
     Board.setPWMServoPulse(6, 1500, 1000)
     time.sleep(1)
 
-def look_around():
-    Board.setPWMServoPulse(1, 1500, 500)
-    Board.setPWMServoPulse(3, 700, 500)
-    Board.setPWMServoPulse(4, 2425, 500)
-    Board.setPWMServoPulse(5, 790, 500)
-    Board.setPWMServoPulse(6, 1500, 500)
-
-    Board.setPWMServoPulse(6,2500, 2000)
-    time.sleep(2)
-    Board.setPWMServoPulse(6, 1500, 500)
-    time.sleep(.5)    
-    Board.setPWMServoPulse(3, 800, 1000)
-    say_no()
-
-
 def look_sad():
     #Board.setPWMServoPulse(1, 1500, 500)
     Board.setPWMServoPulse(3, 800, 1000)
@@ -467,7 +452,7 @@ def drive_loop(bot: Mecanum, js: pygame.joystick.Joystick):
 
                     if js.get_button(BTN_LOGITECH):
                         print("[Logitech] Look around sequence")
-                        )
+                        look_around()
 
 
                     # Sonar toggle: R3 = ON, L3 = OFF
@@ -744,3 +729,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
