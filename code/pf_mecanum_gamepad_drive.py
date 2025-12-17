@@ -74,6 +74,15 @@ SONAR_CRITICAL_RUMBLE_LOW          = 1.00 # strong low-frequency motor
 SONAR_CRITICAL_RUMBLE_HIGH         = 1.00 # strong high-frequency motor
 
 
+
+# Beeps (robot buzzer) for proximity alerts
+# - Short beep when <= 1 ft
+# - Rapid beeps when <= 4 in (critical)
+SONAR_BEEP_COOLDOWN_SEC          = 1.00  # min time between short beeps (<= 1 ft)
+SONAR_BEEP_DURATION_SEC          = 0.08  # short beep length
+
+SONAR_CRITICAL_BEEP_INTERVAL_SEC = 0.15  # rapid beep rate when critical (<= 4 in)
+SONAR_CRITICAL_BEEP_DURATION_SEC = 0.05  # rapid beep length
 # Extra feedback when we're in the "too close" zone (red)
 SONAR_FLASH_INTERVAL_SEC    = 0.20  # robot LED flashes red/off this often when too close
 SONAR_RUMBLE_COOLDOWN_SEC   = 1.00  # minimum time between rumble pulses
@@ -230,21 +239,55 @@ def backward_drop_block():
 
 # ----- Sonar + LED helpers -----
 def _robot_led_set(color):
-    """Set the *robot's* on-board RGB LED (if present in this firmware)."""
+    """Set the robot's on-board RGB LEDs (best-effort).
+
+    Your Board RGB examples set pixels 0 and 1 together, so we do the same when possible.
+    """
     try:
         # Common Hiwonder Board API: Board.RGB.setPixelColor + Board.RGB.show()
-        if hasattr(Board, 'RGB') and hasattr(Board.RGB, 'setPixelColor'):
-            Board.RGB.setPixelColor(0, color)
+        if hasattr(Board, "RGB") and hasattr(Board.RGB, "setPixelColor"):
+            try:
+                Board.RGB.setPixelColor(0, color)
+                Board.RGB.setPixelColor(1, color)
+            except Exception:
+                # Some firmwares expose only one pixel
+                Board.RGB.setPixelColor(0, color)
             Board.RGB.show()
             return
+
         # Fallbacks (some firmwares expose these directly)
-        if hasattr(Board, 'setPixelColor'):
-            Board.setPixelColor(0, color)
-            if hasattr(Board, 'show'):
+        if hasattr(Board, "setPixelColor"):
+            try:
+                Board.setPixelColor(0, color)
+                Board.setPixelColor(1, color)
+            except Exception:
+                Board.setPixelColor(0, color)
+
+            if hasattr(Board, "show"):
                 Board.show()
+
     except Exception as e:
         # Don’t let LED issues break driving
         print(f"[WARN] Robot LED update failed: {e}")
+
+
+def _buzzer_set(on: bool) -> bool:
+    """Best-effort robot buzzer control. Returns True if it succeeded."""
+    try:
+        # Common Hiwonder Board API:
+        #   Board.setBuzzer(1) / Board.setBuzzer(0)
+        if hasattr(Board, "setBuzzer") and callable(getattr(Board, "setBuzzer")):
+            Board.setBuzzer(1 if on else 0)
+            return True
+
+        # Other possible naming variants (keep safe / best-effort)
+        for name in ("set_buzzer", "buzzer", "setBuzzerState"):
+            if hasattr(Board, name) and callable(getattr(Board, name)):
+                getattr(Board, name)(1 if on else 0)
+                return True
+    except Exception:
+        return False
+    return False
 
 
 def _sonar_led_randomize(sonar):
@@ -358,6 +401,13 @@ def drive_loop(bot: Mecanum, js: pygame.joystick.Joystick):
     last_sonar_check = 0.0
     last_sonar_rand  = 0.0
 
+    # Buzzer (beeps) state (best-effort; depends on firmware exposing Board.setBuzzer)
+    buzzer_supported = True  # we will detect support on first use
+    buzzer_on = False
+    buzzer_off_time = 0.0
+    last_beep_time = 0.0
+    last_critical_beep_time = 0.0
+
     try:
         while running:
             # Process events (needed for pygame to update joystick state)
@@ -412,6 +462,9 @@ def drive_loop(bot: Mecanum, js: pygame.joystick.Joystick):
                     if js.get_button(BTN_LS):
                         sonar_enabled = False
                         last_dist_mm = None
+                        # Turn off buzzer immediately
+                        _buzzer_set(False)
+                        buzzer_on = False
                         if sonar is not None:
                             _sonar_led_off(sonar)
                         _robot_led_set(Board.PixelColor(0, 0, 0))
@@ -507,6 +560,11 @@ def drive_loop(bot: Mecanum, js: pygame.joystick.Joystick):
             if sonar_enabled and sonar is not None:
                 now = time.time()
 
+                # Turn off buzzer if a beep pulse has elapsed (non-blocking)
+                if buzzer_on and now >= buzzer_off_time:
+                    if _buzzer_set(False):
+                        buzzer_on = False
+
                 # Read distance (throttled)
                 distance_updated = False
                 if (now - last_sonar_check) >= SONAR_CHECK_INTERVAL_SEC:
@@ -554,6 +612,14 @@ def drive_loop(bot: Mecanum, js: pygame.joystick.Joystick):
                             except Exception:
                                 rumble_supported = False
                             last_critical_rumble_time = now
+                        # Rapid beeps (critical <= 4 in)
+                        if buzzer_supported and (now - last_critical_beep_time) >= SONAR_CRITICAL_BEEP_INTERVAL_SEC:
+                            if _buzzer_set(True):
+                                buzzer_on = True
+                                buzzer_off_time = now + SONAR_CRITICAL_BEEP_DURATION_SEC
+                            else:
+                                buzzer_supported = False
+                            last_critical_beep_time = now
 
                     elif d is not None and d < SONAR_DISTANCE_THRESHOLD_MM:
                         # ---- TOO CLOSE zone (< ~1 ft): soft rumble + normal flash ----
@@ -580,6 +646,14 @@ def drive_loop(bot: Mecanum, js: pygame.joystick.Joystick):
                             except Exception:
                                 rumble_supported = False
                             last_rumble_time = now
+                        # Short beep (<= 1 ft)
+                        if buzzer_supported and (now - last_beep_time) >= SONAR_BEEP_COOLDOWN_SEC:
+                            if _buzzer_set(True):
+                                buzzer_on = True
+                                buzzer_off_time = now + SONAR_BEEP_DURATION_SEC
+                            else:
+                                buzzer_supported = False
+                            last_beep_time = now
 
                     else:
                         # Not in the "too close" zone → steady LED based on distance
@@ -611,11 +685,18 @@ def drive_loop(bot: Mecanum, js: pygame.joystick.Joystick):
         except Exception:
             pass
 
+        # Ensure buzzer is off
+        try:
+            _buzzer_set(False)
+        except Exception:
+            pass
+
         pygame.joystick.quit()
         pygame.quit()
 
 
 def main():
+
     print("Initializing PathfinderBot hardware...")
     initialize_robot()
     bot = Mecanum()
