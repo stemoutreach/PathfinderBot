@@ -133,6 +133,21 @@ def look_forward():
     Board.setPWMServoPulse(6, 1500, 1000)
     time.sleep(1)
 
+def look_around():
+    Board.setPWMServoPulse(1, 1500, 500)
+    Board.setPWMServoPulse(3, 700, 500)
+    Board.setPWMServoPulse(4, 2425, 500)
+    Board.setPWMServoPulse(5, 790, 500)
+    Board.setPWMServoPulse(6, 1500, 500)
+
+    Board.setPWMServoPulse(6,2500, 2000)
+    time.sleep(2)
+    Board.setPWMServoPulse(6, 1500, 500)
+    time.sleep(.5)    
+    Board.setPWMServoPulse(3, 800, 1000)
+    say_no()
+
+
 def look_sad():
     #Board.setPWMServoPulse(1, 1500, 500)
     Board.setPWMServoPulse(3, 800, 1000)
@@ -278,7 +293,7 @@ def _robot_led_set(color):
                 Board.show()
 
     except Exception as e:
-        # Don’t let LED issues break driving
+        # Donâ€™t let LED issues break driving
         print(f"[WARN] Robot LED update failed: {e}")
 
 
@@ -453,7 +468,6 @@ def drive_loop(bot: Mecanum, js: pygame.joystick.Joystick):
                     if js.get_button(BTN_LOGITECH):
                         print("[Logitech] Look around sequence")
                         look_around()
-
 
                     # Sonar toggle: R3 = ON, L3 = OFF
                     if js.get_button(BTN_RS):
@@ -640,7 +654,7 @@ def drive_loop(bot: Mecanum, js: pygame.joystick.Joystick):
                     elif d is not None and d < SONAR_DISTANCE_THRESHOLD_MM:
                         # ---- TOO CLOSE zone (< ~1 ft): soft rumble + normal flash ----
                         if critical_mode:
-                            # Leaving critical zone → go back to random sonar colors immediately
+                            # Leaving critical zone â†’ go back to random sonar colors immediately
                             critical_mode = False
                             _sonar_led_randomize(sonar)
                             last_sonar_rand = now
@@ -672,9 +686,9 @@ def drive_loop(bot: Mecanum, js: pygame.joystick.Joystick):
                             last_beep_time = now
 
                     else:
-                        # Not in the "too close" zone → steady LED based on distance
+                        # Not in the "too close" zone â†’ steady LED based on distance
                         if critical_mode:
-                            # Leaving critical zone → go back to random sonar colors immediately
+                            # Leaving critical zone â†’ go back to random sonar colors immediately
                             critical_mode = False
                             _sonar_led_randomize(sonar)
                             last_sonar_rand = now
@@ -729,4 +743,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
