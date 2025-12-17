@@ -75,7 +75,19 @@ def look_forward():
     Board.setPWMServoPulse(6, 1500, 1000)
     time.sleep(1)
 
+def look_sad():
+    #Board.setPWMServoPulse(1, 1500, 500)
+    Board.setPWMServoPulse(3, 800, 1000)
+    Board.setPWMServoPulse(4, 2500, 1000)
+    Board.setPWMServoPulse(5, 1900, 1000)
+    Board.setPWMServoPulse(6, 1500, 1000)
+    time.sleep(.5)
+    Board.setPWMServoPulse(3, 600, 1000)
+
+    
 def say_yes():
+    Board.setPWMServoPulse(4, 2425, 1000)
+    Board.setPWMServoPulse(5, 790, 1000)
     Board.setPWMServoPulse(3, 590, 2000)
     time.sleep(0.2)
     Board.setPWMServoPulse(3, 500, 200)
@@ -90,7 +102,8 @@ def say_yes():
     time.sleep(0.2)
 
 def say_no():
-    Board.setPWMServoPulse(6, 1500, 1000)
+    Board.setPWMServoPulse(4, 2425, 1000)
+    Board.setPWMServoPulse(5, 790, 1000)
     time.sleep(0.2)
     Board.setPWMServoPulse(6, 1300, 200)
     time.sleep(0.2)
@@ -127,38 +140,42 @@ def pickup_block():
     time.sleep(1)
     look_forward()
 
-def forward_drop_block():
-    Board.setPWMServoPulse(1, 1500, 1000)
+
+def left_pickup_block():
+    Board.setPWMServoPulse(1, 2020, 1000)
     Board.setPWMServoPulse(3, 800, 1000)
     Board.setPWMServoPulse(4, 2020, 1000)
-    Board.setPWMServoPulse(5, 2250, 1000)
-    Board.setPWMServoPulse(6, 1500, 1000)
+    Board.setPWMServoPulse(5, 2091, 1000)
+    Board.setPWMServoPulse(6, 2500, 1000)
     time.sleep(1)
-    Board.setPWMServoPulse(1, 2020, 2000)
-    time.sleep(2.1)
+    Board.setPWMServoPulse(3, 900, 800)
+    Board.setPWMServoPulse(5, 2364, 800)
+    time.sleep(0.8)
+    Board.setPWMServoPulse(1, 1455, 500)
+    Board.setPWMServoPulse(5, 2300, 300)
+    time.sleep(0.3)
+    Board.setPWMServoPulse(5, 1841, 1000)
+
+    time.sleep(1)
     look_forward()
 
-
-def left_drop_block():
-    Board.setPWMServoPulse(1, 1500, 1000)
+def right_pickup_block():
+    Board.setPWMServoPulse(1, 2020, 1000)
     Board.setPWMServoPulse(3, 800, 1000)
-    Board.setPWMServoPulse(4, 2020, 1000)
-    Board.setPWMServoPulse(5, 2250, 1000)
-    Board.setPWMServoPulse(6, 2500, 1500)
-    time.sleep(2)
-    Board.setPWMServoPulse(1, 2020, 2000)
-    time.sleep(2.1)
-    look_forward()
+    Board.setPWMServoPulse(4, 1800, 1000)
+    Board.setPWMServoPulse(5, 2091, 1000)
+    Board.setPWMServoPulse(6, 500, 1000)
+    time.sleep(1)
+    Board.setPWMServoPulse(3, 800, 800)
+    Board.setPWMServoPulse(5, 2450, 800)
+    time.sleep(0.8)
+    Board.setPWMServoPulse(1, 1455, 500)
+    Board.setPWMServoPulse(5, 2318, 300)
 
-def right_drop_block():
-    Board.setPWMServoPulse(1, 1500, 1000)
-    Board.setPWMServoPulse(3, 800, 1000)
-    Board.setPWMServoPulse(4, 2020, 1000)
-    Board.setPWMServoPulse(5, 2250, 1000)
-    Board.setPWMServoPulse(6, 500, 1500)
-    time.sleep(2)
-    Board.setPWMServoPulse(1, 2020, 2000)
-    time.sleep(2.1)
+    time.sleep(0.3)
+    Board.setPWMServoPulse(5, 1841, 1000)
+
+    time.sleep(1)
     look_forward()
 
 def backward_drop_block():
@@ -229,7 +246,8 @@ def drive_loop(bot: Mecanum, js: pygame.joystick.Joystick):
 
                     if js.get_button(BTN_B):
                         print("[B] Pickup block sequence")
-                        pickup_block()
+                        look_sad()
+                        
 
                     if js.get_button(BTN_Y):
                         print("[Y] say yes sequence")
@@ -255,7 +273,7 @@ def drive_loop(bot: Mecanum, js: pygame.joystick.Joystick):
                     # D-pad up (forward) is usually (0, 1)
                     if hat_x == 0 and hat_y == 1:
                         print("D-pad UP pressed")
-                        forward_drop_block()
+                        pickup_block()
 
                     if hat_x == 0 and hat_y == -1:  # DOWN
                         print("D-pad DOWN pressed")
@@ -263,11 +281,11 @@ def drive_loop(bot: Mecanum, js: pygame.joystick.Joystick):
                         
                     if hat_x == -1 and hat_y == 0:  # LEFT
                         print("D-pad LEFT pressed")
-                        left_drop_block()
+                        left_pickup_block()
                         
                     if hat_x == 1 and hat_y == 0:   # RIGHT
                         print("D-pad RIGHT pressed")
-                        right_drop_block()
+                        right_pickup_block()
 
 
 
